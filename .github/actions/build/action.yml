@@ -1,0 +1,21 @@
+name: Build ExpandedHotbars
+description: Build against the current stable Dalamud development references.
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '10.0.x'
+    - name: Download Dalamud development references
+      shell: pwsh
+      run: |
+        $referencePath = Join-Path $env:RUNNER_TEMP 'expanded-hotbars-dalamud'
+        $archivePath = Join-Path $env:RUNNER_TEMP 'expanded-hotbars-dalamud.zip'
+        Invoke-WebRequest https://goatcorp.github.io/dalamud-distrib/stg/latest.zip -OutFile $archivePath
+        Expand-Archive $archivePath -DestinationPath $referencePath -Force
+        $dll = Get-ChildItem $referencePath -Recurse -Filter Dalamud.dll | Select-Object -First 1
+        if (-not $dll) { throw 'Dalamud development references missing' }
+        "DALAMUD_HOME=$($dll.Directory.FullName)\" | Out-File -FilePath $env:GITHUB_ENV -Append
+    - name: Build plugin
+      shell: pwsh
+      run: dotnet build ExpandedHotbars/ExpandedHotbars.csproj --configuration Release --nologo

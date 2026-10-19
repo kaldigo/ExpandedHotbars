@@ -1,0 +1,25 @@
+name: Build fork
+
+on:
+  push:
+    branches: [master, main, 'codex/**']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6.0.2
+        with:
+          submodules: recursive
+      - uses: ./.github/actions/build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ExpandedHotbars-development
+          path: ExpandedHotbars/bin/Release/**
+          if-no-files-found: error

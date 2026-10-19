@@ -15,7 +15,7 @@ env:
 
 jobs:
   update-repo:
-    if: contains(github.event.head_commit.message, 'Version')
+    if: github.repository == 'MidoriKami/ExpandedHotbars' && contains(github.event.head_commit.message, 'Version')
 
     env:
       BRANCH_TARGET: ${{ case( contains(github.event.head_commit.message, 'Testing'), 'testing/live', 'stable' ) }}

@@ -1,0 +1,82 @@
+name: Check upstream updates
+
+on:
+  schedule:
+    - cron: '23 6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: expanded-hotbars-upstream-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    if: github.repository != 'MidoriKami/ExpandedHotbars'
+    runs-on: windows-latest
+    timeout-minutes: 25
+    env:
+      DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+      SYNC_BRANCH: codex/upstream-sync
+    steps:
+      - uses: actions/checkout@v6.0.2
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          fetch-depth: 0
+          submodules: recursive
+          persist-credentials: false
+      - name: Merge upstream on the update branch
+        id: merge
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git remote add upstream https://github.com/MidoriKami/ExpandedHotbars.git
+          git fetch --no-tags upstream master
+          if git merge-base --is-ancestor upstream/master "origin/$DEFAULT_BRANCH"; then
+            echo 'Upstream is already included.' >> "$GITHUB_STEP_SUMMARY"
+            echo 'changed=false' >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          if git show-ref --verify --quiet "refs/remotes/origin/$SYNC_BRANCH"; then
+            git switch -c "$SYNC_BRANCH" "origin/$SYNC_BRANCH"
+            git merge --no-edit "origin/$DEFAULT_BRANCH"
+          else
+            git switch -c "$SYNC_BRANCH" "origin/$DEFAULT_BRANCH"
+          fi
+          git merge --no-edit upstream/master
+          git submodule sync --recursive
+          git submodule update --init --recursive
+          echo 'changed=true' >> "$GITHUB_OUTPUT"
+      # GITHUB_TOKEN-created PR workflows may require approval. Build here
+      # before pushing, so proposed updates do not depend on that approval.
+      - name: Build merged plugin
+        if: steps.merge.outputs.changed == 'true'
+        uses: ./.github/actions/build
+      - name: Open or retain the update pull request
+        if: steps.merge.outputs.changed == 'true'
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          gh auth setup-git
+          git push origin "HEAD:refs/heads/$SYNC_BRANCH"
+          existing=$(gh pr list --head "$SYNC_BRANCH" --base "$DEFAULT_BRANCH" --state open --json url --jq '.[0].url // empty')
+          if [ -z "$existing" ]; then
+            gh pr create --head "$SYNC_BRANCH" --base "$DEFAULT_BRANCH" \
+              --title 'Merge upstream ExpandedHotbars updates' \
+              --body 'Merges upstream master while preserving fork commits. The update workflow built the merged plugin before pushing this branch. Review changes and test in game before merging; no automatic merge or release is enabled.'
+          else
+            echo "Updated pull request: $existing" >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Explain an update failure
+        if: failure()
+        shell: bash
+        run: |
+          echo 'Upstream sync failed. Check the failed step for merge conflicts, build errors, or repository permissions. The default branch has not been changed. Resolve the problem on codex/upstream-sync and rerun this workflow.' >> "$GITHUB_STEP_SUMMARY"
