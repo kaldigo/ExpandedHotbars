@@ -58,6 +58,10 @@ public sealed class HotbarOverlayNode : OverlayNode {
             node.IsBackgroundShown = isHotbarEmptyVisible || isDragging || System.ConfigWindow.IsOpen;
 
             node.Update();
+
+            // A keybind can close the bar during this update. Do not process
+            // any remaining slots on the now-closed bar.
+            if (!Config.IsEnabled) return;
         }
     }
 
@@ -84,13 +88,14 @@ public sealed class HotbarOverlayNode : OverlayNode {
 
         foreach (var row in Enumerable.Range(0, (int) Config.Size.Y)) {
             foreach (var column in Enumerable.Range(0, (int) Config.Size.X)) {
-                var newHotbarNode = new HotbarNode {
+                var newHotbarNode = new HotbarSlotNode {
                     NodeId = (uint) (column + row * Config.Size.X) + 2,
                     Position = new Vector2(8.0f, 8.0f) +
                                new Vector2(44.0f * column, 44.0f * row) +
                                new Vector2(Config.Spacing.X * column, Config.Spacing.Y * row),
                     Size = new Vector2(44.0f, 44.0f),
                     IsClickable = true,
+                    OnActionInvoked = OnActionInvoked,
                 };
 
                 hotbarNodes.Add(newHotbarNode);
@@ -117,7 +122,6 @@ public sealed class HotbarOverlayNode : OverlayNode {
                 }
 
                 newHotbarNode.AttachNode(this);
-                newHotbarNode.Update();
             }
         }
 
@@ -153,6 +157,21 @@ public sealed class HotbarOverlayNode : OverlayNode {
         Size = Config.Size * (new Vector2(44.0f, 44.0f) + Config.Spacing) + new Vector2(16.0f, 16.0f);
         Origin = Size / 2.0f;
         padlockNode.Position = Size + new Vector2(8.0f, -42.0f);
+    }
+
+    private void OnActionInvoked() {
+        if (!Config.CloseAfterUse || !Config.IsEnabled) return;
+
+        Config.IsEnabled = false;
+        IsVisible = false;
+
+        foreach (var feature in Config.ExtraFeatures) {
+            if (feature is { IsValid: true, Enabled: true }) {
+                feature.OnDisable();
+            }
+        }
+
+        System.Config.Save();
     }
 
     private void OnPayloadAccepted(int row, int column, DragDropPayload payload) {

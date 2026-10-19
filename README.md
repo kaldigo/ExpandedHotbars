@@ -9,7 +9,7 @@ You can manage various show conditions to make certain bars only appear in certa
 This working copy is being prepared for independent development. The original
 project is [MidoriKami/ExpandedHotbars](https://github.com/MidoriKami/ExpandedHotbars).
 No destination repository or release feed has been selected yet. Upstream authorship
-and the existing license are retained. Plugin behavior is unchanged at this stage.
+and the existing license are retained.
 
 ### Local setup
 
@@ -59,9 +59,29 @@ The inherited **Update Dalamud Plugin Repository** workflow is restricted to the
 original author's repository. Fork distribution, naming, and release automation
 will be configured once a destination is selected.
 
-### First planned change
+### Close after use
 
-Auto-close after using a hotbar slot is the first area to work through. Mouse and
-keybind activation use different paths inside KamiToolKit, so both need checking.
-Before implementation, decide whether closing follows an activation attempt or a
-successful action, how the bar reopens, and whether the option applies per bar.
+Each hotbar's Config tab has a **Close After Use** checkbox, off by default.
+When enabled, activating a populated slot by mouse click or keybind invokes its
+action and then closes that hotbar. Activation attempts also close the bar when
+the game rejects the action, for example because it is on cooldown. Empty slots
+and dragging actions do not close the bar. Other hotbars are unaffected.
+
+Closing clears the bar's **Enabled** setting and saves it. Reopen the bar using
+`/exhotbar show <hotbar name>`, `/exhotbar toggle <hotbar name>`, or its **Enabled**
+checkbox. Existing show conditions still apply when reopening. With **Allow Clicking
+Actions** off, keybinds can still activate actions and close the bar.
+
+The activation adapter is part of this plugin; KamiToolKit is unchanged.
+
+In-game acceptance checks (pending):
+
+- With the option off, actions leave the bar open by click and keybind.
+- With it on, a populated slot runs its action and closes only its own bar by
+  click and keybind, including an action currently on cooldown.
+- Empty slots and drag-and-drop do not close the bar.
+- Reopening with `show`, `toggle`, or **Enabled** allows another activation.
+- Keybind activation still closes the bar with **Allow Clicking Actions** off.
+- Extra features that hide native hotbars restore them when the bar closes.
+- After reloading, the option and the bar's closed state are retained. Existing
+  configurations without this option continue to leave bars open after use.

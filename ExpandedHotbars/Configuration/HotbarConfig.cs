@@ -86,6 +86,11 @@ public class HotbarConfig {
     /// </summary>
     public bool EnableClicking = true;
 
+    /// <summary>
+    /// Closes this hotbar after a populated slot is activated by click or keybind.
+    /// </summary>
+    public bool CloseAfterUse = false;
+
     //
     // Non Serialized Properties used during configuration
     //
