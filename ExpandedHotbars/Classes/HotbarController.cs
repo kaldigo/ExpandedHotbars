@@ -47,11 +47,12 @@ public sealed class HotbarController : IAsyncDisposable {
 
         var position = hotbarConfig.Position;
 
-        // If using default position, set to middle of the screen.
-        // Sorry to that one person that wants their hotbar to be at the top left of their screen for whatever reason, you're weird.
-        if (hotbarConfig.Position == Vector2.Zero) {
+        // Preserve legacy centering while allowing an explicitly saved (0, 0).
+        if (!hotbarConfig.HasCustomPosition && hotbarConfig.Position == Vector2.Zero) {
             position = (Vector2)AtkStage.Instance()->ScreenSize / 2.0f;
         }
+
+        hotbarConfig.Position = position;
 
         var newHotbarNode = new HotbarOverlayNode {
             NodeId = hotbarConfig.GetNameHash(),
@@ -61,6 +62,15 @@ public sealed class HotbarController : IAsyncDisposable {
 
         overlayController.AddNode(newHotbarNode);
         hotbarNodes[hotbarConfig] = newHotbarNode;
+    }
+
+    public void SetHotbarPosition(HotbarConfig config, Vector2 position) {
+        ThreadSafety.AssertMainThread();
+        config.Position = position;
+        config.HasCustomPosition = true;
+        if (hotbarNodes.TryGetValue(config, out var node)) {
+            node.Position = position;
+        }
     }
 
     public void RemoveHotbar(HotbarConfig hotbarConfig) {

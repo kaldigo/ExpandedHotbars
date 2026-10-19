@@ -192,6 +192,7 @@ public sealed class HotbarOverlayNode : OverlayNode {
 
     private void OnMoveCompleted(NodeBase _) {
         Config.Position = Position;
+        Config.HasCustomPosition = true;
         Update();
 
         System.Config.Save();

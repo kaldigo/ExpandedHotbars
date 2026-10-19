@@ -53,6 +53,17 @@ public partial class ConfigWindow {
             System.Config.Save();
         }
 
+        ImGui.Label("Position X / Y", "Exact screen coordinates. X increases to the right; Y increases downward.");
+        var position = selectedConfig.Position;
+        ImGui.SetNextItemWidth(ImGui.AreaWidth);
+        if (ImGui.InputFloat2("##HotbarPosition", ref position, 1.0f, 10.0f, "%.0f") &&
+            float.IsFinite(position.X) && float.IsFinite(position.Y)) {
+            System.HotbarController.SetHotbarPosition(selectedConfig, position);
+        }
+        if (ImGui.IsItemDeactivatedAfterEdit()) {
+            System.Config.Save();
+        }
+
         ImGui.Label("Scale");
         ImGui.SetNextItemWidth(ImGui.AreaWidth);
         ImGui.SliderFloat("##Scale", ref selectedConfig.Scale, 0.5f, 5.0f);

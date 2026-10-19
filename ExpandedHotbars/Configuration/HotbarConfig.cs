@@ -46,6 +46,9 @@ public class HotbarConfig {
     /// </summary>
     public Vector2 Position = Vector2.Zero;
 
+    /// <summary>Distinguishes an explicitly saved (0, 0) from an unset legacy position.</summary>
+    public bool HasCustomPosition = false;
+
     /// <summary>
     /// If this hotbar should be shown if the conditions are met.
     /// </summary>

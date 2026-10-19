@@ -145,3 +145,10 @@ In-game acceptance checks (pending):
 - Extra features that hide native hotbars restore them when the bar closes.
 - After reloading, the option and the bar's closed state are retained. Existing
   configurations without this option continue to leave bars open after use.
+
+## Precise positioning
+
+Select a hotbar in the configuration window and edit **Position X / Y** to move it
+precisely. X increases to the right; Y increases downward. Changes apply immediately
+and save when you finish editing. Mouse dragging remains available through
+**Enable Moving**. An explicit position of (0, 0) is supported.
