@@ -19,6 +19,9 @@ RunChecks();
 
 [MethodImpl(MethodImplOptions.NoInlining)]
 static void RunChecks() {
+    if (Environment.GetEnvironmentVariable("EXPECTED_PLUGIN_VERSION") is { } expectedVersion) {
+        Check(typeof(HotbarConfig).Assembly.GetName().Version?.ToString() == expectedVersion, "DLL assembly version matches the planned update version");
+    }
     var options = new JsonSerializerOptions { IncludeFields = true };
     var legacy = JsonSerializer.Deserialize<HotbarConfig>("{\"HotbarName\":\"Legacy\",\"IsEnabled\":true}", options)!;
     Check(!legacy.CloseAfterUse && !legacy.TryCloseAfterUse() && legacy.IsEnabled, "Legacy settings keep the bar open");

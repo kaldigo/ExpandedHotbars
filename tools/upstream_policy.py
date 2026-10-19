@@ -55,12 +55,15 @@ def classify(base, upstream, head):
 def report(policy):
     decision = 'Routine: eligible for automatic merge after all checks pass.' if policy['routine'] else 'Manual review required; automatic merge is disabled.'
     lines = [decision, '', 'Checks: build, configuration regressions, policy regressions and release-package validation.',
-             'Automatic merges do not publish releases.', '', f"Validated base: `{policy['base']}`",
+             'Routine automatic merges queue a validated, versioned release. Sensitive updates remain manual.', '', f"Validated base: `{policy['base']}`",
              f"Proposed head: `{policy['head']}`", '', 'Changed files:']
     lines.extend(f'- `{path}`' for path in policy['changed_paths'])
     if policy['reasons']:
         lines.extend(['', 'Reasons for manual review:'])
         lines.extend(f'- {reason}' for reason in policy['reasons'])
+    if policy['routine']:
+        receipt = {key: policy[key] for key in ['base', 'upstream', 'head']}
+        lines.extend(['', '<!-- routine-release:' + json.dumps(receipt) + ' -->'])
     return '\n'.join(lines) + '\n'
 
 

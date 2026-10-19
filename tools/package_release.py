@@ -9,6 +9,7 @@ import zipfile
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--tag', required=True)
+parser.add_argument('--changelog-file')
 args = parser.parse_args()
 if not re.fullmatch(r'v\d+\.\d+\.\d+\.\d+', args.tag):
     parser.error('Expected a four-part release tag such as v1.0.1.1')
@@ -24,6 +25,8 @@ assert manifest['RepoUrl'] == 'https://github.com/kaldigo/ExpandedHotbars'
 icon = build / 'images/icon.png'
 assert struct.unpack('>II', icon.read_bytes()[16:24]) == (512, 512)
 manifest['Changelog'] = 'Adds per-hotbar Close After Use for mouse clicks and keybinds, plus a matching Kaldigo plugin icon. Auto-close follows activation attempts, including cooldown failures. In-game testing remains pending.'
+if args.changelog_file:
+    manifest['Changelog'] = Path(args.changelog_file).read_text(encoding='utf-8').strip()
 package = output / 'ExpandedHotbars.zip'
 with zipfile.ZipFile(package, 'w', zipfile.ZIP_DEFLATED) as archive:
     for name in ['ExpandedHotbars.dll', 'ExpandedHotbars.deps.json', 'KamiToolKit.dll']:

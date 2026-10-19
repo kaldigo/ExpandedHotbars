@@ -2,6 +2,20 @@ name: Release fork
 on:
   push:
     tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      source_commit:
+        description: Exact merged source SHA; empty uses the workflow commit
+        required: false
+        type: string
+      base_commit:
+        description: Recorded pre-merge base for a routine upstream release
+        required: false
+        type: string
+      upstream_commit:
+        description: Recorded upstream tip for a routine upstream release
+        required: false
+        type: string
 permissions:
   contents: write
 concurrency:
@@ -11,42 +25,74 @@ jobs:
   release:
     if: github.repository == 'kaldigo/ExpandedHotbars'
     runs-on: windows-latest
-    timeout-minutes: 25
+    timeout-minutes: 30
+    env:
+      SOURCE_COMMIT: ${{ inputs.source_commit || github.sha }}
+      DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
     steps:
       - uses: actions/checkout@v6.0.2
         with:
+          ref: ${{ inputs.source_commit || github.sha }}
+          fetch-depth: 0
           submodules: recursive
-      - uses: ./.github/actions/build
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Package release
+      - name: Verify source and routine-release eligibility
         env:
-          RELEASE_TAG: ${{ github.ref_name }}
-        run: python tools/package_release.py --tag "$env:RELEASE_TAG"
-      - name: Publish preview and update source feed
-        env:
-          GH_TOKEN: ${{ github.token }}
-          RELEASE_TAG: ${{ github.ref_name }}
-          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+          BASE_COMMIT: ${{ inputs.base_commit }}
+          UPSTREAM_COMMIT: ${{ inputs.upstream_commit }}
         shell: pwsh
         run: |
-          gh release create $env:RELEASE_TAG artifacts/ExpandedHotbars.zip artifacts/pluginmaster.json artifacts/SHA256SUMS.txt --prerelease --title "ExpandedHotbars $env:RELEASE_TAG" --notes 'Kaldigo fork: optional per-hotbar Close After Use for mouse clicks and keybinds, plus a matching icon. Auto-close includes activation attempts on cooldown. In-game acceptance testing remains pending. Disable the upstream ExpandedHotbars before loading this fork. Install through https://raw.githubusercontent.com/kaldigo/DalamudPlugins/main/pluginmaster.json .'
-          if ($LASTEXITCODE) { exit $LASTEXITCODE }
-          $feedPath = Join-Path $env:RUNNER_TEMP 'expanded-hotbars-feed.json'
-          Copy-Item pluginmaster.json $feedPath
-          git fetch origin $env:DEFAULT_BRANCH
-          if ($LASTEXITCODE) { exit $LASTEXITCODE }
-          git switch -C $env:DEFAULT_BRANCH "origin/$env:DEFAULT_BRANCH"
-          if ($LASTEXITCODE) { exit $LASTEXITCODE }
-          Copy-Item $feedPath pluginmaster.json
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add pluginmaster.json
-          git diff --cached --quiet
-          if ($LASTEXITCODE -eq 1) {
-            git commit -m "Update ExpandedHotbars release feed for $env:RELEASE_TAG"
+          git merge-base --is-ancestor $env:SOURCE_COMMIT "origin/$env:DEFAULT_BRANCH"
+          if ($LASTEXITCODE) { throw 'Release source is not merged into the default branch' }
+          if ($env:BASE_COMMIT -or $env:UPSTREAM_COMMIT) {
+            if (-not $env:BASE_COMMIT -or -not $env:UPSTREAM_COMMIT) { throw 'Incomplete routine release receipt' }
+            python tools/upstream_policy.py --base $env:BASE_COMMIT --upstream $env:UPSTREAM_COMMIT --head $env:SOURCE_COMMIT --output "$env:RUNNER_TEMP/release-policy.json"
             if ($LASTEXITCODE) { exit $LASTEXITCODE }
-            git push origin $env:DEFAULT_BRANCH
-            if ($LASTEXITCODE) { exit $LASTEXITCODE }
-          } elseif ($LASTEXITCODE) { exit $LASTEXITCODE }
+            if (-not (Get-Content "$env:RUNNER_TEMP/release-policy.json" -Raw | ConvertFrom-Json).routine) { throw 'Sensitive upstream updates require manual review' }
+          }
+      - name: Plan unique release version
+        id: plan
+        uses: kaldigo/DalamudPlugins/.github/actions/plan-release@282dce6379e9060d7f0fa273aa0d817faa5e3b1b
+        env:
+          GH_TOKEN: ${{ github.token }}
+        with:
+          internal-name: ExpandedHotbars
+          minimum-version: '1.0.1.1'
+          source-commit: ${{ inputs.source_commit || github.sha }}
+          tag: ${{ github.ref_type == 'tag' && github.ref_name || '' }}
+      - name: Build the exact source at its planned version
+        if: steps.plan.outputs.skip != 'true'
+        uses: ./.github/actions/build
+        with:
+          release-version: ${{ steps.plan.outputs.version }}
+      - name: Run every release regression check
+        if: steps.plan.outputs.skip != 'true'
+        env:
+          EXPECTED_PLUGIN_VERSION: ${{ steps.plan.outputs.version }}
+        shell: pwsh
+        run: |
+          python -m unittest discover -s tests -p 'test_*.py' -v
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          dotnet run --project tests/ConfigurationChecks -c Release
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          python tools/check_package.py
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+      - name: Package with source-specific release notes
+        if: steps.plan.outputs.skip != 'true'
+        env:
+          RELEASE_TAG: ${{ steps.plan.outputs.tag }}
+          IS_ROUTINE: ${{ inputs.base_commit != '' }}
+        shell: pwsh
+        run: |
+          $kind = if ($env:IS_ROUTINE -eq 'true') { 'Routine upstream update' } else { 'Validated fork update' }
+          "$kind from source $env:SOURCE_COMMIT. Build, configuration, merge-policy and package checks passed. Preserves the fork's auto-close and icon customizations. Development preview; native UI acceptance testing remains separate." | Set-Content "$env:RUNNER_TEMP/plugin-changelog.txt" -Encoding utf8
+          python tools/package_release.py --tag $env:RELEASE_TAG --changelog-file "$env:RUNNER_TEMP/plugin-changelog.txt"
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+      - name: Publish or recover the validated release and source feed
+        uses: kaldigo/DalamudPlugins/.github/actions/publish-release@282dce6379e9060d7f0fa273aa0d817faa5e3b1b
+        env:
+          GH_TOKEN: ${{ github.token }}
+        with:
+          default-branch: ${{ github.event.repository.default_branch }}

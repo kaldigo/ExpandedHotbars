@@ -1,5 +1,9 @@
 name: Build ExpandedHotbars
 description: Build against the current stable Dalamud development references.
+inputs:
+  release-version:
+    required: false
+    description: Optional assembly version for a planned automated release
 runs:
   using: composite
   steps:
@@ -18,4 +22,10 @@ runs:
         "DALAMUD_HOME=$($dll.Directory.FullName)\" | Out-File -FilePath $env:GITHUB_ENV -Append
     - name: Build plugin
       shell: pwsh
-      run: dotnet build ExpandedHotbars/ExpandedHotbars.csproj --configuration Release --nologo
+      env:
+        RELEASE_VERSION: ${{ inputs.release-version }}
+      run: |
+        $arguments = @('build', 'ExpandedHotbars/ExpandedHotbars.csproj', '--configuration', 'Release', '--nologo')
+        if ($env:RELEASE_VERSION) { $arguments += "-p:Version=$env:RELEASE_VERSION" }
+        dotnet @arguments
+        if ($LASTEXITCODE) { exit $LASTEXITCODE }

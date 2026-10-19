@@ -6,6 +6,7 @@ on:
 permissions:
   contents: write
   pull-requests: write
+  actions: write
 concurrency:
   group: expanded-hotbars-upstream-sync
   cancel-in-progress: false
@@ -32,7 +33,13 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p "$RUNNER_TEMP/upstream-tools"
-          cp tools/upstream_policy.py tools/merge_routine_upstream.py "$RUNNER_TEMP/upstream-tools/"
+          cp tools/upstream_policy.py tools/merge_routine_upstream.py tools/dispatch_routine_release.py "$RUNNER_TEMP/upstream-tools/"
+      - name: Recover publication of the most recent routine merge
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        shell: bash
+        run: python tools/dispatch_routine_release.py --recover --branch "$DEFAULT_BRANCH"
       - name: Merge upstream on the update branch
         id: merge
         shell: bash
@@ -138,4 +145,4 @@ jobs:
         if: failure()
         shell: bash
         run: |
-          echo 'Upstream validation failed. No automatic merge was performed. Review the failed step and any open update PR, fix the problem, and rerun. Releases are never published by this workflow.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Upstream validation or release dispatch failed. Review the failed step and any open PR. A successful merge followed by a dispatch failure is recovered on the next run. Sensitive updates never queue automatic releases.' >> "$GITHUB_STEP_SUMMARY"

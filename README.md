@@ -46,8 +46,8 @@ The **Check upstream updates** workflow checks upstream `master` daily at 06:23 
 and can also be run manually. It merges updates into `codex/upstream-sync`, builds
 the result, and opens or updates a pull request against the destination's default
 branch. It automatically merges routine updates after the build, configuration
-regressions, merge-policy regressions and release-package validation pass. It never
-publishes releases. The existing update branch is reused without force pushes;
+regressions, merge-policy regressions and release-package validation pass. Successful
+routine merges queue the release workflow automatically. The existing update branch is reused without force pushes;
 reserve it for updates.
 
 Automatic classification is deliberately conservative. Only condition implementation
@@ -92,9 +92,20 @@ repositories; manual runs remain available.
 
 The inherited **Update Dalamud Plugin Repository** workflow is restricted to the
 original author's repository. Pushing a four-part version tag such as `v1.0.1.1`
-runs **Release fork**, builds and packages the plugin, publishes a preview release,
-and updates this repository's standalone `pluginmaster.json`. The central
+runs **Release fork** manually; routine upstream merges dispatch it automatically.
+It rebuilds the exact source, checks eligibility and regressions, allocates a newer
+four-part DLL version, packages and validates assets, publishes a preview release,
+and updates this repository's standalone `pluginmaster.json` only after assets are
+public. The central
 [DalamudPlugins](https://github.com/kaldigo/DalamudPlugins) feed refreshes hourly.
+
+Publishing uses the shared version planner and publisher in DalamudPlugins. Draft
+releases can resume after failures; published artifacts are immutable. Re-running
+an already-published source repairs its source feed without allocating another
+version. The daily upstream check also retries publication for its most recent
+routine merge, including when no new upstream commits are available. Older source
+and feed versions cannot replace a newer publication. Sensitive/manual merges do
+not queue automatic releases. Development-preview status is preserved.
 
 ### Icon
 

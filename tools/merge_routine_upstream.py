@@ -46,5 +46,8 @@ if __name__ == '__main__':
     parser.add_argument('--sync-branch', required=True)
     parser.add_argument('--pr', required=True)
     args = parser.parse_args()
-    merge(json.loads(Path(args.policy).read_text(encoding='utf-8')),
-          args.default_branch, args.sync_branch, args.pr)
+    policy = json.loads(Path(args.policy).read_text(encoding='utf-8'))
+    if merge(policy, args.default_branch, args.sync_branch, args.pr):
+        from dispatch_routine_release import dispatch
+        subprocess.run(['git', 'fetch', 'origin', args.default_branch], check=True)
+        dispatch(policy, args.default_branch)
