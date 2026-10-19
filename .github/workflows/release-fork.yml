@@ -54,7 +54,7 @@ jobs:
           }
       - name: Plan unique release version
         id: plan
-        uses: kaldigo/DalamudPlugins/.github/actions/plan-release@282dce6379e9060d7f0fa273aa0d817faa5e3b1b
+        uses: kaldigo/DalamudPlugins/.github/actions/plan-release@062d19636439530cf7426b0b07a900819c3a7888
         env:
           GH_TOKEN: ${{ github.token }}
         with:
@@ -91,7 +91,7 @@ jobs:
           python tools/package_release.py --tag $env:RELEASE_TAG --changelog-file "$env:RUNNER_TEMP/plugin-changelog.txt"
           if ($LASTEXITCODE) { exit $LASTEXITCODE }
       - name: Publish or recover the validated release and source feed
-        uses: kaldigo/DalamudPlugins/.github/actions/publish-release@282dce6379e9060d7f0fa273aa0d817faa5e3b1b
+        uses: kaldigo/DalamudPlugins/.github/actions/publish-release@062d19636439530cf7426b0b07a900819c3a7888
         env:
           GH_TOKEN: ${{ github.token }}
         with:
