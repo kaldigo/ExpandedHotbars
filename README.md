@@ -59,6 +59,14 @@ The inherited **Update Dalamud Plugin Repository** workflow is restricted to the
 original author's repository. Fork distribution, naming, and release automation
 will be configured once a destination is selected.
 
+### Icon
+
+The fork's icon matches the other Hotbar Tools icons: six hotbar slots and a plus
+sign, with a green-to-magenta gradient and a rounded border on charcoal black.
+The generated original and generation prompt are in `assets/icons/`; the 512x512
+plugin export is `ExpandedHotbars/images/icon.png` and is copied into build output.
+The repository feed's `IconUrl` will be configured when a destination is selected.
+
 ### Close after use
 
 Each hotbar's Config tab has a **Close After Use** checkbox, off by default.
