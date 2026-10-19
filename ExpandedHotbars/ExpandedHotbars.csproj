@@ -4,7 +4,9 @@
     </PropertyGroup>
 
     <PropertyGroup>
-        <Name>ExpandedHotbars</Name>
+        <Name>ExpandedHotbars Plus</Name>
+        <AssemblyName>ExpandedHotbarsPlus</AssemblyName>
+        <RootNamespace>ExpandedHotbars</RootNamespace>
         <Author>kaldigo; based on MidoriKami's ExpandedHotbars</Author>
         <Punchline>Add and control an unlimited number of custom additional hotbars.</Punchline>
         <Description>Create hotbars of any size, spacing, and keybinds, with functions to show and hide these bars dynamically.</Description>

@@ -58,7 +58,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         with:
-          internal-name: ExpandedHotbars
+          internal-name: ExpandedHotbarsPlus
           minimum-version: '1.0.1.1'
           source-commit: ${{ inputs.source_commit || github.sha }}
           tag: ${{ github.ref_type == 'tag' && github.ref_name || '' }}

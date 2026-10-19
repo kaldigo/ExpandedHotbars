@@ -1,4 +1,4 @@
-# Expanded Hotbars
+# ExpandedHotbars Plus
 
 This is a plugin for FFXIV/Dalamud that allows you to create and manage an unlimited number of additional hotbars built into the games native ui!
 
@@ -16,8 +16,12 @@ Add this custom repository in `/xlsettings` → Experimental → Custom Plugin R
 https://raw.githubusercontent.com/kaldigo/DalamudPlugins/main/pluginmaster.json
 ```
 
-Then install ExpandedHotbars through `/xlplugins`. Disable the upstream plugin
-before loading this fork; both use the same plugin identity and configuration.
+Then search for **ExpandedHotbars Plus** in `/xlplugins`. This fork uses the distinct
+internal identity `ExpandedHotbarsPlus`; Dalamud blocks custom repositories from
+replacing the official `ExpandedHotbars` identity. Disable the upstream plugin
+before enabling this fork, since their commands and hotbars overlap. Settings are
+stored separately; use the existing hotbar export/import controls to transfer
+layouts from upstream. The original configuration is preserved.
 The initial fork release is a development preview. In-game acceptance checks for
 auto-close remain pending.
 

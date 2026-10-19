@@ -6,8 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ExpandedHotbars">
-      <HintPath>../../ExpandedHotbars/bin/Release/ExpandedHotbars.dll</HintPath>
+    <Reference Include="ExpandedHotbarsPlus">
+      <HintPath>../../ExpandedHotbars/bin/Release/ExpandedHotbarsPlus.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>
