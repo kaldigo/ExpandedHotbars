@@ -160,9 +160,7 @@ public sealed class HotbarOverlayNode : OverlayNode {
     }
 
     private void OnActionInvoked() {
-        if (!Config.CloseAfterUse || !Config.IsEnabled) return;
-
-        Config.IsEnabled = false;
+        if (!Config.TryCloseAfterUse()) return;
         IsVisible = false;
 
         foreach (var feature in Config.ExtraFeatures) {

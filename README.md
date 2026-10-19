@@ -45,10 +45,36 @@ commits for upstream updates to preserve shared ancestry and our changes.
 The **Check upstream updates** workflow checks upstream `master` daily at 06:23 UTC
 and can also be run manually. It merges updates into `codex/upstream-sync`, builds
 the result, and opens or updates a pull request against the destination's default
-branch. It never merges the pull request or publishes a release. A merge conflict
-or build failure stops the run and needs manual resolution. Merge these update PRs
-with a merge commit, rather than squash or rebase, to retain upstream ancestry.
-The existing update branch is reused without force pushes; reserve it for updates.
+branch. It automatically merges routine updates after the build, configuration
+regressions, merge-policy regressions and release-package validation pass. It never
+publishes releases. The existing update branch is reused without force pushes;
+reserve it for updates.
+
+Automatic classification is deliberately conservative. Only condition implementation
+files (excluding `ConditionBase.cs`) and Markdown under `docs/` or `README.md` can
+qualify. Any file modified by the fork is excluded, even if it otherwise qualifies.
+Hotbar configuration and activation code, dependencies and submodules, project and
+lock files, publishing, workflows, icons, tests and policy tools require manual
+review. Unrecognised paths, deleted condition types, native interop and references
+to our activation hooks also require review. Upstream version/project changes
+therefore remain manual even if their diff looks small.
+
+Classification includes both the incoming upstream diff and the complete proposed
+merge. Extra edits on the update branch cannot qualify as routine. The policy and
+merge tools are copied from the trusted default branch before merging upstream.
+Each PR explains the classification and links to the validation run. Conflicts
+produce a separate review PR; build/test failures leave the proposal unmerged.
+
+The workflow advances the default branch only to the exact tested merge commit,
+using a regular fast-forward push. It checks both branch tips and the bot-created
+PR's identity first; a concurrent default-branch update is rejected by Git as well.
+There are no force pushes, automatic review approvals or branch-protection bypasses.
+GitHub marks the PR merged when its head lands. If branch protection is added later,
+it can block this push and the workflow will stop for review.
+
+For manual update PRs, use a merge commit rather than squash or rebase to retain
+upstream ancestry. Native click/keybind behavior still needs in-game testing;
+the automated configuration regressions do not start the game or native UI.
 
 Repository setup for this workflow:
 

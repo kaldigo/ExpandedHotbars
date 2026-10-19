@@ -18,6 +18,18 @@ jobs:
         with:
           submodules: recursive
       - uses: ./.github/actions/build
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check configuration compatibility, merge policy and package
+        shell: pwsh
+        run: |
+          python -m unittest discover -s tests -p 'test_*.py' -v
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          dotnet run --project tests/ConfigurationChecks -c Release
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          python tools/check_package.py
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
       - uses: actions/upload-artifact@v4
         with:
           name: ExpandedHotbars-development

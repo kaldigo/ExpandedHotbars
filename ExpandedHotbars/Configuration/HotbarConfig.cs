@@ -110,6 +110,16 @@ public class HotbarConfig {
     //
 
     /// <summary>
+    /// Closes this bar once when the optional activation behavior is enabled.
+    /// </summary>
+    public bool TryCloseAfterUse() {
+        if (!CloseAfterUse || !IsEnabled) return false;
+
+        IsEnabled = false;
+        return true;
+    }
+
+    /// <summary>
     /// Returns true if conditions are met according to configuration.
     /// </summary>
     public bool ShouldShowHotbar() {
