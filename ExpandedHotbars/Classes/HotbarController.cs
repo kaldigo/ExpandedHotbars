@@ -12,6 +12,7 @@ using KamiToolKit.UiOverlay;
 namespace ExpandedHotbars.Classes;
 
 public sealed class HotbarController : IAsyncDisposable {
+    public FavouritePluginSource FavouritePlugins { get; } = new();
     private readonly OverlayController overlayController;
 
     private readonly Dictionary<HotbarConfig, HotbarOverlayNode> hotbarNodes = [];

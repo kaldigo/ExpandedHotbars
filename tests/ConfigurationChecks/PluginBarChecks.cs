@@ -1,0 +1,91 @@
+using System.Reflection;
+using System.Text.Json;
+using ExpandedHotbars.Classes;
+using ExpandedHotbars.Configuration;
+using ExpandedHotbars.Extras;
+
+internal static class PluginBarChecks {
+    public static void Run() {
+        foreach (var direction in Enum.GetValues<PluginFillDirection>()) {
+            for (var count = 0; count <= 121; count++) {
+                var layout = PluginBarLayout.Create(count, 3, 2, direction);
+                var horizontal = direction is PluginFillDirection.LeftToRight or PluginFillDirection.RightToLeft;
+                Check(horizontal ? layout.Columns == 3 : layout.Rows == 2, "configured axis was changed");
+                Check(layout.Rows * layout.Columns >= count, "a favourite was truncated");
+                var occupied = new HashSet<(int, int)>();
+                for (var index = 0; index < count; index++) {
+                    var (row, column) = layout.GetSlot(index);
+                    Check(row >= 0 && row < layout.Rows && column >= 0 && column < layout.Columns, "slot outside layout");
+                    Check(occupied.Add((row, column)), "overlapping plugins");
+                }
+            }
+        }
+        Check(PluginBarLayout.Create(7, 3, 2, PluginFillDirection.LeftToRight).GetSlot(3) == (1, 0), "left-to-right wrap");
+        Check(PluginBarLayout.Create(7, 3, 2, PluginFillDirection.RightToLeft).GetSlot(3) == (1, 2), "right-to-left wrap");
+        Check(PluginBarLayout.Create(7, 3, 2, PluginFillDirection.TopToBottom).GetSlot(2) == (0, 1), "top-to-bottom wrap");
+        Check(PluginBarLayout.Create(7, 3, 2, PluginFillDirection.BottomToTop).GetSlot(2) == (1, 1), "bottom-to-top wrap");
+        Console.WriteLine("PASS: All fill directions, empty lists and multi-row/column overflow preserve unique slot positions");
+
+        var launcher = typeof(PluginLauncher).GetMethod("Open")!;
+        var pluginType = launcher.GetParameters()[0].ParameterType;
+        foreach (var main in new[] { false, true }) {
+            foreach (var config in new[] { false, true }) {
+                foreach (var settings in new[] { false, true }) {
+                    var plugin = DispatchProxy.Create(pluginType, typeof(LauncherPluginProxy));
+                    var proxy = (LauncherPluginProxy)plugin;
+                    proxy.Main = main;
+                    proxy.Config = config;
+                    var opened = (bool)launcher.Invoke(null, [plugin, settings])!;
+                    var expected = (settings && config) || !main ? config ? "OpenConfigUi" : null : "OpenMainUi";
+                    Check(opened == (expected is not null) && proxy.Opened == expected, "incorrect click fallback");
+                    proxy.Loaded = false;
+                    proxy.Opened = null;
+                    Check(!(bool)launcher.Invoke(null, [plugin, settings])! && proxy.Opened is null, "launched disabled plugin");
+                }
+            }
+        }
+        Console.WriteLine("PASS: Left/right click opens the expected UI for both, either or neither available button; unloaded plugins stay closed");
+
+        var options = new JsonSerializerOptions { IncludeFields = true };
+        var bar = JsonSerializer.Deserialize<HotbarConfig>("""{"Size":{"X":3,"Y":2},"Actions":{"0,0":{"DragDropType":63,"ActionId":224}}}""", options)!;
+        bar.ExtraFeatures.Add(new FavouritePlugins { Enabled = true, Direction = PluginFillDirection.BottomToTop });
+        var restored = JsonSerializer.Deserialize<HotbarConfig>(JsonSerializer.Serialize(bar, options), options)!;
+        Check(restored.ExtraFeatures.Single() is FavouritePlugins { Enabled: true, Direction: PluginFillDirection.BottomToTop }, "feature export/import");
+        Check(restored.Actions.Count == 1 && restored.Size == bar.Size, "population destroyed manual bar data");
+        Console.WriteLine("PASS: Feature settings export/import alongside original manual actions and dimensions");
+
+        var pixels = Enumerable.Repeat((byte)255, 80 * 80 * 4).ToArray();
+        RoundedPluginIcon.Apply(pixels, 80, 80, 80 * 4);
+        Check(pixels[3] == 0 && pixels[(40 * 80 + 40) * 4 + 3] == 255, "icon corner mask");
+        Check(pixels.Where((_, index) => index % 4 == 3).Any(alpha => alpha is > 0 and < 255), "missing antialiasing");
+        Check(pixels.Where((_, index) => index % 4 != 3).All(channel => channel == 255), "mask changed icon colors");
+        Array.Fill(pixels, (byte)0);
+        RoundedPluginIcon.Apply(pixels, 80, 80, 80 * 4);
+        Check(pixels.All(channel => channel == 0), "mask destroyed existing transparency");
+        Console.WriteLine("PASS: Rounded icon corners preserve colors and existing transparency");
+    }
+
+    private static void Check(bool condition, string description) {
+        if (!condition) throw new InvalidOperationException(description);
+    }
+}
+
+public class LauncherPluginProxy : DispatchProxy {
+    public bool Main;
+    public bool Config;
+    public bool Loaded = true;
+    public string? Opened;
+
+    protected override object? Invoke(MethodInfo? method, object?[]? arguments) => method!.Name switch {
+        "get_IsLoaded" => Loaded,
+        "get_HasMainUi" => Main,
+        "get_HasConfigUi" => Config,
+        "OpenMainUi" or "OpenConfigUi" => Open(method.Name),
+        _ => throw new NotSupportedException(method.Name),
+    };
+
+    private object? Open(string name) {
+        Opened = name;
+        return null;
+    }
+}

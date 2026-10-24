@@ -42,6 +42,7 @@ static void RunChecks() {
     Check(loaded.TryCloseAfterUse() && !loaded.IsEnabled, "Reopened bars close on their next activation");
     var ordinary = new HotbarConfig();
     Check(!ordinary.TryCloseAfterUse() && ordinary.IsEnabled, "New bars default to leaving actions open");
+    PluginBarChecks.Run();
 }
 
 static void Check(bool condition, string description) {

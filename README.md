@@ -152,3 +152,35 @@ Select a hotbar in the configuration window and edit **Position X / Y** to move 
 precisely. X increases to the right; Y increases downward. Changes apply immediately
 and save when you finish editing. Mouse dragging remains available through
 **Enable Moving**. An explicit position of (0, 0) is supported.
+
+## Favourite plugin hotbars
+
+Select a bar, open **Extras**, add **Favourite Plugins**, and enable it. Favourite
+plugins in the Dalamud installer populate that bar automatically, sorted by name.
+The list refreshes about once per second while the bar is visible. Installed but
+disabled favourites remain visible as dimmed icons; enable them in Dalamud to use
+their buttons. Plugins with neither an Open nor Settings button are also dimmed.
+
+Left-click invokes the installer's **Open** action; right-click invokes **Settings**.
+If only one action exists, either click invokes it. The bar's **Allow Clicking
+Actions**, **Close After Use**, scale, position and spacing still apply. Plugin
+slots use the same icons as the installer, with rounded action-style corners.
+
+Use **Configure** on the feature to choose its fill direction:
+
+| Direction | Fixed dimension | Automatic growth |
+| --- | --- | --- |
+| Left -> Right | Configured width | Rows, filling each row from the left |
+| Right -> Left | Configured width | Rows, filling each row from the right |
+| Top -> Bottom | Configured height | Columns, filling each column from the top |
+| Bottom -> Top | Configured height | Columns, filling each column from the bottom |
+
+The automatic grid does not overwrite saved dimensions, actions or keybinds.
+Disabling or removing the feature restores the ordinary bar. Use one Favourite
+Plugins feature per bar; if duplicates are imported, the first enabled one wins.
+
+Favourites and installer icons currently require a small compatibility adapter for
+Dalamud's internal APIs. If those change, the feature reports that it is unavailable
+and logs the problem. Plugin launching itself uses the public Dalamud API. In-game
+acceptance testing of this feature remains pending; automated checks cover layouts,
+click fallbacks, export/import compatibility and icon corner masking.

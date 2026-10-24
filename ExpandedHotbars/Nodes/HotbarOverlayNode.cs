@@ -4,6 +4,7 @@ using System.Numerics;
 using Dalamud.Plugin.Services;
 using ExpandedHotbars.Configuration;
 using ExpandedHotbars.Enums;
+using ExpandedHotbars.Extras;
 using FFXIVClientStructs.FFXIV.Client.System.Input;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using KamiToolKit.BaseTypes;
@@ -15,7 +16,7 @@ using KamiToolKit.Extensions;
 
 namespace ExpandedHotbars.Nodes;
 
-public sealed class HotbarOverlayNode : OverlayNode {
+public sealed partial class HotbarOverlayNode : OverlayNode {
     public required HotbarConfig Config { get; init; }
 
     public override OverlayLayer OverlayLayer => OverlayLayer.BehindUserInterface;
@@ -31,6 +32,17 @@ public sealed class HotbarOverlayNode : OverlayNode {
         }
 
         Scale = new Vector2(Config.Scale, Config.Scale);
+
+        if (Config.ExtraFeatures.OfType<FavouritePlugins>().FirstOrDefault(feature => feature.Enabled) is { } favourites) {
+            UpdateFavouritePlugins(favourites);
+            IGameConfig.Get().UiConfig.TryGetBool("HotbarLock", out var locked);
+            padlockNode.IsLocked = locked;
+            return;
+        }
+        if (showingPlugins) {
+            ClearPluginNodes();
+            Config.UpdateFlags |= ConfigChangedKind.NeedsRebuild;
+        }
 
         if (Config.UpdateFlags.HasFlag(ConfigChangedKind.NeedsRebuild)) {
             RebuildLayout();
