@@ -14,6 +14,7 @@ using KamiToolKit.Extensions;
 namespace ExpandedHotbars.Nodes;
 
 public sealed class FavouritePluginSlotNode : ImGuiIconButtonNode {
+    private static readonly Vector2 IconInset = new(2, 3);
     private readonly CancellationTokenSource lifetime = new();
     private ulong currentIcon;
     private volatile bool loading;
@@ -25,6 +26,9 @@ public sealed class FavouritePluginSlotNode : ImGuiIconButtonNode {
 
     public unsafe FavouritePluginSlotNode() {
         ShowBackground = false;
+        // The standard button animates its image at (8, 8), overriding Position.
+        // Match native action icons at (2, 3) in every animation state instead.
+        LoadThreePartTimelines(this, BackgroundNode, ImageNode, IconInset);
         RemoveEvent(AtkEventType.ButtonClick);
         AddEvent(AtkEventType.MouseClick, OnMouseClick);
     }
@@ -32,7 +36,7 @@ public sealed class FavouritePluginSlotNode : ImGuiIconButtonNode {
     protected override void OnSizeChanged() {
         base.OnSizeChanged();
         ImageNode.Size = Size - new Vector2(4, 4);
-        ImageNode.Position = new Vector2(2, 2);
+        ImageNode.Position = IconInset;
     }
 
     public void Refresh(FavouritePluginSource source) {
