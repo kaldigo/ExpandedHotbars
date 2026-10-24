@@ -191,3 +191,28 @@ Dalamud's internal APIs. If those change, the feature reports that it is unavail
 and logs the problem. Plugin launching itself uses the public Dalamud API. In-game
 acceptance testing of this feature remains pending; automated checks cover layouts,
 click fallbacks, export/import compatibility and icon corner masking.
+
+### Packaged hotbar icon overrides
+
+The initial icon set covers Dalamud and 19 installed favourites. Each is a generated
+reinterpretation of its original icon using native action icons as the visual style
+reference. Dalamud uses a white background. A common rounded-corner mask is applied
+in game, including to the original installer icons used as fallbacks.
+
+Overrides are isolated to these hotbar slots. They do not change plugin identities
+or the icons shown in Dalamud's installer. Missing, unsupported or unreadable
+overrides fall back to the original installer icon automatically.
+
+To extend the set, add `ExpandedHotbars/images/plugin-overrides/<InternalName>.png`,
+using the exact Dalamud internal plugin name, then update that directory's
+`manifest.json` with its source reference and SHA-256. Keep matching source credits
+in `CREDITS.md`. PNG artwork should be square, with the intended background already
+painted in. The plugin scales it to an 80-pixel texture and applies the hotbar mask;
+avoid adding a second rounded frame or transparent outside margins. Reload the
+plugin after changing a packaged image.
+
+The [icon review sheet](assets/icon-overrides/preview.png) includes 40-pixel previews.
+Generation prompts are saved in `assets/icon-overrides/prompts.json`. These images
+were created with the built-in image generator using the original plugin icons and
+a style reference sheet extracted locally from the game; the game reference sheet
+is not redistributed in this repository.

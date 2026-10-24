@@ -83,6 +83,31 @@ internal static class PluginBarChecks {
         RoundedPluginIcon.Apply(pixels, 80, 80, 80 * 4);
         Check(pixels.All(channel => channel == 0), "mask destroyed existing transparency");
         Console.WriteLine("PASS: Rounded icon corners preserve colors and existing transparency");
+
+        byte[] translucent = [255, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 128];
+        RoundedPluginIcon.CompositeOnWhite(translucent, 3, 1, 12);
+        Check(translucent.SequenceEqual(new byte[] { 255, 0, 0, 255, 255, 255, 255, 255, 127, 127, 127, 255 }), "Dalamud white background composition");
+        Console.WriteLine("PASS: Dalamud gets an opaque white background while preserving its opaque logo colors");
+
+        var temporary = Path.Combine(Path.GetTempPath(), "expanded-hotbar-icons-" + Guid.NewGuid());
+        var directory = Path.Combine(temporary, "images", "plugin-overrides");
+        Directory.CreateDirectory(directory);
+        var icon = Path.Combine(directory, "Aetherworks.png");
+        try {
+            File.WriteAllBytes(icon, [1]); // Lookup is independent of the texture decoder.
+            Check(PluginIconOverrides.Find(temporary, "Aetherworks") == icon, "packaged override was not found");
+            Check(PluginIconOverrides.Find(temporary, "UnknownPlugin") is null, "unknown plugin did not fall back");
+            Check(PluginIconOverrides.Find(temporary, "../Aetherworks") is null &&
+                  PluginIconOverrides.Find(temporary, "..\\Aetherworks") is null &&
+                  PluginIconOverrides.Find(temporary, "") is null, "override lookup escaped its asset folder");
+        }
+        finally {
+            File.Delete(icon);
+            Directory.Delete(directory);
+            Directory.Delete(Path.GetDirectoryName(directory)!);
+            Directory.Delete(temporary);
+        }
+        Console.WriteLine("PASS: Overrides resolve by internal identity; missing entries fall back and invalid paths are rejected");
     }
 
     private static void Check(bool condition, string description) {

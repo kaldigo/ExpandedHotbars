@@ -26,5 +26,6 @@
 
     <ItemGroup>
         <Content Include="images\icon.png" CopyToOutputDirectory="PreserveNewest" />
+        <Content Include="images\plugin-overrides\**\*" CopyToOutputDirectory="PreserveNewest" />
     </ItemGroup>
 </Project>

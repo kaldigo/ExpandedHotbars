@@ -21,6 +21,21 @@ try:
                 'KamiToolKit.dll', 'images/icon.png', 'LICENSE.md', 'licenses/KamiToolKit.txt'} <= set(archive.namelist())
         assert struct.unpack('>II', archive.read('images/icon.png')[16:24]) == (512, 512)
         assert json.loads(archive.read('ExpandedHotbarsPlus.json'))['AssemblyVersion'] == manifest['AssemblyVersion']
+        overrides = json.loads(archive.read('images/plugin-overrides/manifest.json'))
+        names = set()
+        for entry in overrides['Icons']:
+            assert entry['InternalName'] not in names
+            names.add(entry['InternalName'])
+            assert entry['File'] == entry['InternalName'] + '.png'
+            data = archive.read('images/plugin-overrides/' + entry['File'])
+            assert data.startswith(b'\x89PNG\r\n\x1a\n')
+            width, height = struct.unpack('>II', data[16:24])
+            assert width == height and 80 <= width <= 4096
+            assert hashlib.sha256(data).hexdigest() == entry['Sha256']
+        assert 'Dalamud' in names
+        shipped = {name for name in archive.namelist() if name.startswith('images/plugin-overrides/') and name.endswith('.png')}
+        assert len(shipped) == len(names), 'Every override must have a manifest/credit entry'
+        assert 'images/plugin-overrides/CREDITS.md' in archive.namelist()
     print('Package structure, manifest, icon, licenses and checksum passed.')
 finally:
     feed.write_bytes(original)

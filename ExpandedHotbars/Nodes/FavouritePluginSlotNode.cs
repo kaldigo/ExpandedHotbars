@@ -19,6 +19,8 @@ public sealed class FavouritePluginSlotNode : ImGuiIconButtonNode {
     private ulong currentIcon;
     private volatile bool loading;
     private long nextIconCheck;
+    private bool overrideLoaded;
+    private bool overrideFailed;
 
     /// <summary>Null denotes the leading Dalamud launcher rather than an installed plugin.</summary>
     public required IExposedPlugin? Plugin { get; set; }
@@ -51,19 +53,27 @@ public sealed class FavouritePluginSlotNode : ImGuiIconButtonNode {
 
         if (loading || Environment.TickCount64 < nextIconCheck) return;
         nextIconCheck = Environment.TickCount64 + 1000;
+        if (!overrideFailed && PluginIconOverrides.Find(ExpandedHotbars.PluginInterface.AssemblyLocation.DirectoryName!, InternalName) is { } file) {
+            if (overrideLoaded) return;
+            loading = true;
+            _ = LoadRoundedIcon(null, file);
+            return;
+        }
         if (source.GetIcon(Plugin) is not { } texture || texture.Handle.Handle == currentIcon) return;
         loading = true;
         _ = LoadRoundedIcon(texture.CreateWrapSharingLowLevelResource());
     }
 
-    private async Task LoadRoundedIcon(IDalamudTextureWrap reference) {
+    private async Task LoadRoundedIcon(IDalamudTextureWrap? reference, string? overrideFile = null) {
         var token = lifetime.Token;
         IDalamudTextureWrap? rounded = null;
         try {
+            reference ??= await ITextureProvider.Get().GetFromFile(overrideFile!).RentAsync(token);
             using (reference) {
                 // RGBA8 at the game's high-resolution action icon size; no image library needed.
                 var (specification, bytes) = await ITextureReadbackProvider.Get().GetRawImageAsync(reference,
                     new TextureModificationArgs { DxgiFormat = 28, NewWidth = 80, NewHeight = 80 }, true, token);
+                if (Plugin is null) RoundedPluginIcon.CompositeOnWhite(bytes, specification.Width, specification.Height, specification.Pitch);
                 RoundedPluginIcon.Apply(bytes, specification.Width, specification.Height, specification.Pitch);
                 rounded = ITextureProvider.Get().CreateFromRaw(specification, bytes, "Favourite plugin: " + InternalName);
                 await IFramework.Get().Run(() => {
@@ -72,13 +82,16 @@ public sealed class FavouritePluginSlotNode : ImGuiIconButtonNode {
                     ImageNode.TextureSize = new Vector2(specification.Width, specification.Height);
                     rounded = null; // Ownership transferred to the native image node.
                     currentIcon = reference.Handle.Handle;
+                    overrideLoaded = overrideFile is not null;
                 }, token);
             }
         }
         catch (OperationCanceledException) { }
         catch (Exception exception) {
             IPluginLog.Get().Warning(exception, "Could not prepare favourite plugin icon for {Plugin}", InternalName);
-            nextIconCheck = Environment.TickCount64 + 30000;
+            // A damaged/missing override must not prevent the original icon loading.
+            overrideFailed |= overrideFile is not null;
+            nextIconCheck = overrideFile is not null ? 0 : Environment.TickCount64 + 30000;
         }
         finally {
             rounded?.Dispose();
