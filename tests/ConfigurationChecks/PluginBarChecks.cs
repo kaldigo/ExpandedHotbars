@@ -6,6 +6,14 @@ using ExpandedHotbars.Extras;
 
 internal static class PluginBarChecks {
     public static void Run() {
+        Check(PluginRepositoryGroup.GetKey("https://love.puni.sh/ment.json", true, null) !=
+              PluginRepositoryGroup.GetKey("https://puni.sh/api/repository/veyn", true, null), "distinct install feeds were combined");
+        Check(PluginRepositoryGroup.GetKey("https://raw.githubusercontent.com/kaldigo/DalamudPlugins/main/pluginmaster.json", true, null) !=
+              PluginRepositoryGroup.GetKey("https://raw.githubusercontent.com/kaldigo/AnotherFeed/main/repo.json", true, null), "distinct repositories from one owner were combined");
+        Check(PluginRepositoryGroup.GetKey("OFFICIAL", false, "https://github.com/PunishXIV/APlugin") == "Dalamud official", "official plugin grouped by source author instead of install repo");
+        Check(PluginRepositoryGroup.GetKey(null, true, "https://github.com/kaldigo/ExpandedHotbars") == "https://github.com/kaldigo/ExpandedHotbars", "missing origin fallback");
+        Check(PluginRepositoryGroup.GetKey("https://puni.sh.example.org/repo.json", true, null) != "puni.sh", "unrelated domain grouped as Punish");
+        Console.WriteLine("PASS: Repository groups preserve individual install feeds and distinguish the default repository");
         foreach (var direction in Enum.GetValues<PluginFillDirection>()) {
             for (var count = 0; count <= 121; count++) {
                 var layout = PluginBarLayout.Create(count, 3, 2, direction);
@@ -45,6 +53,18 @@ internal static class PluginBarChecks {
             }
         }
         Console.WriteLine("PASS: Left/right click opens the expected UI for both, either or neither available button; unloaded plugins stay closed");
+
+        var dalamudLauncher = typeof(PluginLauncher).GetMethod("OpenDalamud")!;
+        foreach (var settings in new[] { false, true }) {
+            var pluginInterface = DispatchProxy.Create(dalamudLauncher.GetParameters()[0].ParameterType, typeof(DalamudInterfaceProxy));
+            var proxy = (DalamudInterfaceProxy)pluginInterface;
+            Check((bool)dalamudLauncher.Invoke(null, [pluginInterface, settings])!, "Dalamud launcher did not report success");
+            Check(proxy.Opened == (settings ? "OpenDalamudSettingsTo" : "OpenPluginInstallerTo"), "wrong Dalamud window");
+            Check(proxy.Tab == (settings ? "General" : "AllPlugins") && proxy.Search is null, "unexpected Dalamud page or search filter");
+            proxy.Result = false;
+            Check(!(bool)dalamudLauncher.Invoke(null, [pluginInterface, settings])!, "failed Dalamud launch reported success");
+        }
+        Console.WriteLine("PASS: Dalamud opens the main plugin list or settings and propagates unavailable-window results");
 
         var options = new JsonSerializerOptions { IncludeFields = true };
         var bar = JsonSerializer.Deserialize<HotbarConfig>("""{"Size":{"X":3,"Y":2},"Actions":{"0,0":{"DragDropType":63,"ActionId":224}}}""", options)!;
@@ -87,5 +107,19 @@ public class LauncherPluginProxy : DispatchProxy {
     private object? Open(string name) {
         Opened = name;
         return null;
+    }
+}
+
+public class DalamudInterfaceProxy : DispatchProxy {
+    public bool Result = true;
+    public string? Opened;
+    public string? Tab;
+    public string? Search;
+
+    protected override object? Invoke(MethodInfo? method, object?[]? arguments) {
+        Opened = method!.Name;
+        Tab = arguments![0]!.ToString();
+        Search = (string?)arguments[1];
+        return Result;
     }
 }

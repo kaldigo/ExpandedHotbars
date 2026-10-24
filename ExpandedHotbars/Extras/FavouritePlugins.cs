@@ -29,7 +29,8 @@ public class FavouritePlugins : ExtrasBase {
             }
         }
         ImGui.Separator();
-        ImGui.TextWrapped("Horizontal directions keep the configured width and add rows. Vertical directions keep the configured height and add columns. Plugins are sorted by name and refresh automatically.");
+        ImGui.TextWrapped("Dalamud is the first slot: left-click opens the plugin list; right-click opens Dalamud settings.");
+        ImGui.TextWrapped("Horizontal directions keep the configured width and add rows. Vertical directions keep the configured height and add columns. The default repository comes first, then custom repositories alphabetically, with plugins alphabetical inside each group.");
         ImGui.TextWrapped("Left-click: Open. Right-click: Settings. If only one is available, both clicks use it. Saved actions return when this feature is disabled.");
         if (System.HotbarController.FavouritePlugins.Error is { } error) {
             ImGui.TextWrapped(error);

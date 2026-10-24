@@ -35,7 +35,9 @@ public sealed class FavouritePluginSource {
             var names = ((IEnumerable)favourites!.GetValue(configuration)!).Cast<string>().ToHashSet(StringComparer.Ordinal);
             snapshot = ExpandedHotbars.PluginInterface.InstalledPlugins
                 .Where(plugin => names.Contains(plugin.InternalName))
-                .OrderBy(plugin => plugin.Name, StringComparer.OrdinalIgnoreCase)
+                .OrderBy(plugin => plugin.IsThirdParty ? 1 : 0)
+                .ThenBy(GetRepositoryGroup, StringComparer.OrdinalIgnoreCase)
+                .ThenBy(plugin => plugin.Name, StringComparer.OrdinalIgnoreCase)
                 .ThenBy(plugin => plugin.InternalName, StringComparer.Ordinal)
                 .ToArray();
         }
@@ -46,11 +48,24 @@ public sealed class FavouritePluginSource {
         return snapshot;
     }
 
+    private string GetRepositoryGroup(IExposedPlugin plugin) {
+        // The public manifest interface omits the install origin, but the local
+        // manifest backing it retains the same URL used by Dalamud's updater.
+        var local = localPlugin!.GetValue(plugin);
+        var manifest = local?.GetType().GetProperty("Manifest")?.GetValue(local) ?? plugin.Manifest;
+        var origin = manifest.GetType().GetProperty("InstalledFromUrl")?.GetValue(manifest) as string;
+        return PluginRepositoryGroup.GetKey(origin, plugin.IsThirdParty, plugin.Manifest.RepoUrl);
+    }
+
     /// <summary>Returns a borrowed installer texture; callers must take their own reference.</summary>
-    public IDalamudTextureWrap? GetIcon(IExposedPlugin plugin) {
+    public IDalamudTextureWrap? GetIcon(IExposedPlugin? plugin) {
         if (Error is not null) return null;
         try {
             Initialize();
+            if (plugin is null) {
+                return imageCache!.GetType().GetProperty("CorePluginIcon")?.GetValue(imageCache) as IDalamudTextureWrap
+                    ?? defaultIcon!.GetValue(imageCache) as IDalamudTextureWrap;
+            }
             object?[] arguments = [localPlugin!.GetValue(plugin), plugin.Manifest, plugin.IsThirdParty, null, null];
             tryGetIcon!.Invoke(imageCache, arguments);
             return arguments[3] as IDalamudTextureWrap ?? defaultIcon!.GetValue(imageCache) as IDalamudTextureWrap;

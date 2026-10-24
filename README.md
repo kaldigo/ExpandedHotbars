@@ -156,7 +156,14 @@ and save when you finish editing. Mouse dragging remains available through
 ## Favourite plugin hotbars
 
 Select a bar, open **Extras**, add **Favourite Plugins**, and enable it. Favourite
-plugins in the Dalamud installer populate that bar automatically, sorted by name.
+plugins in the Dalamud installer populate that bar automatically, grouped by install
+repository and sorted alphabetically within each group. The default Dalamud
+repository comes first; custom repositories follow alphabetically by their install
+feed URL. Each actual repository is a separate group, including feeds from the same
+publisher. Installed favourites retain their install origin for this grouping.
+Dalamud itself is always the first slot in the selected fill direction: left-click
+opens the main plugin list, and right-click opens Dalamud settings. Its logo uses
+the same rounded icon treatment. It remains available even with no favourites.
 The list refreshes about once per second while the bar is visible. Installed but
 disabled favourites remain visible as dimmed icons; enable them in Dalamud to use
 their buttons. Plugins with neither an Open nor Settings button are also dimmed.

@@ -20,7 +20,9 @@ public sealed class FavouritePluginSlotNode : ImGuiIconButtonNode {
     private volatile bool loading;
     private long nextIconCheck;
 
-    public required IExposedPlugin Plugin { get; set; }
+    /// <summary>Null denotes the leading Dalamud launcher rather than an installed plugin.</summary>
+    public required IExposedPlugin? Plugin { get; set; }
+    private string InternalName => Plugin?.InternalName ?? "Dalamud";
     public Action? OnInvoked { get; init; }
     public bool AllowClicking { get; set; } = true;
 
@@ -40,9 +42,9 @@ public sealed class FavouritePluginSlotNode : ImGuiIconButtonNode {
     }
 
     public void Refresh(FavouritePluginSource source) {
-        var usable = Plugin.IsLoaded && (Plugin.HasMainUi || Plugin.HasConfigUi);
+        var usable = Plugin is null || Plugin.IsLoaded && (Plugin.HasMainUi || Plugin.HasConfigUi);
         Alpha = usable ? 1.0f : 0.45f;
-        TextTooltip = Plugin.Name + (usable
+        TextTooltip = Plugin is null ? "Dalamud\nLeft-click: Plugin list\nRight-click: Settings" : Plugin.Name + (usable
             ? "\nLeft-click: " + (Plugin.HasMainUi ? "Open" : "Settings") +
               "\nRight-click: " + (Plugin.HasConfigUi ? "Settings" : "Open")
             : Plugin.IsLoaded ? "\nThis plugin has no Open or Settings button." : "\nEnable this plugin in the Dalamud installer to open it.");
@@ -63,7 +65,7 @@ public sealed class FavouritePluginSlotNode : ImGuiIconButtonNode {
                 var (specification, bytes) = await ITextureReadbackProvider.Get().GetRawImageAsync(reference,
                     new TextureModificationArgs { DxgiFormat = 28, NewWidth = 80, NewHeight = 80 }, true, token);
                 RoundedPluginIcon.Apply(bytes, specification.Width, specification.Height, specification.Pitch);
-                rounded = ITextureProvider.Get().CreateFromRaw(specification, bytes, "Favourite plugin: " + Plugin.InternalName);
+                rounded = ITextureProvider.Get().CreateFromRaw(specification, bytes, "Favourite plugin: " + InternalName);
                 await IFramework.Get().Run(() => {
                     if (IsDisposed) return;
                     LoadTexture(rounded);
@@ -75,7 +77,7 @@ public sealed class FavouritePluginSlotNode : ImGuiIconButtonNode {
         }
         catch (OperationCanceledException) { }
         catch (Exception exception) {
-            IPluginLog.Get().Warning(exception, "Could not prepare favourite plugin icon for {Plugin}", Plugin.InternalName);
+            IPluginLog.Get().Warning(exception, "Could not prepare favourite plugin icon for {Plugin}", InternalName);
             nextIconCheck = Environment.TickCount64 + 30000;
         }
         finally {
@@ -87,10 +89,13 @@ public sealed class FavouritePluginSlotNode : ImGuiIconButtonNode {
     private unsafe void OnMouseClick(AtkEventListener* listener, AtkEventType eventType, int eventParam, AtkEvent* atkEvent, AtkEventData* data) {
         if (!AllowClicking || (!data->IsLeftClick && !data->IsRightClick)) return;
         try {
-            if (PluginLauncher.Open(Plugin, data->IsRightClick) && !IsDisposed) OnInvoked?.Invoke();
+            var opened = Plugin is null
+                ? PluginLauncher.OpenDalamud(ExpandedHotbars.PluginInterface, data->IsRightClick)
+                : PluginLauncher.Open(Plugin, data->IsRightClick);
+            if (opened && !IsDisposed) OnInvoked?.Invoke();
         }
         catch (Exception exception) {
-            IPluginLog.Get().Error(exception, "Could not open favourite plugin {Plugin}", Plugin.InternalName);
+            IPluginLog.Get().Error(exception, "Could not open favourite plugin {Plugin}", InternalName);
         }
     }
 

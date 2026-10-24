@@ -21,10 +21,11 @@ public sealed partial class HotbarOverlayNode {
             ClearPluginNodes();
             pluginNames = names;
             showingPlugins = true;
-            for (var index = 0; index < plugins.Count; index++) {
+            // Dalamud always occupies the first position in the selected fill direction.
+            for (var index = 0; index <= plugins.Count; index++) {
                 var node = new FavouritePluginSlotNode {
                     NodeId = (uint)index + 2,
-                    Plugin = plugins[index],
+                    Plugin = index == 0 ? null : plugins[index - 1],
                     Size = new Vector2(44, 44),
                     OnInvoked = OnActionInvoked,
                 };
@@ -33,7 +34,7 @@ public sealed partial class HotbarOverlayNode {
             }
         }
 
-        var layout = PluginBarLayout.Create(plugins.Count, (int)Config.Size.X, (int)Config.Size.Y, feature.Direction);
+        var layout = PluginBarLayout.Create(plugins.Count + 1, (int)Config.Size.X, (int)Config.Size.Y, feature.Direction);
         var step = new Vector2(44, 44) + Config.Spacing;
         Size = new Vector2(layout.Columns, layout.Rows) * step + new Vector2(16, 16);
         Origin = Size / 2;
@@ -45,7 +46,7 @@ public sealed partial class HotbarOverlayNode {
             var node = pluginNodes[index];
             var (row, column) = layout.GetSlot(index);
             node.Position = new Vector2(8, 8) + new Vector2(column, row) * step;
-            node.Plugin = plugins[index];
+            node.Plugin = index == 0 ? null : plugins[index - 1];
             node.AllowClicking = Config.EnableClicking;
             node.Refresh(source);
         }
