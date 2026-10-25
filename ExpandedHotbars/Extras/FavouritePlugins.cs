@@ -13,11 +13,12 @@ public enum PluginFillDirection {
 
 public class FavouritePlugins : ExtrasBase {
     public PluginFillDirection Direction = PluginFillDirection.LeftToRight;
+    public bool ReverseWrap;
 
     public override string Name => "Favourite Plugins";
     public override string Label => "Populate with favourite Dalamud plugins";
     public override bool HasConfiguration => true;
-    public override Vector2 ConfigSize => new(380, 290);
+    public override Vector2 ConfigSize => new(380, 340);
 
     public override void DrawConfig() {
         string[] labels = ["Left -> Right", "Right -> Left", "Top -> Bottom", "Bottom -> Top"];
@@ -28,6 +29,11 @@ public class FavouritePlugins : ExtrasBase {
                 System.Config.Save();
             }
         }
+        var vertical = Direction is PluginFillDirection.TopToBottom or PluginFillDirection.BottomToTop;
+        if (ImGui.Checkbox(vertical ? "Add columns right to left" : "Add rows bottom to top", ref ReverseWrap)) {
+            System.Config.Save();
+        }
+        ImGui.TextWrapped("Reverses the order of rows or columns, keeping the selected fill direction inside each one.");
         ImGui.Separator();
         ImGui.TextWrapped("Dalamud is the first slot: left-click opens the plugin list; right-click opens Dalamud settings.");
         ImGui.TextWrapped("Horizontal directions keep the configured width and add rows. Vertical directions keep the configured height and add columns. The default repository comes first, then custom repositories alphabetically, with plugins alphabetical inside each group.");

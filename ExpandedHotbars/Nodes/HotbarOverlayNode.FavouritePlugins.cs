@@ -34,7 +34,7 @@ public sealed partial class HotbarOverlayNode {
             }
         }
 
-        var layout = PluginBarLayout.Create(plugins.Count + 1, (int)Config.Size.X, (int)Config.Size.Y, feature.Direction);
+        var layout = PluginBarLayout.Create(plugins.Count + 1, (int)Config.Size.X, (int)Config.Size.Y, feature.Direction, feature.ReverseWrap);
         var step = new Vector2(44, 44) + Config.Spacing;
         Size = new Vector2(layout.Columns, layout.Rows) * step + new Vector2(16, 16);
         Origin = Size / 2;

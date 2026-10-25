@@ -15,16 +15,18 @@ internal static class PluginBarChecks {
         Check(PluginRepositoryGroup.GetKey("https://puni.sh.example.org/repo.json", true, null) != "puni.sh", "unrelated domain grouped as Punish");
         Console.WriteLine("PASS: Repository groups preserve individual install feeds and distinguish the default repository");
         foreach (var direction in Enum.GetValues<PluginFillDirection>()) {
-            for (var count = 0; count <= 121; count++) {
-                var layout = PluginBarLayout.Create(count, 3, 2, direction);
-                var horizontal = direction is PluginFillDirection.LeftToRight or PluginFillDirection.RightToLeft;
-                Check(horizontal ? layout.Columns == 3 : layout.Rows == 2, "configured axis was changed");
-                Check(layout.Rows * layout.Columns >= count, "a favourite was truncated");
-                var occupied = new HashSet<(int, int)>();
-                for (var index = 0; index < count; index++) {
-                    var (row, column) = layout.GetSlot(index);
-                    Check(row >= 0 && row < layout.Rows && column >= 0 && column < layout.Columns, "slot outside layout");
-                    Check(occupied.Add((row, column)), "overlapping plugins");
+            foreach (var reverseWrap in new[] { false, true }) {
+                for (var count = 0; count <= 121; count++) {
+                    var layout = PluginBarLayout.Create(count, 3, 2, direction, reverseWrap);
+                    var horizontal = direction is PluginFillDirection.LeftToRight or PluginFillDirection.RightToLeft;
+                    Check(horizontal ? layout.Columns == 3 : layout.Rows == 2, "configured axis was changed");
+                    Check(layout.Rows * layout.Columns >= count, "a favourite was truncated");
+                    var occupied = new HashSet<(int, int)>();
+                    for (var index = 0; index < count; index++) {
+                        var (row, column) = layout.GetSlot(index);
+                        Check(row >= 0 && row < layout.Rows && column >= 0 && column < layout.Columns, "slot outside layout");
+                        Check(occupied.Add((row, column)), "overlapping plugins");
+                    }
                 }
             }
         }
@@ -32,7 +34,18 @@ internal static class PluginBarChecks {
         Check(PluginBarLayout.Create(7, 3, 2, PluginFillDirection.RightToLeft).GetSlot(3) == (1, 2), "right-to-left wrap");
         Check(PluginBarLayout.Create(7, 3, 2, PluginFillDirection.TopToBottom).GetSlot(2) == (0, 1), "top-to-bottom wrap");
         Check(PluginBarLayout.Create(7, 3, 2, PluginFillDirection.BottomToTop).GetSlot(2) == (1, 1), "bottom-to-top wrap");
-        Console.WriteLine("PASS: All fill directions, empty lists and multi-row/column overflow preserve unique slot positions");
+        (PluginFillDirection Direction, (int Row, int Column)[] Slots)[] reversedLayouts = [
+            (PluginFillDirection.LeftToRight, [(1, 0), (1, 1), (1, 2), (0, 0), (0, 1)]),
+            (PluginFillDirection.RightToLeft, [(1, 2), (1, 1), (1, 0), (0, 2), (0, 1)]),
+            (PluginFillDirection.TopToBottom, [(0, 2), (1, 2), (0, 1), (1, 1), (0, 0)]),
+            (PluginFillDirection.BottomToTop, [(1, 2), (0, 2), (1, 1), (0, 1), (1, 0)]),
+        ];
+        foreach (var (direction, slots) in reversedLayouts) {
+            var layout = PluginBarLayout.Create(5, 3, 2, direction, true);
+            Check(Enumerable.Range(0, 5).Select(layout.GetSlot).SequenceEqual(slots), "reversed wrap changed fill order or placed the partial row/column on the wrong side");
+            Check(PluginBarLayout.Create(1, 1, 1, direction, true).GetSlot(0) == (0, 0), "single-slot reversed wrap");
+        }
+        Console.WriteLine("PASS: All eight fill/wrap combinations, empty lists and multi-row/column overflow preserve correct unique slot positions");
 
         var launcher = typeof(PluginLauncher).GetMethod("Open")!;
         var pluginType = launcher.GetParameters()[0].ParameterType;
@@ -67,10 +80,12 @@ internal static class PluginBarChecks {
         Console.WriteLine("PASS: Dalamud opens the main plugin list or settings and propagates unavailable-window results");
 
         var options = new JsonSerializerOptions { IncludeFields = true };
+        var legacyFeature = JsonSerializer.Deserialize<FavouritePlugins>("""{"Enabled":true,"Direction":1}""", options)!;
+        Check(legacyFeature.Direction == PluginFillDirection.RightToLeft && !legacyFeature.ReverseWrap, "existing features must keep their wrap order");
         var bar = JsonSerializer.Deserialize<HotbarConfig>("""{"Size":{"X":3,"Y":2},"Actions":{"0,0":{"DragDropType":63,"ActionId":224}}}""", options)!;
-        bar.ExtraFeatures.Add(new FavouritePlugins { Enabled = true, Direction = PluginFillDirection.BottomToTop });
+        bar.ExtraFeatures.Add(new FavouritePlugins { Enabled = true, Direction = PluginFillDirection.BottomToTop, ReverseWrap = true });
         var restored = JsonSerializer.Deserialize<HotbarConfig>(JsonSerializer.Serialize(bar, options), options)!;
-        Check(restored.ExtraFeatures.Single() is FavouritePlugins { Enabled: true, Direction: PluginFillDirection.BottomToTop }, "feature export/import");
+        Check(restored.ExtraFeatures.Single() is FavouritePlugins { Enabled: true, Direction: PluginFillDirection.BottomToTop, ReverseWrap: true }, "feature export/import");
         Check(restored.Actions.Count == 1 && restored.Size == bar.Size, "population destroyed manual bar data");
         Console.WriteLine("PASS: Feature settings export/import alongside original manual actions and dimensions");
 
