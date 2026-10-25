@@ -38,6 +38,7 @@ public sealed partial class HotbarOverlayNode {
         var step = new Vector2(44, 44) + Config.Spacing;
         Size = new Vector2(layout.Columns, layout.Rows) * step + new Vector2(16, 16);
         Origin = Size / 2;
+        UpdateAnchor();
         padlockNode.Position = Size + new Vector2(8, -42);
         padlockNode.IsVisible = Config.ShowPadlockButton;
         EnableMoving = Config.IsMovingEnabled;

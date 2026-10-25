@@ -44,6 +44,8 @@ public partial class ConfigWindow {
             System.Config.Save();
         }
 
+        DrawAnchorDirections();
+
         ImGui.Label("Hotbar Slot Spacing");
         ImGui.SetNextItemWidth(ImGui.AreaWidth);
         ImGui.InputFloat2("##HotbarSpacing", ref selectedConfig.Spacing, 1.0f, 5.0f, "%.0f");

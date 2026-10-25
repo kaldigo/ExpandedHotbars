@@ -30,6 +30,9 @@ public class HotbarConfig {
     /// </summary>
     public Vector2 Size = new(12, 1);
 
+    public bool AnchorRight = false;
+    public bool AnchorBottom = false;
+
     /// <summary>
     /// Scale as in zoom level for the hotbar
     /// </summary>

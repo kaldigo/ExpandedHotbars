@@ -70,7 +70,7 @@ public sealed class HotbarController : IAsyncDisposable {
         config.Position = position;
         config.HasCustomPosition = true;
         if (hotbarNodes.TryGetValue(config, out var node)) {
-            node.Position = position;
+            node.SetAnchorPosition(position);
         }
     }
 

@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Numerics;
 using Dalamud.Plugin.Services;
+using ExpandedHotbars.Classes;
 using ExpandedHotbars.Configuration;
 using ExpandedHotbars.Enums;
 using ExpandedHotbars.Extras;
@@ -54,6 +55,7 @@ public sealed partial class HotbarOverlayNode : OverlayNode {
             Config.UpdateFlags &= ~ConfigChangedKind.NeedsUpdate;
         }
 
+        UpdateAnchor();
         EnableMoving = Config.IsMovingEnabled;
 
         IGameConfig.Get().UiConfig.TryGetBool("HotbarLock", out var isHotbarLocked);
@@ -102,9 +104,7 @@ public sealed partial class HotbarOverlayNode : OverlayNode {
             foreach (var column in Enumerable.Range(0, (int) Config.Size.X)) {
                 var newHotbarNode = new HotbarSlotNode {
                     NodeId = (uint) (column + row * Config.Size.X) + 2,
-                    Position = new Vector2(8.0f, 8.0f) +
-                               new Vector2(44.0f * column, 44.0f * row) +
-                               new Vector2(Config.Spacing.X * column, Config.Spacing.Y * row),
+                    Position = HotbarAnchor.SlotPosition(Config, row, column),
                     Size = new Vector2(44.0f, 44.0f),
                     IsClickable = true,
                     OnActionInvoked = OnActionInvoked,
@@ -147,10 +147,7 @@ public sealed partial class HotbarOverlayNode : OverlayNode {
             foreach (var column in Enumerable.Range(0, (int) Config.Size.X)) {
                 var node = hotbarNodes[(int) (column + row * Config.Size.X)];
 
-                node.Position =
-                    new Vector2(8.0f, 8.0f) +
-                    new Vector2(44.0f * column, 44.0f * row) +
-                    new Vector2(Config.Spacing.X * column, Config.Spacing.Y * row);
+                node.Position = HotbarAnchor.SlotPosition(Config, row, column);
 
                 if (Config.Keybinds.TryGetValue((row, column), out var keybindInfo)) {
                     node.KeyBind = keybindInfo;
@@ -203,7 +200,7 @@ public sealed partial class HotbarOverlayNode : OverlayNode {
     }
 
     private void OnMoveCompleted(NodeBase _) {
-        Config.Position = Position;
+        Config.Position = GetAnchorPosition();
         Config.HasCustomPosition = true;
         Update();
 

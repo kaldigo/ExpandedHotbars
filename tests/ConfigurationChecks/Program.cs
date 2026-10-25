@@ -43,6 +43,7 @@ static void RunChecks() {
     var ordinary = new HotbarConfig();
     Check(!ordinary.TryCloseAfterUse() && ordinary.IsEnabled, "New bars default to leaving actions open");
     PluginBarChecks.Run();
+    HotbarAnchorChecks.Run();
 }
 
 static void Check(bool condition, string description) {
