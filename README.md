@@ -195,8 +195,9 @@ click fallbacks, export/import compatibility and icon corner masking.
 ### Packaged hotbar icon overrides
 
 The initial icon set covers Dalamud and 19 installed favourites. Each is a generated
-reinterpretation of its original icon using native action icons as the visual style
-reference. Dalamud uses a white background. A common rounded-corner mask is applied
+reinterpretation of its original icon using native utility/menu icons as the visual
+style reference, with simple raised symbols and quiet individual background colours.
+Dalamud uses a white background. A common rounded-corner mask is applied
 in game, including to the original installer icons used as fallbacks.
 
 Overrides are isolated to these hotbar slots. They do not change plugin identities
