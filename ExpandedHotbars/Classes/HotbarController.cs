@@ -11,8 +11,7 @@ using KamiToolKit.UiOverlay;
 
 namespace ExpandedHotbars.Classes;
 
-public sealed class HotbarController : IAsyncDisposable {
-    public FavouritePluginSource FavouritePlugins { get; } = new();
+public sealed partial class HotbarController : IAsyncDisposable {
     private readonly OverlayController overlayController;
 
     private readonly Dictionary<HotbarConfig, HotbarOverlayNode> hotbarNodes = [];
@@ -63,15 +62,6 @@ public sealed class HotbarController : IAsyncDisposable {
 
         overlayController.AddNode(newHotbarNode);
         hotbarNodes[hotbarConfig] = newHotbarNode;
-    }
-
-    public void SetHotbarPosition(HotbarConfig config, Vector2 position) {
-        ThreadSafety.AssertMainThread();
-        config.Position = position;
-        config.HasCustomPosition = true;
-        if (hotbarNodes.TryGetValue(config, out var node)) {
-            node.SetAnchorPosition(position);
-        }
     }
 
     public void RemoveHotbar(HotbarConfig hotbarConfig) {

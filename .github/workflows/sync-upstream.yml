@@ -28,6 +28,16 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - name: Build syntax reviewer from the trusted default branch
+        shell: pwsh
+        run: |
+          $reviewPath = Join-Path $env:RUNNER_TEMP 'upstream-review'
+          dotnet build tools/UpstreamReview/UpstreamReview.csproj -c Release -o $reviewPath --nologo
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          "UPSTREAM_REVIEW_DLL=$(Join-Path $reviewPath 'UpstreamReview.dll')" | Out-File -FilePath $env:GITHUB_ENV -Append
       - name: Keep trusted policy and merge tools from the default branch
         shell: bash
         run: |

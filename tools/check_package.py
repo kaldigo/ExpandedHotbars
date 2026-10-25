@@ -12,6 +12,9 @@ feed = root / 'pluginmaster.json'
 original = feed.read_bytes()
 try:
     manifest = json.loads((root / 'ExpandedHotbars/bin/Release/ExpandedHotbarsPlus.json').read_text(encoding='utf-8-sig'))
+    assert manifest['InternalName'] == 'ExpandedHotbarsPlus'
+    assert manifest['Name'] == 'ExpandedHotbars Plus'
+    assert manifest['RepoUrl'] == 'https://github.com/kaldigo/ExpandedHotbars'
     subprocess.run([sys.executable, str(root / 'tools/package_release.py'), '--tag', 'v' + manifest['AssemblyVersion']], check=True)
     package = root / 'artifacts/ExpandedHotbarsPlus.zip'
     assert hashlib.sha256(package.read_bytes()).hexdigest() == (root / 'artifacts/SHA256SUMS.txt').read_text().split()[0]

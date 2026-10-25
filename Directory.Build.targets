@@ -1,0 +1,13 @@
+<Project>
+  <!-- Keep upstream's project/version untouched; release builds pass -p:Version. -->
+  <PropertyGroup Condition="'$(MSBuildProjectName)' == 'ExpandedHotbars'">
+    <Name>ExpandedHotbars Plus</Name>
+    <Author>kaldigo; based on MidoriKami's ExpandedHotbars</Author>
+    <RepoUrl>https://github.com/kaldigo/ExpandedHotbars</RepoUrl>
+    <IconUrl>https://raw.githubusercontent.com/kaldigo/ExpandedHotbars/master/ExpandedHotbars/images/icon.png</IconUrl>
+  </PropertyGroup>
+  <ItemGroup Condition="'$(MSBuildProjectName)' == 'ExpandedHotbars'">
+    <Content Include="images\icon.png" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="images\plugin-overrides\**\*" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

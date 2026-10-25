@@ -54,14 +54,26 @@ regressions, merge-policy regressions and release-package validation pass. Succe
 routine merges queue the release workflow automatically. The existing update branch is reused without force pushes;
 reserve it for updates.
 
-Automatic classification is deliberately conservative. Only condition implementation
-files (excluding `ConditionBase.cs`) and Markdown under `docs/` or `README.md` can
-qualify. Any file modified by the fork is excluded, even if it otherwise qualifies.
-Hotbar configuration and activation code, dependencies and submodules, project and
-lock files, publishing, workflows, icons, tests and policy tools require manual
-review. Unrecognised paths, deleted condition types, native interop and references
-to our activation hooks also require review. Upstream version/project changes
-therefore remain manual even if their diff looks small.
+Automatic classification reviews exact source syntax, rather than blocking every
+file we have touched. Cleanly merged documentation, untouched condition
+implementations, numeric-only upstream version increases and existing C# method
+bodies outside protected integration points may qualify. The syntax reviewer also
+protects helpers/data referenced transitively by our feature code, even in other
+files. It uses the parser bundled with the .NET SDK; proposed code is parsed as
+data during review, not executed.
+
+Changes to protected members, saved fields, signatures, imports, type declarations,
+constructors, preprocessor branches, native/unsafe code, reflection, dependencies,
+SDKs, submodules, publishing, build configuration, workflows, policy tools, icons,
+new/deleted source files and unknown paths still require manual review. An absent
+or uncertain syntax review stops automatic approval. See
+[the exact review boundary](docs/upstream-automation.md) for examples and limits.
+
+The upstream project file is kept unchanged. Fork identity/assets are declared in
+`Directory.Build.props` and `Directory.Build.targets`, and release builds receive
+the independently planned version. A Version-only edit cannot hide another
+project change. Fork settings and UI/helper bodies live in separate partial files,
+leaving small integration calls in shared source.
 
 Classification includes both the incoming upstream diff and the complete proposed
 merge. Extra edits on the update branch cannot qualify as routine. The policy and

@@ -1,0 +1,7 @@
+<Project>
+  <!-- Assembly identity must be selected before the SDK computes output paths. -->
+  <PropertyGroup Condition="'$(MSBuildProjectName)' == 'ExpandedHotbars'">
+    <AssemblyName>ExpandedHotbarsPlus</AssemblyName>
+    <RootNamespace>ExpandedHotbars</RootNamespace>
+  </PropertyGroup>
+</Project>

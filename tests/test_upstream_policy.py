@@ -36,14 +36,25 @@ class UpstreamPolicyTests(unittest.TestCase):
         self.git('init', '-b', 'master')
         self.git('config', 'user.name', 'Policy tests')
         self.git('config', 'user.email', 'tests@example.invalid')
-        self.write('ExpandedHotbars/Conditions/Example.cs', 'first\nsecond\nthird\nfourth\n')
+        self.example = 'namespace Samples;\npublic class Example {\n    public int First() => 1;\n\n    public int Second() => 2;\n}\n'
+        self.write('ExpandedHotbars/Conditions/Example.cs', self.example)
+        self.source = ('namespace Samples;\npublic class Helper {\n'
+                       '    public int UsedByFork() => 1;\n\n'
+                       '    public int Unrelated() => 2;\n}\n')
+        self.write('ExpandedHotbars/Classes/Helper.cs', self.source)
+        self.project = '<Project Sdk="Dalamud.NET.Sdk/15.0.0">\n<PropertyGroup><Version>1.0.1.0</Version></PropertyGroup>\n</Project>\n'
+        self.write('ExpandedHotbars/ExpandedHotbars.csproj', self.project)
         self.write('README.md', 'upstream readme\n')
+        self.shared_doc = 'upstream intro\n\n\n\n\n\nupstream installation\n'
+        self.write('docs/shared.md', self.shared_doc)
         self.git('add', '.')
         self.git('commit', '-m', 'Shared history')
         self.shared = self.git('rev-parse', 'HEAD')
         self.git('branch', 'upstream')
-        self.write('ExpandedHotbars/Configuration/HotbarConfig.cs', 'fork auto-close\n')
+        self.write('ExpandedHotbars/Configuration/HotbarConfig.cs', 'namespace Samples;\npublic class HotbarConfig { public bool CloseAfterUse; }\n')
+        self.write('ExpandedHotbars/Classes/ForkFeature.cs', 'namespace Samples;\npublic class ForkFeature { public int Run() => new Helper().UsedByFork(); }\n')
         self.write('README.md', 'fork installation instructions\n')
+        self.write('docs/shared.md', self.shared_doc.replace('upstream installation', 'fork installation'))
         self.git('add', '.')
         self.git('commit', '-m', 'Fork features')
         self.base = self.git('rev-parse', 'HEAD')
@@ -86,13 +97,125 @@ class UpstreamPolicyTests(unittest.TestCase):
 
     def test_fork_modified_files_need_review_even_when_allowlisted(self):
         self.git('switch', 'master')
-        self.write('ExpandedHotbars/Conditions/Example.cs', 'first\nsecond\nthird\nfork change\n')
+        self.write('ExpandedHotbars/Conditions/Example.cs', self.example.replace('\n}', '\n    public int ForkHook() => First();\n}'))
         self.git('add', '.')
         self.git('commit', '-m', 'Fork now customises a condition')
         self.base = self.git('rev-parse', 'HEAD')
-        result = self.propose('ExpandedHotbars/Conditions/Example.cs', 'upstream first\nsecond\nthird\nfourth\n')
+        result = self.propose('ExpandedHotbars/Conditions/Example.cs', self.example.replace('First() => 1', 'First() => 10'))
         self.assertFalse(result['routine'])
-        self.assertTrue(any('modified by the fork' in reason for reason in result['reasons']))
+        self.assertTrue(any('protected' in reason for reason in result['reasons']), result['reasons'])
+
+    def test_version_only_increase_is_routine(self):
+        result = self.propose('ExpandedHotbars/ExpandedHotbars.csproj', self.project.replace('1.0.1.0', '1.0.2.0'))
+        self.assertTrue(result['routine'], result['reasons'])
+        self.assertTrue(any('numeric upstream version' in evidence for evidence in result['accepted']))
+
+    def test_clean_documentation_update_preserves_fork_section(self):
+        result = self.propose('docs/shared.md', self.shared_doc.replace('upstream intro', 'improved upstream intro'))
+        self.assertTrue(result['routine'], result['reasons'])
+        self.assertIn('fork installation', Path('docs/shared.md').read_text())
+
+    def test_version_bump_cannot_hide_dependency_or_build_changes(self):
+        for text in [self.project.replace('15.0.0', '16.0.0'),
+                     self.project.replace('</Project>', '<ItemGroup><PackageReference Include="Other" Version="1.0.0" /></ItemGroup></Project>'),
+                     self.project.replace('</Project>', '<Target Name="Execute" BeforeTargets="Build" /></Project>'),
+                     self.project.replace('<Version>', '<Version Condition="true">'),
+                     self.project.replace('</PropertyGroup>', '<Version>9.0.0</Version></PropertyGroup>'),
+                     self.project.replace('1.0.1.0', '0.9.0.0')]:
+            result = self.propose('ExpandedHotbars/ExpandedHotbars.csproj', text.replace('1.0.1.0', '1.0.2.0'))
+            self.assertFalse(result['routine'], text)
+
+    def test_unrelated_existing_method_is_routine_even_in_shared_file(self):
+        result = self.propose('ExpandedHotbars/Classes/Helper.cs', self.source.replace('Unrelated() => 2', 'Unrelated() => 20'))
+        self.assertTrue(result['routine'], result['reasons'])
+
+    def test_unrelated_member_in_fork_modified_file_is_routine(self):
+        self.write('ExpandedHotbars/Classes/Helper.cs', self.source.replace('UsedByFork() => 1', 'UsedByFork() => 10'))
+        self.git('add', '.')
+        self.git('commit', '-m', 'Fork modifies one member in shared file')
+        self.base = self.git('rev-parse', 'HEAD')
+        result = self.propose('ExpandedHotbars/Classes/Helper.cs', self.source.replace('Unrelated() => 2', 'Unrelated() => 20'))
+        self.assertTrue(result['routine'], result['reasons'])
+
+    def test_transitive_feature_dependency_needs_review(self):
+        result = self.propose('ExpandedHotbars/Classes/Helper.cs', self.source.replace('UsedByFork() => 1', 'UsedByFork() => 10'))
+        self.assertFalse(result['routine'])
+        self.assertTrue(any('protected' in reason for reason in result['reasons']), result['reasons'])
+
+    def test_multihop_dependency_in_another_file_needs_review(self):
+        self.git('switch', 'upstream')
+        self.write('ExpandedHotbars/Classes/Helper.cs', self.source.replace('UsedByFork() => 1', 'UsedByFork() => new Leaf().Value()'))
+        leaf = 'namespace Samples;\npublic class Leaf { public int Value() => 1; }\n'
+        self.write('ExpandedHotbars/Classes/Leaf.cs', leaf)
+        self.git('add', '.')
+        self.git('commit', '-m', 'Shared helper delegates to leaf')
+        self.shared = self.git('rev-parse', 'HEAD')
+        self.git('switch', '--detach', self.base)
+        self.git('merge', '--no-edit', self.shared)
+        self.base = self.git('rev-parse', 'HEAD')
+        result = self.propose('ExpandedHotbars/Classes/Leaf.cs', leaf.replace('Value() => 1', 'Value() => 2'))
+        self.assertFalse(result['routine'])
+        self.assertTrue(any('protected' in reason for reason in result['reasons']), result['reasons'])
+
+    def test_comments_do_not_impersonate_a_protected_member(self):
+        result = self.propose('ExpandedHotbars/Classes/Helper.cs', self.source.replace('Unrelated() => 2', 'Unrelated() => 20 /* public int UsedByFork() => 999; */'))
+        self.assertTrue(result['routine'], result['reasons'])
+
+    def test_changes_to_disabled_source_need_review(self):
+        self.git('switch', 'upstream')
+        source = self.source + '\n#if UNUSED\nclass Disabled { int Value = 1; }\n#endif\n'
+        self.write('ExpandedHotbars/Classes/Helper.cs', source)
+        self.git('add', '.')
+        self.git('commit', '-m', 'Shared disabled source')
+        self.shared = self.git('rev-parse', 'HEAD')
+        self.git('switch', '--detach', self.base)
+        self.git('merge', '--no-edit', self.shared)
+        self.base = self.git('rev-parse', 'HEAD')
+        result = self.propose('ExpandedHotbars/Classes/Helper.cs', source.replace('Value = 1', 'Value = 2'))
+        self.assertFalse(result['routine'])
+
+    def test_calling_protected_code_from_previously_unrelated_method_needs_review(self):
+        result = self.propose('ExpandedHotbars/Classes/Helper.cs', self.source.replace('Unrelated() => 2', 'Unrelated() => UsedByFork()'))
+        self.assertFalse(result['routine'])
+
+    def test_signatures_fields_types_imports_directives_and_unsafe_need_review(self):
+        for text in [self.source.replace('Unrelated()', 'Unrelated(int argument)'),
+                     self.source.replace('public class Helper', 'public class Helper : System.IDisposable'),
+                     self.source.replace('public class Helper {', 'public class Helper { public int Saved = 1;'),
+                     self.source.replace('namespace Samples;', 'using System.IO;\nnamespace Samples;'),
+                     '#define CHANGED\n' + self.source,
+                     self.source.replace('public int Unrelated', 'public unsafe int Unrelated'),
+                     self.source.replace('Unrelated() => 2', 'Unrelated() => typeof(Helper).GetMethod("UsedByFork") is null ? 1 : 0'),
+                     self.source.replace('Unrelated() => 2', 'Unrelated() => { invalid syntax')]:
+            result = self.propose('ExpandedHotbars/Classes/Helper.cs', text)
+            self.assertFalse(result['routine'], text)
+
+    def test_missing_reviewer_fails_closed(self):
+        with patch.object(policy_tool, 'syntax_review', side_effect=OSError('parser unavailable')):
+            result = self.propose('ExpandedHotbars/Classes/Helper.cs', self.source.replace('Unrelated() => 2', 'Unrelated() => 20'))
+        self.assertFalse(result['routine'])
+        self.assertTrue(any('unavailable' in reason for reason in result['reasons']))
+
+    def test_saved_data_and_input_helpers_remain_manual(self):
+        for path in ['ExpandedHotbars/Classes/HotbarLocationConverter.cs', 'ExpandedHotbars/Classes/PresetManager.cs',
+                     'ExpandedHotbars/Configuration/OtherConfig.cs', 'ExpandedHotbars/Extensions/KeybindExtensions.cs',
+                     'ExpandedHotbars/Extensions/KeyStateExtensions.cs']:
+            result = self.propose(path, 'namespace Samples; public class Contract { public int Unrelated() => 20; }\n')
+            self.assertFalse(result['routine'], path)
+
+    def test_existing_native_structure_import_remains_manual(self):
+        self.git('switch', 'upstream')
+        source = 'using FFXIVClientStructs.FFXIV.Client.Game;\n' + self.source
+        self.write('ExpandedHotbars/Classes/Helper.cs', source)
+        self.git('add', '.')
+        self.git('commit', '-m', 'Shared native import')
+        self.shared = self.git('rev-parse', 'HEAD')
+        self.git('switch', '--detach', self.base)
+        self.git('merge', '--no-edit', self.shared)
+        self.base = self.git('rev-parse', 'HEAD')
+        result = self.propose('ExpandedHotbars/Classes/Helper.cs', source.replace('Unrelated() => 2', 'Unrelated() => 20'))
+        self.assertFalse(result['routine'])
+        self.assertTrue(any('native client' in reason for reason in result['reasons']), result['reasons'])
 
     def test_references_to_fork_hooks_or_native_interop_need_review(self):
         for content in ['CloseAfterUse', 'OnKeybindPressed', 'unsafe void Execute()', '[DllImport("x")]']:

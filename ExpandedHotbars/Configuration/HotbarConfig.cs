@@ -13,7 +13,7 @@ namespace ExpandedHotbars.Configuration;
 /// <summary>
 /// Configuration file representing a single hotbar.
 /// </summary>
-public class HotbarConfig {
+public partial class HotbarConfig {
 
     /// <summary>
     /// Unique identifier for this config.
@@ -30,9 +30,6 @@ public class HotbarConfig {
     /// </summary>
     public Vector2 Size = new(12, 1);
 
-    public bool AnchorRight = false;
-    public bool AnchorBottom = false;
-
     /// <summary>
     /// Scale as in zoom level for the hotbar
     /// </summary>
@@ -48,9 +45,6 @@ public class HotbarConfig {
     /// and then saved/updated when moved.
     /// </summary>
     public Vector2 Position = Vector2.Zero;
-
-    /// <summary>Distinguishes an explicitly saved (0, 0) from an unset legacy position.</summary>
-    public bool HasCustomPosition = false;
 
     /// <summary>
     /// If this hotbar should be shown if the conditions are met.
@@ -92,11 +86,6 @@ public class HotbarConfig {
     /// </summary>
     public bool EnableClicking = true;
 
-    /// <summary>
-    /// Closes this hotbar after a populated slot is activated by click or keybind.
-    /// </summary>
-    public bool CloseAfterUse = false;
-
     //
     // Non Serialized Properties used during configuration
     //
@@ -114,16 +103,6 @@ public class HotbarConfig {
     //
     // Helper Functions
     //
-
-    /// <summary>
-    /// Closes this bar once when the optional activation behavior is enabled.
-    /// </summary>
-    public bool TryCloseAfterUse() {
-        if (!CloseAfterUse || !IsEnabled) return false;
-
-        IsEnabled = false;
-        return true;
-    }
 
     /// <summary>
     /// Returns true if conditions are met according to configuration.

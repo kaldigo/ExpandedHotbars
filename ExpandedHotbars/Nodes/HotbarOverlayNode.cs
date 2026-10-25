@@ -5,7 +5,6 @@ using Dalamud.Plugin.Services;
 using ExpandedHotbars.Classes;
 using ExpandedHotbars.Configuration;
 using ExpandedHotbars.Enums;
-using ExpandedHotbars.Extras;
 using FFXIVClientStructs.FFXIV.Client.System.Input;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using KamiToolKit.BaseTypes;
@@ -34,16 +33,7 @@ public sealed partial class HotbarOverlayNode : OverlayNode {
 
         Scale = new Vector2(Config.Scale, Config.Scale);
 
-        if (Config.ExtraFeatures.OfType<FavouritePlugins>().FirstOrDefault(feature => feature.Enabled) is { } favourites) {
-            UpdateFavouritePlugins(favourites);
-            IGameConfig.Get().UiConfig.TryGetBool("HotbarLock", out var locked);
-            padlockNode.IsLocked = locked;
-            return;
-        }
-        if (showingPlugins) {
-            ClearPluginNodes();
-            Config.UpdateFlags |= ConfigChangedKind.NeedsRebuild;
-        }
+        if (UpdateFavouritePluginsIfEnabled()) return;
 
         if (Config.UpdateFlags.HasFlag(ConfigChangedKind.NeedsRebuild)) {
             RebuildLayout();
@@ -166,19 +156,6 @@ public sealed partial class HotbarOverlayNode : OverlayNode {
         Size = Config.Size * (new Vector2(44.0f, 44.0f) + Config.Spacing) + new Vector2(16.0f, 16.0f);
         Origin = Size / 2.0f;
         padlockNode.Position = Size + new Vector2(8.0f, -42.0f);
-    }
-
-    private void OnActionInvoked() {
-        if (!Config.TryCloseAfterUse()) return;
-        IsVisible = false;
-
-        foreach (var feature in Config.ExtraFeatures) {
-            if (feature is { IsValid: true, Enabled: true }) {
-                feature.OnDisable();
-            }
-        }
-
-        System.Config.Save();
     }
 
     private void OnPayloadAccepted(int row, int column, DragDropPayload payload) {
