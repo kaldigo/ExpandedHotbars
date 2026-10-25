@@ -59,19 +59,27 @@ try {
     Console.Write(JsonSerializer.Serialize(new { reasons = reasons.Distinct(), protected_members = protectedIds.Count, eligible_members = eligible }));
 
     void CheckMembers(Snapshot before, Snapshot after, string path, bool checkProtection) {
+        var conditionDataNames = fork.Members.Where(entry => entry.Key.StartsWith(path + "|", StringComparison.Ordinal)
+            && (entry.Key.Contains("|FieldDeclaration|", StringComparison.Ordinal) || entry.Key.Contains("|PropertyDeclaration|", StringComparison.Ordinal)))
+            .SelectMany(entry => entry.Value.Names).ToHashSet();
         foreach (var id in before.Members.Keys.Union(after.Members.Keys).Where(id => id.StartsWith(path + "|", StringComparison.Ordinal))) {
             if (!before.Members.TryGetValue(id, out var old) || !after.Members.TryGetValue(id, out var current)) {
                 reasons.Add($"{path}: member added, removed or signature changed ({id.Split('|')[1]}).");
                 continue;
             }
             if (old.Tokens == current.Tokens) continue;
-            if (checkProtection && protectedIds.Contains(id)) {
+            // Untouched conditions are an established routine category. Their
+            // ordinary evaluation override may change, but contracts, unsafe
+            // code and references to other protected members still may not.
+            var routineCondition = request.RoutineConditions?.Contains(path) == true && old.ConditionEvaluation && current.ConditionEvaluation;
+            if (checkProtection && protectedIds.Contains(id) && !routineCondition) {
                 reasons.Add($"{path}: protected fork integration or transitive dependency changed ({old.Label}).");
             }
             if (old.Signature != current.Signature || !old.Method || !current.Method || old.Unsafe || current.Unsafe) {
                 reasons.Add($"{path}: contract, saved data, initializer, constructor or native/unsafe member changed ({old.Label}).");
             }
-            if (current.References.Concat(old.References).Any(protectedNames.Contains)) {
+            if (current.References.Concat(old.References).Any(name => protectedNames.Contains(name)
+                && !(routineCondition && (name == "EvaluateCondition" || conditionDataNames.Contains(name))))) {
                 reasons.Add($"{path}: changed member references protected fork data/code ({old.Label}).");
             }
         }
@@ -82,8 +90,8 @@ catch (Exception error) {
 }
 
 record Request(Dictionary<string, string> Shared, Dictionary<string, string> Fork,
-    Dictionary<string, string> Incoming, Dictionary<string, string> Merged, string[] Paths);
-record Member(string Label, string Tokens, string Signature, string[] Names, string[] References, bool Method, bool Unsafe);
+    Dictionary<string, string> Incoming, Dictionary<string, string> Merged, string[] Paths, string[]? RoutineConditions = null);
+record Member(string Label, string Tokens, string Signature, string[] Names, string[] References, bool Method, bool Unsafe, bool ConditionEvaluation);
 record FileShape(string Shell, string Directives, bool NativeInterop);
 
 sealed class Snapshot {
@@ -130,7 +138,9 @@ sealed class Snapshot {
                 var references = node.DescendantTokens().Where(t => t.IsKind(SyntaxKind.IdentifierToken)).Select(t => t.ValueText).Distinct().ToArray();
                 var unsafeMember = node.DescendantTokens().Concat(node.Ancestors().OfType<TypeDeclarationSyntax>().SelectMany(t => t.Modifiers))
                     .Any(t => t.IsKind(SyntaxKind.UnsafeKeyword));
-                if (!result.Members.TryAdd(key, new Member(label, Tokens(node.DescendantTokens()), signature, names, references, node is MethodDeclarationSyntax, unsafeMember))) {
+                var conditionEvaluation = node is MethodDeclarationSyntax evaluation && evaluation.Identifier.ValueText == "EvaluateCondition"
+                    && evaluation.Modifiers.Any(t => t.IsKind(SyntaxKind.OverrideKeyword)) && evaluation.ParameterList.Parameters.Count == 0;
+                if (!result.Members.TryAdd(key, new Member(label, Tokens(node.DescendantTokens()), signature, names, references, node is MethodDeclarationSyntax, unsafeMember, conditionEvaluation))) {
                     throw new InvalidOperationException("Ambiguous member in " + path);
                 }
             }

@@ -77,7 +77,7 @@ def source_snapshot(ref):
 _REVIEW_DLL = None
 
 
-def syntax_review(common, base, upstream, head, candidates):
+def syntax_review(common, base, upstream, head, candidates, routine_conditions):
     import os
     global _REVIEW_DLL
     if _REVIEW_DLL is None:
@@ -91,7 +91,8 @@ def syntax_review(common, base, upstream, head, candidates):
                            stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=120)
             _REVIEW_DLL = output / 'UpstreamReview.dll'
     payload = dict(Shared=source_snapshot(common), Fork=source_snapshot(base),
-                   Incoming=source_snapshot(upstream), Merged=source_snapshot(head), Paths=candidates)
+                   Incoming=source_snapshot(upstream), Merged=source_snapshot(head), Paths=candidates,
+                   RoutineConditions=routine_conditions)
     raw = subprocess.check_output(['dotnet', str(_REVIEW_DLL)], input=json.dumps(payload).encode(), timeout=90)
     return json.loads(raw)
 
@@ -101,7 +102,7 @@ def classify(base, upstream, head):
     common = git('merge-base', base, upstream)
     fork_paths = paths(common, base)
     changed = paths(base, head) | paths(common, upstream)
-    reasons, accepted, candidates = [], [], []
+    reasons, accepted, candidates, routine_conditions = [], [], [], []
     expected = subprocess.run(['git', 'merge-tree', '--write-tree', base, upstream], text=True, capture_output=True)
     trees = expected.stdout.splitlines()
     if expected.returncode or not trees or trees[0] != git('rev-parse', f'{head}^{{tree}}'):
@@ -137,11 +138,9 @@ def classify(base, upstream, head):
             reasons.append(f'{path}: edit references fork hooks, reflection or native interop.')
             continue
         routine_condition = p.parent.as_posix() == 'ExpandedHotbars/Conditions' and p.suffix == '.cs' and p.name != 'ConditionBase.cs'
-        if routine_condition and path not in fork_paths:
-            if not modes[3]:
-                reasons.append(f'{path}: removing a condition can invalidate saved settings.')
-            else:
-                accepted.append(f'{path}: untouched condition implementation.')
+        if routine_condition and path not in fork_paths and all(modes):
+            candidates.append(path)
+            routine_conditions.append(path)
             continue
         if path in SENSITIVE_SOURCE or path.startswith('ExpandedHotbars/Configuration/'):
             reasons.append(f'{path}: saved-data, activation/input or plugin-lifecycle boundary requires review.')
@@ -153,7 +152,7 @@ def classify(base, upstream, head):
         reasons.append(f'{path}: dependency, publishing, lifecycle, fork-only or unrecognised file requires review.')
     if candidates:
         try:
-            review = syntax_review(common, base, upstream, head, candidates)
+            review = syntax_review(common, base, upstream, head, candidates, routine_conditions)
             reasons.extend(review['reasons'])
             if not review['reasons']:
                 accepted.extend(f'{path}: existing method bodies outside protected members/contracts and transitive dependencies.' for path in candidates)

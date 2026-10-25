@@ -81,8 +81,31 @@ class UpstreamPolicyTests(unittest.TestCase):
     def test_routine_condition_and_documentation(self):
         for path in ['ExpandedHotbars/Conditions/Example.cs', 'docs/usage.md']:
             with self.subTest(path=path):
-                result = self.propose(path, 'routine adjustment\n')
+                result = self.propose(path, self.example.replace('Second() => 2', 'Second() => 20') if path.endswith('.cs') else 'routine adjustment\n')
                 self.assertTrue(result['routine'], result['reasons'])
+
+    def test_condition_schema_and_native_edits_cannot_use_routine_exception(self):
+        for text in [self.example.replace('public class Example {', 'public class Example { public int SavedField;'),
+                     'using FFXIVClientStructs.FFXIV.Client.Game;\n' + self.example,
+                     self.example.replace('Second()', 'Second(int argument)')]:
+            result = self.propose('ExpandedHotbars/Conditions/Example.cs', text)
+            self.assertFalse(result['routine'], text)
+
+    def test_standard_condition_evaluation_remains_routine(self):
+        self.git('switch', 'upstream')
+        source = 'namespace Samples;\npublic abstract class Evaluation { protected abstract bool EvaluateCondition(); public bool Run() => EvaluateCondition(); }\npublic class Example : Evaluation { private bool Allowed = true; protected override bool EvaluateCondition() => Allowed; }\n'
+        self.write('ExpandedHotbars/Conditions/Example.cs', source)
+        self.git('add', '.')
+        self.git('commit', '-m', 'Shared condition evaluation')
+        self.shared = self.git('rev-parse', 'HEAD')
+        self.git('switch', '--detach', self.base)
+        self.git('merge', '--no-edit', self.shared)
+        self.write('ExpandedHotbars/Classes/ConditionUser.cs', 'namespace Samples; public class ConditionUser { public bool Get() => new Example().Run(); }\n')
+        self.git('add', '.')
+        self.git('commit', '-m', 'Fork consumes existing condition')
+        self.base = self.git('rev-parse', 'HEAD')
+        result = self.propose('ExpandedHotbars/Conditions/Example.cs', source.replace('EvaluateCondition() => Allowed', 'EvaluateCondition() => !Allowed'))
+        self.assertTrue(result['routine'], result['reasons'])
 
     def test_dependencies_publishing_configuration_and_unknown_files_need_review(self):
         for path in ['.github/workflows/release.yml', '.gitmodules', 'global.json',

@@ -7,7 +7,8 @@ No workflow approves a review, bypasses branch protection or force-pushes.
 ## Eligible for automatic review
 
 - Cleanly merged README/docs changes, retaining fork documentation.
-- Untouched condition implementation updates under the existing condition rule.
+- Body-only updates to untouched condition implementations, with the same syntax,
+  contract, saved-data and native-code checks as other source.
 - An increase to the single numeric `Version` in the upstream plugin project,
   with every other project byte unchanged. SDK/dependency/build changes bundled
   with a version bump are not eligible.
@@ -31,10 +32,10 @@ directives/disabled source, native/unsafe code or files importing native client 
 reflection, dependencies/SDKs and
 submodules. Build/publishing files, workflow/policy tooling, icons, plugin lifecycle
 files, source additions/removals and unrecognised paths also remain manual.
-The established condition exception still blocks fork-modified conditions, deleted
-conditions, native/unsafe edits and explicit references to fork hooks; a modified
-condition file can instead qualify through the stricter syntax review when only
-an unrelated member changes.
+The established condition category permits changes to an untouched condition's
+ordinary `EvaluateCondition` override. Other protected references, native code,
+imports, contracts and saved fields still remain manual. Conditions are not an
+exception to syntax review, and new or removed condition types need review.
 
 An unknown syntax shape, ambiguous member, missing parser or failed parse stops
 automatic approval. Cleanly merged code is not automatically assumed compatible:
