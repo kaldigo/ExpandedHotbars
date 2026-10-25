@@ -78,9 +78,11 @@ try {
             if (old.Signature != current.Signature || !old.Method || !current.Method || old.Unsafe || current.Unsafe) {
                 reasons.Add($"{path}: contract, saved data, initializer, constructor or native/unsafe member changed ({old.Label}).");
             }
-            if (current.References.Concat(old.References).Any(name => protectedNames.Contains(name)
-                && !(routineCondition && (name == "EvaluateCondition" || conditionDataNames.Contains(name))))) {
-                reasons.Add($"{path}: changed member references protected fork data/code ({old.Label}).");
+            var protectedReferences = current.References.Concat(old.References).Where(name => protectedNames.Contains(name)
+                && !(routineCondition && (name == "EvaluateCondition" || conditionDataNames.Contains(name)
+                    || (name == "Get" && old.GetTokens > 0 && old.GetTokens == current.GetTokens && old.GetCalls == current.GetCalls)))).Distinct().ToArray();
+            if (protectedReferences.Length != 0) {
+                reasons.Add($"{path}: changed member references protected fork data/code ({old.Label}; references: {string.Join(", ", protectedReferences)}).");
             }
         }
     }
@@ -91,7 +93,7 @@ catch (Exception error) {
 
 record Request(Dictionary<string, string> Shared, Dictionary<string, string> Fork,
     Dictionary<string, string> Incoming, Dictionary<string, string> Merged, string[] Paths, string[]? RoutineConditions = null);
-record Member(string Label, string Tokens, string Signature, string[] Names, string[] References, bool Method, bool Unsafe, bool ConditionEvaluation);
+record Member(string Label, string Tokens, string Signature, string[] Names, string[] References, bool Method, bool Unsafe, bool ConditionEvaluation, string GetCalls, int GetTokens);
 record FileShape(string Shell, string Directives, bool NativeInterop);
 
 sealed class Snapshot {
@@ -140,7 +142,14 @@ sealed class Snapshot {
                     .Any(t => t.IsKind(SyntaxKind.UnsafeKeyword));
                 var conditionEvaluation = node is MethodDeclarationSyntax evaluation && evaluation.Identifier.ValueText == "EvaluateCondition"
                     && evaluation.Modifiers.Any(t => t.IsKind(SyntaxKind.OverrideKeyword)) && evaluation.ParameterList.Parameters.Count == 0;
-                if (!result.Members.TryAdd(key, new Member(label, Tokens(node.DescendantTokens()), signature, names, references, node is MethodDeclarationSyntax, unsafeMember, conditionEvaluation))) {
+                var getCalls = node.DescendantNodes().OfType<InvocationExpressionSyntax>().Where(call => call.Expression switch {
+                    MemberAccessExpressionSyntax access => access.Name.Identifier.ValueText == "Get",
+                    MemberBindingExpressionSyntax binding => binding.Name.Identifier.ValueText == "Get",
+                    IdentifierNameSyntax identifier => identifier.Identifier.ValueText == "Get",
+                    _ => false,
+                }).Select(call => Tokens(call.DescendantTokens()));
+                var getTokens = node.DescendantTokens().Count(t => t.IsKind(SyntaxKind.IdentifierToken) && t.ValueText == "Get");
+                if (!result.Members.TryAdd(key, new Member(label, Tokens(node.DescendantTokens()), signature, names, references, node is MethodDeclarationSyntax, unsafeMember, conditionEvaluation, string.Join('\n', getCalls), getTokens))) {
                     throw new InvalidOperationException("Ambiguous member in " + path);
                 }
             }

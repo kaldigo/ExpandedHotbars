@@ -33,7 +33,9 @@ reflection, dependencies/SDKs and
 submodules. Build/publishing files, workflow/policy tooling, icons, plugin lifecycle
 files, source additions/removals and unrecognised paths also remain manual.
 The established condition category permits changes to an untouched condition's
-ordinary `EvaluateCondition` override. Other protected references, native code,
+ordinary `EvaluateCondition` override, retaining its own unchanged data fields
+and exact existing service-access calls. Changing those service calls still needs
+review. Other protected references, native code,
 imports, contracts and saved fields still remain manual. Conditions are not an
 exception to syntax review, and new or removed condition types need review.
 

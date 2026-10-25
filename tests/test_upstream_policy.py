@@ -93,7 +93,10 @@ class UpstreamPolicyTests(unittest.TestCase):
 
     def test_standard_condition_evaluation_remains_routine(self):
         self.git('switch', 'upstream')
-        source = 'namespace Samples;\npublic abstract class Evaluation { protected abstract bool EvaluateCondition(); public bool Run() => EvaluateCondition(); }\npublic class Example : Evaluation { private bool Allowed = true; protected override bool EvaluateCondition() => Allowed; }\n'
+        source = ('namespace Samples;\npublic abstract class Evaluation { protected abstract bool EvaluateCondition(); public bool Run() => EvaluateCondition(); }\n'
+                  'public static class Service { public static bool Get() => true; }\n'
+                  'public static class Other { public static bool Get() => false; }\n'
+                  'public class Example : Evaluation { private bool Allowed = true; protected override bool EvaluateCondition() => Allowed && Service.Get(); }\n')
         self.write('ExpandedHotbars/Conditions/Example.cs', source)
         self.git('add', '.')
         self.git('commit', '-m', 'Shared condition evaluation')
@@ -104,8 +107,11 @@ class UpstreamPolicyTests(unittest.TestCase):
         self.git('add', '.')
         self.git('commit', '-m', 'Fork consumes existing condition')
         self.base = self.git('rev-parse', 'HEAD')
-        result = self.propose('ExpandedHotbars/Conditions/Example.cs', source.replace('EvaluateCondition() => Allowed', 'EvaluateCondition() => !Allowed'))
-        self.assertTrue(result['routine'], result['reasons'])
+        for text, expected in [(source.replace('EvaluateCondition() => Allowed', 'EvaluateCondition() => !Allowed'), True),
+                               (source.replace('Allowed && Service.Get()', 'Allowed && Other.Get()'), False),
+                               (source.replace('Allowed && Service.Get()', 'Allowed && Service.Get() && Service.Get()'), False)]:
+            result = self.propose('ExpandedHotbars/Conditions/Example.cs', text)
+            self.assertEqual(result['routine'], expected, result['reasons'])
 
     def test_dependencies_publishing_configuration_and_unknown_files_need_review(self):
         for path in ['.github/workflows/release.yml', '.gitmodules', 'global.json',
