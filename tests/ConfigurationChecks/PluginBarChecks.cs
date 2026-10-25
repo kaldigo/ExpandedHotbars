@@ -67,6 +67,26 @@ internal static class PluginBarChecks {
         }
         Console.WriteLine("PASS: Left/right click opens the expected UI for both, either or neither available button; unloaded plugins stay closed");
 
+        var commandLauncher = typeof(PluginLauncher).GetMethod("OpenWithCommand")!;
+        var stylist = DispatchProxy.Create(pluginType, typeof(LauncherPluginProxy));
+        var stylistState = (LauncherPluginProxy)stylist;
+        stylistState.InternalName = "Stylist";
+        stylistState.Config = true;
+        var commands = new List<string>();
+        Func<string, bool> execute = command => { commands.Add(command); return true; };
+        Check((bool)commandLauncher.Invoke(null, [stylist, false, execute])! && commands.SequenceEqual(new[] { "/stylist" }) && stylistState.Opened is null, "Stylist left click must dispatch its command, not settings");
+        Check((bool)commandLauncher.Invoke(null, [stylist, true, execute])! && commands.Count == 1 && stylistState.Opened == "OpenConfigUi", "Stylist right click must open settings without executing gear changes");
+        Check((bool)typeof(PluginLauncher).GetMethod("HasMainAction")!.Invoke(null, [stylist])! && (string)typeof(PluginLauncher).GetMethod("MainActionLabel")!.Invoke(null, [stylist])! == "/stylist", "Stylist tooltip/availability must describe its command");
+        Func<string, bool> unavailable = _ => false;
+        Check(!(bool)commandLauncher.Invoke(null, [stylist, false, unavailable])!, "unregistered command must not report successful activation");
+        stylistState.Loaded = false;
+        Check(!(bool)commandLauncher.Invoke(null, [stylist, false, execute])! && commands.Count == 1, "disabled Stylist must not dispatch commands");
+        stylistState.Loaded = true;
+        stylistState.Config = false;
+        Check((bool)commandLauncher.Invoke(null, [stylist, true, execute])! && commands.Count == 2, "command-only Stylist must use its sole action for either click");
+        Check(PluginLauncher.MainCommand("StylistExtra") is null && PluginLauncher.MainCommand("OtherPlugin") is null, "command override leaked to another plugin identity");
+        Console.WriteLine("PASS: Stylist dispatches /stylist only on its primary action; settings, disabled state and command failures remain correct");
+
         var dalamudLauncher = typeof(PluginLauncher).GetMethod("OpenDalamud")!;
         foreach (var settings in new[] { false, true }) {
             var pluginInterface = DispatchProxy.Create(dalamudLauncher.GetParameters()[0].ParameterType, typeof(DalamudInterfaceProxy));
@@ -99,6 +119,19 @@ internal static class PluginBarChecks {
         Check(pixels.All(channel => channel == 0), "mask destroyed existing transparency");
         Console.WriteLine("PASS: Rounded icon corners preserve colors and existing transparency");
 
+        var transparent = new byte[80 * 80 * 4];
+        Check(!PluginIconVisibility.HasVisiblePixels(transparent, 80, 80, 320), "transparent placeholder must use the visible fallback");
+        transparent[(40 * 80 + 40) * 4 + 3] = 31;
+        Check(!PluginIconVisibility.HasVisiblePixels(transparent, 80, 80, 320), "nearly invisible placeholder must use the visible fallback");
+        transparent[(40 * 80 + 40) * 4 + 3] = 255;
+        Check(PluginIconVisibility.HasVisiblePixels(transparent, 80, 80, 320), "visible stock artwork must be retained");
+        var padded = new byte[12];
+        padded[11] = 255;
+        Check(!PluginIconVisibility.HasVisiblePixels(padded, 2, 1, 12), "row padding must not make a transparent icon appear visible");
+        padded[7] = 255;
+        Check(PluginIconVisibility.HasVisiblePixels(padded, 2, 1, 12), "visible RGBA pixel lost with row padding");
+        Console.WriteLine("PASS: Invisible installer placeholders are detected without rejecting visible artwork or reading row padding");
+
         byte[] translucent = [255, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 128];
         RoundedPluginIcon.CompositeOnWhite(translucent, 3, 1, 12);
         Check(translucent.SequenceEqual(new byte[] { 255, 0, 0, 255, 255, 255, 255, 255, 127, 127, 127, 255 }), "Dalamud white background composition");
@@ -110,6 +143,11 @@ internal static class PluginBarChecks {
         var icon = Path.Combine(directory, "Aetherworks.png");
         try {
             File.WriteAllBytes(icon, [1]); // Lookup is independent of the texture decoder.
+            var fallback = Path.Combine(temporary, "images", "plugin-fallback.png");
+            Check(PluginIconOverrides.FindFallback(temporary) is null, "missing fallback lookup");
+            File.WriteAllBytes(fallback, [1]);
+            Check(PluginIconOverrides.FindFallback(temporary) == fallback, "packaged question-mark fallback lookup");
+            File.Delete(fallback);
             Check(PluginIconOverrides.Find(temporary, "Aetherworks") == icon, "packaged override was not found");
             Check(PluginIconOverrides.Find(temporary, "UnknownPlugin") is null, "unknown plugin did not fall back");
             Check(PluginIconOverrides.Find(temporary, "../Aetherworks") is null &&
@@ -131,12 +169,14 @@ internal static class PluginBarChecks {
 }
 
 public class LauncherPluginProxy : DispatchProxy {
+    public string InternalName = "ExamplePlugin";
     public bool Main;
     public bool Config;
     public bool Loaded = true;
     public string? Opened;
 
     protected override object? Invoke(MethodInfo? method, object?[]? arguments) => method!.Name switch {
+        "get_InternalName" => InternalName,
         "get_IsLoaded" => Loaded,
         "get_HasMainUi" => Main,
         "get_HasConfigUi" => Config,

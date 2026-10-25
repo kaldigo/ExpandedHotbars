@@ -154,6 +154,14 @@
       "Sha256": "9feb91e6bedf3f0280737567ba452e6587df9391e699ecfe2a102070a5c5944a"
     },
     {
+      "InternalName": "Stylist",
+      "File": "Stylist.png",
+      "SourceRepository": "https://github.com/NightmareXIV/Stylist",
+      "ReferenceIcon": null,
+      "Method": "Original AI-generated wardrobe/gear utility emblem; no original Stylist icon supplied",
+      "Sha256": "d7d329a413c6f51ec4000aa68329abd33ffb8404514d153ab518417ffd7cfcb6"
+    },
+    {
       "InternalName": "WrathCombo",
       "File": "WrathCombo.png",
       "SourceRepository": "https://github.com/kaldigo/WrathCombo",
@@ -161,5 +169,10 @@
       "Method": "AI style transfer from original plugin icon, using native FFXIV utility/menu icons with quiet backgrounds shared by artwork family",
       "Sha256": "933e6861926285c98ec8a9f5fe419202c86fdf7b3dc18ac43ca6dfeb5e446713"
     }
-  ]
+  ],
+  "Fallback": {
+    "File": "images/plugin-fallback.png",
+    "Method": "Original AI-generated ivory question mark on slate",
+    "Sha256": "ff1bbcb4e8ee3e94b363342c3b1bd5c411b289e95bf378b9621a91acdfb1c976"
+  }
 }

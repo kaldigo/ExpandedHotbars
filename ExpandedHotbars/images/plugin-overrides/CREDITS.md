@@ -26,3 +26,5 @@ These replacement renderings were generated with the built-in image generator fr
 | WrathCombo | [Repository](https://github.com/kaldigo/WrathCombo) | [Original icon](https://raw.githubusercontent.com/kaldigo/WrathCombo/main/assets/icon.png) | BSD-3-Clause |
 
 Source license texts supplied by their repositories are retained in `licenses/`. No original plugin code is incorporated by the icon overrides.
+
+Stylist uses an original AI-generated wardrobe/gear emblem, based on its gear-management purpose rather than an existing logo. Plugin reference: [NightmareXIV/Stylist](https://github.com/NightmareXIV/Stylist). The visible question-mark fallback is also original generated artwork. Neither asset incorporates third-party source artwork.

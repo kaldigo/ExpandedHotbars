@@ -25,6 +25,13 @@ try:
         assert struct.unpack('>II', archive.read('images/icon.png')[16:24]) == (512, 512)
         assert json.loads(archive.read('ExpandedHotbarsPlus.json'))['AssemblyVersion'] == manifest['AssemblyVersion']
         overrides = json.loads(archive.read('images/plugin-overrides/manifest.json'))
+        fallback = overrides['Fallback']
+        assert fallback['File'] == 'images/plugin-fallback.png'
+        fallback_pixels = archive.read(fallback['File'])
+        assert fallback_pixels.startswith(b'\x89PNG\r\n\x1a\n')
+        fallback_width, fallback_height = struct.unpack('>II', fallback_pixels[16:24])
+        assert fallback_width == fallback_height and 80 <= fallback_width <= 4096
+        assert hashlib.sha256(fallback_pixels).hexdigest() == fallback['Sha256']
         names = set()
         for entry in overrides['Icons']:
             assert entry['InternalName'] not in names
@@ -35,7 +42,7 @@ try:
             width, height = struct.unpack('>II', data[16:24])
             assert width == height and 80 <= width <= 4096
             assert hashlib.sha256(data).hexdigest() == entry['Sha256']
-        assert 'Dalamud' in names
+        assert {'Dalamud', 'Stylist'} <= names
         shipped = {name for name in archive.namelist() if name.startswith('images/plugin-overrides/') and name.endswith('.png')}
         assert len(shipped) == len(names), 'Every override must have a manifest/credit entry'
         assert 'images/plugin-overrides/CREDITS.md' in archive.namelist()

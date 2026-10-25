@@ -4,6 +4,11 @@ using System.Linq;
 namespace ExpandedHotbars.Classes;
 
 public static class PluginIconOverrides {
+    public static string? FindFallback(string pluginDirectory) {
+        var path = Path.Combine(pluginDirectory, "images", "plugin-fallback.png");
+        return File.Exists(path) ? path : null;
+    }
+
     /// <summary>Overrides are optional and keyed by Dalamud's stable internal plugin name.</summary>
     public static string? Find(string pluginDirectory, string internalName) {
         if (string.IsNullOrEmpty(internalName) || internalName[0] == '.' ||

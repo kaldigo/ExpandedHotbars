@@ -19,7 +19,7 @@ public sealed class FavouritePluginSource {
     private object? imageCache;
     private MethodInfo? tryGetIcon;
     private FieldInfo? localPlugin;
-    private PropertyInfo? defaultIcon;
+    private bool iconsUnavailable;
     private bool initialized;
     private long nextRefresh;
     private IExposedPlugin[] snapshot = [];
@@ -59,19 +59,24 @@ public sealed class FavouritePluginSource {
 
     /// <summary>Returns a borrowed installer texture; callers must take their own reference.</summary>
     public IDalamudTextureWrap? GetIcon(IExposedPlugin? plugin) {
-        if (Error is not null) return null;
+        if (Error is not null || iconsUnavailable) return null;
         try {
             Initialize();
+            if (imageCache is null) {
+                imageCache = GetService("Dalamud.Interface.Internal.Windows.PluginImageCache");
+                tryGetIcon = imageCache.GetType().GetMethod("TryGetIcon")
+                    ?? throw new MissingMethodException("Dalamud plugin icons are unavailable.");
+            }
             if (plugin is null) {
-                return imageCache!.GetType().GetProperty("CorePluginIcon")?.GetValue(imageCache) as IDalamudTextureWrap
-                    ?? defaultIcon!.GetValue(imageCache) as IDalamudTextureWrap;
+                return imageCache!.GetType().GetProperty("CorePluginIcon")?.GetValue(imageCache) as IDalamudTextureWrap;
             }
             object?[] arguments = [localPlugin!.GetValue(plugin), plugin.Manifest, plugin.IsThirdParty, null, null];
             tryGetIcon!.Invoke(imageCache, arguments);
-            return arguments[3] as IDalamudTextureWrap ?? defaultIcon!.GetValue(imageCache) as IDalamudTextureWrap;
+            return arguments[3] as IDalamudTextureWrap;
         }
         catch (Exception exception) {
-            Fail(exception);
+            iconsUnavailable = true;
+            IPluginLog.Get().Warning(exception, "Favourite plugin installer icons are unavailable; using the packaged question mark.");
             return null;
         }
     }
@@ -79,23 +84,20 @@ public sealed class FavouritePluginSource {
     private void Initialize() {
         if (initialized) return;
         var assembly = typeof(IDalamudPluginInterface).Assembly;
-        object GetService(string name) {
-            var type = assembly.GetType(name, true)!;
-            var service = assembly.GetType("Dalamud.Service`1", true)!.MakeGenericType(type);
-            return service.GetMethod("Get", BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic)!.Invoke(null, null)!;
-        }
         configuration = GetService("Dalamud.Configuration.Internal.DalamudConfiguration");
         favourites = configuration.GetType().GetProperty("FavoritePluginInternalName")
             ?? throw new MissingMemberException("Dalamud favourites are unavailable.");
-        imageCache = GetService("Dalamud.Interface.Internal.Windows.PluginImageCache");
-        tryGetIcon = imageCache.GetType().GetMethod("TryGetIcon")
-            ?? throw new MissingMethodException("Dalamud plugin icons are unavailable.");
-        defaultIcon = imageCache.GetType().GetProperty("DefaultIcon")
-            ?? throw new MissingMemberException("Dalamud default icon is unavailable.");
         var exposedType = assembly.GetType("Dalamud.Plugin.ExposedPlugin", true)!;
         localPlugin = exposedType.GetFields(BindingFlags.Instance | BindingFlags.NonPublic)
             .Single(field => field.FieldType.FullName == "Dalamud.Plugin.Internal.Types.LocalPlugin");
         initialized = true;
+    }
+
+    private static object GetService(string name) {
+        var assembly = typeof(IDalamudPluginInterface).Assembly;
+        var type = assembly.GetType(name, true)!;
+        var service = assembly.GetType("Dalamud.Service`1", true)!.MakeGenericType(type);
+        return service.GetMethod("Get", BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic)!.Invoke(null, null)!;
     }
 
     private void Fail(Exception exception) {

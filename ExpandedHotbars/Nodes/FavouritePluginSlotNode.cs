@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Numerics;
 using System.Threading;
 using System.Threading.Tasks;
@@ -21,6 +22,7 @@ public sealed class FavouritePluginSlotNode : ImGuiIconButtonNode {
     private long nextIconCheck;
     private bool overrideLoaded;
     private bool overrideFailed;
+    private bool fallbackLoaded;
 
     /// <summary>Null denotes the leading Dalamud launcher rather than an installed plugin.</summary>
     public required IExposedPlugin? Plugin { get; set; }
@@ -44,11 +46,11 @@ public sealed class FavouritePluginSlotNode : ImGuiIconButtonNode {
     }
 
     public void Refresh(FavouritePluginSource source) {
-        var usable = Plugin is null || Plugin.IsLoaded && (Plugin.HasMainUi || Plugin.HasConfigUi);
+        var usable = Plugin is null || Plugin.IsLoaded && (PluginLauncher.HasMainAction(Plugin) || Plugin.HasConfigUi);
         Alpha = usable ? 1.0f : 0.45f;
         TextTooltip = Plugin is null ? "Dalamud\nLeft-click: Plugin list\nRight-click: Settings" : Plugin.Name + (usable
-            ? "\nLeft-click: " + (Plugin.HasMainUi ? "Open" : "Settings") +
-              "\nRight-click: " + (Plugin.HasConfigUi ? "Settings" : "Open")
+            ? "\nLeft-click: " + PluginLauncher.MainActionLabel(Plugin) +
+              "\nRight-click: " + (Plugin.HasConfigUi ? "Settings" : PluginLauncher.MainActionLabel(Plugin))
             : Plugin.IsLoaded ? "\nThis plugin has no Open or Settings button." : "\nEnable this plugin in the Dalamud installer to open it.");
 
         if (loading || Environment.TickCount64 < nextIconCheck) return;
@@ -59,13 +61,21 @@ public sealed class FavouritePluginSlotNode : ImGuiIconButtonNode {
             _ = LoadRoundedIcon(null, file);
             return;
         }
-        if (source.GetIcon(Plugin) is not { } texture || texture.Handle.Handle == currentIcon) return;
+        if (source.GetIcon(Plugin) is not { } texture) {
+            if (!fallbackLoaded && PluginIconOverrides.FindFallback(ExpandedHotbars.PluginInterface.AssemblyLocation.DirectoryName!) is { } fallback) {
+                loading = true;
+                _ = LoadRoundedIcon(null, fallback, true);
+            }
+            return;
+        }
+        if (texture.Handle.Handle == currentIcon) return;
         loading = true;
         _ = LoadRoundedIcon(texture.CreateWrapSharingLowLevelResource());
     }
 
-    private async Task LoadRoundedIcon(IDalamudTextureWrap? reference, string? overrideFile = null) {
+    private async Task LoadRoundedIcon(IDalamudTextureWrap? reference, string? overrideFile = null, bool isFallback = false) {
         var token = lifetime.Token;
+        var sourceHandle = reference?.Handle.Handle ?? 0;
         IDalamudTextureWrap? rounded = null;
         try {
             reference ??= await ITextureProvider.Get().GetFromFile(overrideFile!).RentAsync(token);
@@ -73,6 +83,14 @@ public sealed class FavouritePluginSlotNode : ImGuiIconButtonNode {
                 // RGBA8 at the game's high-resolution action icon size; no image library needed.
                 var (specification, bytes) = await ITextureReadbackProvider.Get().GetRawImageAsync(reference,
                     new TextureModificationArgs { DxgiFormat = 28, NewWidth = 80, NewHeight = 80 }, true, token);
+                if (!PluginIconVisibility.HasVisiblePixels(bytes, specification.Width, specification.Height, specification.Pitch)) {
+                    if (overrideFile is not null) throw new InvalidDataException("Packaged plugin icon is transparent.");
+                    currentIcon = sourceHandle;
+                    if (PluginIconOverrides.FindFallback(ExpandedHotbars.PluginInterface.AssemblyLocation.DirectoryName!) is { } fallback) {
+                        await LoadRoundedIcon(null, fallback, true);
+                    }
+                    return;
+                }
                 if (Plugin is null) RoundedPluginIcon.CompositeOnWhite(bytes, specification.Width, specification.Height, specification.Pitch);
                 RoundedPluginIcon.Apply(bytes, specification.Width, specification.Height, specification.Pitch);
                 rounded = ITextureProvider.Get().CreateFromRaw(specification, bytes, "Favourite plugin: " + InternalName);
@@ -81,8 +99,9 @@ public sealed class FavouritePluginSlotNode : ImGuiIconButtonNode {
                     LoadTexture(rounded);
                     ImageNode.TextureSize = new Vector2(specification.Width, specification.Height);
                     rounded = null; // Ownership transferred to the native image node.
-                    currentIcon = reference.Handle.Handle;
-                    overrideLoaded = overrideFile is not null;
+                    if (overrideFile is null) currentIcon = sourceHandle;
+                    overrideLoaded = overrideFile is not null && !isFallback;
+                    fallbackLoaded = isFallback;
                 }, token);
             }
         }
@@ -90,8 +109,14 @@ public sealed class FavouritePluginSlotNode : ImGuiIconButtonNode {
         catch (Exception exception) {
             IPluginLog.Get().Warning(exception, "Could not prepare favourite plugin icon for {Plugin}", InternalName);
             // A damaged/missing override must not prevent the original icon loading.
-            overrideFailed |= overrideFile is not null;
-            nextIconCheck = overrideFile is not null ? 0 : Environment.TickCount64 + 30000;
+            overrideFailed |= overrideFile is not null && !isFallback;
+            nextIconCheck = overrideFile is not null && !isFallback ? 0 : Environment.TickCount64 + 30000;
+            if (overrideFile is null) {
+                currentIcon = sourceHandle;
+                if (PluginIconOverrides.FindFallback(ExpandedHotbars.PluginInterface.AssemblyLocation.DirectoryName!) is { } fallback) {
+                    await LoadRoundedIcon(null, fallback, true);
+                }
+            }
         }
         finally {
             rounded?.Dispose();
