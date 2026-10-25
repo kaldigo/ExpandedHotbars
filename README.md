@@ -206,7 +206,7 @@ click fallbacks, export/import compatibility and icon corner masking.
 
 ### Packaged hotbar icon overrides
 
-The initial icon set covers Dalamud and 19 installed favourites. Each is a generated
+The bundled icon set covers Dalamud and the favourites listed in its manifest. Each is a generated
 reinterpretation of its original icon using native utility/menu icons as the visual
 style reference, with simple raised symbols and quiet background colours shared by artwork family.
 The cyan/magenta Kaldigo set shares indigo, the matching coral Punish-style set
@@ -234,3 +234,7 @@ Generation prompts are saved in `assets/icon-overrides/prompts.json`. These imag
 were created with the built-in image generator using the original plugin icons and
 a style reference sheet extracted locally from the game; the game reference sheet
 is not redistributed in this repository.
+
+The Kaldigo icon family includes the AutoRetainer fork bell and a distinct Steward
+inventory/checkmark emblem. Hotbar overrides still resolve by internal plugin name;
+AutoRetainer retains its shared identity and uses the Kaldigo artwork in this set.

@@ -44,10 +44,10 @@
     {
       "InternalName": "AutoRetainer",
       "File": "AutoRetainer.png",
-      "SourceRepository": "https://github.com/PunishXIV/AutoRetainer",
-      "ReferenceIcon": "https://puni.sh/api/plugins/icon/24",
-      "Method": "AI style transfer from original plugin icon, using native FFXIV utility/menu icons with quiet backgrounds shared by artwork family",
-      "Sha256": "b701f64072513d9b0d70fed41535f354665cf555ee3cd952afc50a3768b20b04"
+      "SourceRepository": "https://github.com/kaldigo/AutoRetainer",
+      "ReferenceIcon": "https://raw.githubusercontent.com/kaldigo/AutoRetainer/master/assets/icon.png",
+      "Method": "AI utility-style rendering of the recoloured Kaldigo fork bell, on the shared Kaldigo indigo field",
+      "Sha256": "8caba872e51c46f3ad1ecbd9bae642879cfcbf3eecbcc06b413780dd312ddd5a"
     },
     {
       "InternalName": "Avarice",
@@ -152,6 +152,14 @@
       "ReferenceIcon": "https://raw.githubusercontent.com/PunishXIV/Saucy/HEAD/Saucy/Icon.png",
       "Method": "AI style transfer from original plugin icon, using native FFXIV utility/menu icons with quiet backgrounds shared by artwork family",
       "Sha256": "9feb91e6bedf3f0280737567ba452e6587df9391e699ecfe2a102070a5c5944a"
+    },
+    {
+      "InternalName": "Steward",
+      "File": "Steward.png",
+      "SourceRepository": "https://github.com/kaldigo/FFXIVSteward",
+      "ReferenceIcon": "https://raw.githubusercontent.com/kaldigo/FFXIVSteward/main/assets/icon.png",
+      "Method": "Original AI-generated inventory/check utility emblem using the companion icon palette and Kaldigo indigo reference",
+      "Sha256": "2ed5455ef69802a00f92f1010d4350e992c1f67f3f4e20dae8e79bdfab6eaedc"
     },
     {
       "InternalName": "Stylist",
