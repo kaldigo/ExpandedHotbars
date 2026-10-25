@@ -6,15 +6,15 @@
       "File": "Accord.png",
       "SourceRepository": "https://github.com/kaldigo/FFXIVAccord",
       "ReferenceIcon": "https://raw.githubusercontent.com/kaldigo/FFXIVAccord/main/assets/icon.png",
-      "Method": "AI style transfer from original plugin icon, using native FFXIV utility/menu icons with quiet individual background colours",
-      "Sha256": "b2e464250374812bc5747860a33bf6332f66a03fea03ca456b16c52ba57dfe79"
+      "Method": "AI style transfer from original plugin icon, using native FFXIV utility/menu icons with quiet backgrounds shared by artwork family",
+      "Sha256": "effb3ca029f02e4f077d9124d5b5b110d2584830bd67170931a30bf53113c601"
     },
     {
       "InternalName": "Aetherworks",
       "File": "Aetherworks.png",
       "SourceRepository": "https://github.com/kaldigo/FFXIVAetherworks",
       "ReferenceIcon": "https://raw.githubusercontent.com/kaldigo/FFXIVAetherworks/main/assets/icon.png",
-      "Method": "AI style transfer from original plugin icon, using native FFXIV utility/menu icons with quiet individual background colours",
+      "Method": "AI style transfer from original plugin icon, using native FFXIV utility/menu icons with quiet backgrounds shared by artwork family",
       "Sha256": "b87f17afcaf7845729cedff567103b6cb887527e011a4c306b13feb48fcafc87"
     },
     {
@@ -22,23 +22,23 @@
       "File": "Artisan.png",
       "SourceRepository": "https://github.com/PunishXIV/Artisan",
       "ReferenceIcon": "https://raw.githubusercontent.com/PunishXIV/Artisan/HEAD/Artisan/Images/artisan-icon.png",
-      "Method": "AI style transfer from original plugin icon, using native FFXIV utility/menu icons with quiet individual background colours",
-      "Sha256": "a13f8f5a96ef5ea60bf266d288f5bf9b840fa71d1897ffc8039f231ea75bf204"
+      "Method": "AI style transfer from original plugin icon, using native FFXIV utility/menu icons with quiet backgrounds shared by artwork family",
+      "Sha256": "33a948e38829fd0f76219a4366b30b6b5552f34c3ea6ac0c470437c8a4d4bb88"
     },
     {
       "InternalName": "AutoDuty",
       "File": "AutoDuty.png",
       "SourceRepository": "https://github.com/erdelf/AutoDuty",
       "ReferenceIcon": "https://puni.sh/api/plugins/icon/54",
-      "Method": "AI style transfer from original plugin icon, using native FFXIV utility/menu icons with quiet individual background colours",
-      "Sha256": "820a93867acbb55adb5c08e98baf3daf058295062266d319f686ba3a467c08dd"
+      "Method": "AI style transfer from original plugin icon, using native FFXIV utility/menu icons with quiet backgrounds shared by artwork family",
+      "Sha256": "902b123e8838b4a6377623d5f9cc060b37784b40df2dd913d7c1b77b029a75aa"
     },
     {
       "InternalName": "AutoHook",
       "File": "AutoHook.png",
       "SourceRepository": "https://github.com/PunishXIV/AutoHook",
       "ReferenceIcon": "https://raw.githubusercontent.com/PunishXIV/AutoHook/HEAD/AutoHook/Assets/icon.png",
-      "Method": "AI style transfer from original plugin icon, using native FFXIV utility/menu icons with quiet individual background colours",
+      "Method": "AI style transfer from original plugin icon, using native FFXIV utility/menu icons with quiet backgrounds shared by artwork family",
       "Sha256": "c9e4c1021b7f80ffb0563cc1881e6e7eac401f146a6ccefead7fc94873437e46"
     },
     {
@@ -46,15 +46,15 @@
       "File": "AutoRetainer.png",
       "SourceRepository": "https://github.com/PunishXIV/AutoRetainer",
       "ReferenceIcon": "https://puni.sh/api/plugins/icon/24",
-      "Method": "AI style transfer from original plugin icon, using native FFXIV utility/menu icons with quiet individual background colours",
-      "Sha256": "12cea8d6faabc692101287b76de0bc093d126cf4f471d0349b9bc08dfe8fe775"
+      "Method": "AI style transfer from original plugin icon, using native FFXIV utility/menu icons with quiet backgrounds shared by artwork family",
+      "Sha256": "b701f64072513d9b0d70fed41535f354665cf555ee3cd952afc50a3768b20b04"
     },
     {
       "InternalName": "Avarice",
       "File": "Avarice.png",
       "SourceRepository": "https://github.com/PunishXIV/Avarice",
       "ReferenceIcon": "https://raw.githubusercontent.com/PunishXIV/Avarice/HEAD/Avarice/res/avarice_icon.png",
-      "Method": "AI style transfer from original plugin icon, using native FFXIV utility/menu icons with quiet individual background colours",
+      "Method": "AI style transfer from original plugin icon, using native FFXIV utility/menu icons with quiet backgrounds shared by artwork family",
       "Sha256": "d83385bb8c7195d40dd6f1fb0823cf092ff9b4b3780a2b968d6c2d99a7f3f6f2"
     },
     {
@@ -62,15 +62,15 @@
       "File": "BossModReborn.png",
       "SourceRepository": "https://github.com/FFXIV-CombatReborn/BossmodReborn",
       "ReferenceIcon": "https://raw.githubusercontent.com/FFXIV-CombatReborn/RebornAssets/main/IconAssets/BMR_Icon.png",
-      "Method": "AI style transfer from original plugin icon, using native FFXIV utility/menu icons with quiet individual background colours",
-      "Sha256": "ad8d6236351b27478a2b0d2f79699397c3568bdcfce7b9e004808f14e1e1625a"
+      "Method": "AI style transfer from original plugin icon, using native FFXIV utility/menu icons with quiet backgrounds shared by artwork family",
+      "Sha256": "9e331fb3fefb888086fc004682ef7d6af71951d558787843fbf719c0abd5343c"
     },
     {
       "InternalName": "Dalamud",
       "File": "Dalamud.png",
       "SourceRepository": "https://github.com/goatcorp/Dalamud",
       "ReferenceIcon": "https://raw.githubusercontent.com/goatcorp/DalamudAssets/master/UIRes/logo.png",
-      "Method": "AI style transfer from original plugin icon, using native FFXIV utility/menu icons with quiet individual background colours",
+      "Method": "AI style transfer from original plugin icon, using native FFXIV utility/menu icons with quiet backgrounds shared by artwork family",
       "Sha256": "988fce2492bf099aa3ef9a8f265008426e4e0694b21e779bd159ef831ccce7f0"
     },
     {
@@ -78,7 +78,7 @@
       "File": "DamageTerror.png",
       "SourceRepository": "https://github.com/MTVirux/DamageTerror",
       "ReferenceIcon": "https://raw.githubusercontent.com/MTVirux/DamageTerror/master/images/icon.png",
-      "Method": "AI style transfer from original plugin icon, using native FFXIV utility/menu icons with quiet individual background colours",
+      "Method": "AI style transfer from original plugin icon, using native FFXIV utility/menu icons with quiet backgrounds shared by artwork family",
       "Sha256": "407bf76054ee507cbdffa3171e5d7a50425cf12ff9da47e5fc1a97ec17a79f94"
     },
     {
@@ -86,15 +86,15 @@
       "File": "ExpandedHotbarsPlus.png",
       "SourceRepository": "https://github.com/kaldigo/ExpandedHotbars",
       "ReferenceIcon": "https://raw.githubusercontent.com/kaldigo/ExpandedHotbars/master/ExpandedHotbars/images/icon.png",
-      "Method": "AI style transfer from original plugin icon, using native FFXIV utility/menu icons with quiet individual background colours",
-      "Sha256": "8165455362d9b7f98269b6d8eb176541a8d4725fda3a9df031dff899380f8f15"
+      "Method": "AI style transfer from original plugin icon, using native FFXIV utility/menu icons with quiet backgrounds shared by artwork family",
+      "Sha256": "64ddb73201d41464611f92ee37edeff44f3be07deb5ce9f0387a56b6fca0af43"
     },
     {
       "InternalName": "GatherBuddyReborn",
       "File": "GatherBuddyReborn.png",
       "SourceRepository": "https://github.com/FFXIV-CombatReborn/GatherBuddyReborn",
       "ReferenceIcon": "https://raw.githubusercontent.com/FFXIV-CombatReborn/RebornAssets/main/IconAssets/GBR_Icon.png",
-      "Method": "AI style transfer from original plugin icon, using native FFXIV utility/menu icons with quiet individual background colours",
+      "Method": "AI style transfer from original plugin icon, using native FFXIV utility/menu icons with quiet backgrounds shared by artwork family",
       "Sha256": "ea65d117793afdaaa5bc77a29638072843556505c2148baa66201e51ee9df777"
     },
     {
@@ -102,7 +102,7 @@
       "File": "Gearsetter.png",
       "SourceRepository": "https://git.carvel.li/liza/Gearsetter",
       "ReferenceIcon": "https://puni.sh/api/plugins/icon/98",
-      "Method": "AI style transfer from original plugin icon, using native FFXIV utility/menu icons with quiet individual background colours",
+      "Method": "AI style transfer from original plugin icon, using native FFXIV utility/menu icons with quiet backgrounds shared by artwork family",
       "Sha256": "dc3fe91652a0a6f665a021d1a9442e595446cbf89043a38ab721e36bb1cbd327"
     },
     {
@@ -110,7 +110,7 @@
       "File": "Glamaholic.png",
       "SourceRepository": "https://github.com/caitlyn-gg/Glamaholic",
       "ReferenceIcon": "https://raw.githubusercontent.com/goatcorp/PluginDistD17/main/testing-live/Glamaholic/images/icon.png",
-      "Method": "AI style transfer from original plugin icon, using native FFXIV utility/menu icons with quiet individual background colours",
+      "Method": "AI style transfer from original plugin icon, using native FFXIV utility/menu icons with quiet backgrounds shared by artwork family",
       "Sha256": "89cba2c5c8e48e912d82323e54fc48b2118323b14a4c079693cdb2a8c7dddcbf"
     },
     {
@@ -118,7 +118,7 @@
       "File": "GlamourLog.png",
       "SourceRepository": "https://github.com/Jaksuhn/ffxiv_glamourlog",
       "ReferenceIcon": "https://puni.sh/api/plugins/icon/136",
-      "Method": "AI style transfer from original plugin icon, using native FFXIV utility/menu icons with quiet individual background colours",
+      "Method": "AI style transfer from original plugin icon, using native FFXIV utility/menu icons with quiet backgrounds shared by artwork family",
       "Sha256": "7de09815361a8a51c77b5a020e61dbb3d4e397dee084b5fde5cfb78dcdbdd17f"
     },
     {
@@ -126,7 +126,7 @@
       "File": "HUDManager.png",
       "SourceRepository": "https://github.com/zacharied/FFXIV-Plugin-HudManager",
       "ReferenceIcon": "https://raw.githubusercontent.com/goatcorp/PluginDistD17/main/testing-live/HUDManager/images/icon.png",
-      "Method": "AI style transfer from original plugin icon, using native FFXIV utility/menu icons with quiet individual background colours",
+      "Method": "AI style transfer from original plugin icon, using native FFXIV utility/menu icons with quiet backgrounds shared by artwork family",
       "Sha256": "363976f89bf736a94ff3074eead4e78230a56d4b51656eff9516bd63c1c16e32"
     },
     {
@@ -134,7 +134,7 @@
       "File": "Hunty.png",
       "SourceRepository": "https://github.com/Infiziert90/Hunty",
       "ReferenceIcon": "https://raw.githubusercontent.com/goatcorp/PluginDistD17/main/testing-live/Hunty/images/icon.png",
-      "Method": "AI style transfer from original plugin icon, using native FFXIV utility/menu icons with quiet individual background colours",
+      "Method": "AI style transfer from original plugin icon, using native FFXIV utility/menu icons with quiet backgrounds shared by artwork family",
       "Sha256": "fac27a8d28937259cb5a278a681fa6fa2bdb5e547d27bc3db893a6d48b572c52"
     },
     {
@@ -142,24 +142,24 @@
       "File": "Questionable.png",
       "SourceRepository": "https://github.com/PunishXIV/Questionable",
       "ReferenceIcon": "https://puni.sh/api/plugins/icon/94",
-      "Method": "AI style transfer from original plugin icon, using native FFXIV utility/menu icons with quiet individual background colours",
-      "Sha256": "4b50889868c59622429826aeb8c7707ce521b852a31ff5e520c2b165a401f8e0"
+      "Method": "AI style transfer from original plugin icon, using native FFXIV utility/menu icons with quiet backgrounds shared by artwork family",
+      "Sha256": "8f4e0d65d38185054a78ad3d19147829fa947ce2e13b5ca4ef0b1dd5ab56ebee"
     },
     {
       "InternalName": "Saucy",
       "File": "Saucy.png",
       "SourceRepository": "https://github.com/PunishXIV/Saucy",
       "ReferenceIcon": "https://raw.githubusercontent.com/PunishXIV/Saucy/HEAD/Saucy/Icon.png",
-      "Method": "AI style transfer from original plugin icon, using native FFXIV utility/menu icons with quiet individual background colours",
-      "Sha256": "65b339626b699bdf70b2eb47447072346a94716946bd53dcb9fe18049ffea3d0"
+      "Method": "AI style transfer from original plugin icon, using native FFXIV utility/menu icons with quiet backgrounds shared by artwork family",
+      "Sha256": "9feb91e6bedf3f0280737567ba452e6587df9391e699ecfe2a102070a5c5944a"
     },
     {
       "InternalName": "WrathCombo",
       "File": "WrathCombo.png",
       "SourceRepository": "https://github.com/kaldigo/WrathCombo",
       "ReferenceIcon": "https://raw.githubusercontent.com/kaldigo/WrathCombo/main/assets/icon.png",
-      "Method": "AI style transfer from original plugin icon, using native FFXIV utility/menu icons with quiet individual background colours",
-      "Sha256": "1256fe90b3184bd921c0e72b1572ad3d199a031ba4d457bb0af025c6e860cc8d"
+      "Method": "AI style transfer from original plugin icon, using native FFXIV utility/menu icons with quiet backgrounds shared by artwork family",
+      "Sha256": "933e6861926285c98ec8a9f5fe419202c86fdf7b3dc18ac43ca6dfeb5e446713"
     }
   ]
 }

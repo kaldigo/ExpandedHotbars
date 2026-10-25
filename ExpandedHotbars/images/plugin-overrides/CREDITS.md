@@ -1,6 +1,6 @@
 # Hotbar icon override credits
 
-These replacement renderings were generated with the built-in image generator from the existing plugin icon plus a native FFXIV utility/menu-icon style reference with quiet individual background colours. They are fan-made hotbar artwork, not official replacement branding. Original plugin names, marks and reference artwork belong to their respective creators. The game reference sheet was extracted locally for style guidance and is not bundled.
+These replacement renderings were generated with the built-in image generator from the existing plugin icon plus a native FFXIV utility/menu-icon style reference with quiet background colours shared by artwork family. They are fan-made hotbar artwork, not official replacement branding. Original plugin names, marks and reference artwork belong to their respective creators. The game reference sheet was extracted locally for style guidance and is not bundled.
 
 | Plugin | Source repository | Reference artwork | Source repository license |
 | --- | --- | --- | --- |

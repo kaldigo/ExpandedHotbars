@@ -196,8 +196,13 @@ click fallbacks, export/import compatibility and icon corner masking.
 
 The initial icon set covers Dalamud and 19 installed favourites. Each is a generated
 reinterpretation of its original icon using native utility/menu icons as the visual
-style reference, with simple raised symbols and quiet individual background colours.
-Dalamud uses a white background. A common rounded-corner mask is applied
+style reference, with simple raised symbols and quiet background colours shared by artwork family.
+The cyan/magenta Kaldigo set shares indigo, the matching coral Punish-style set
+(including AutoDuty) shares brown, and the Reborn ring pair shares green. These
+artwork families are independent of repository groups; AutoHook retains blue for
+its different source artwork. Colour references and membership are recorded in
+`assets/icon-overrides/style-families.json`. Dalamud uses a white background.
+A common rounded-corner mask is applied
 in game, including to the original installer icons used as fallbacks.
 
 Overrides are isolated to these hotbar slots. They do not change plugin identities

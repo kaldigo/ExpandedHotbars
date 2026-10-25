@@ -1,0 +1,38 @@
+{
+  "Note": "Artwork families, independent of source repository or installation feed. AutoHook uses different artwork and retains its blue field.",
+  "Families": [
+    {
+      "StyleFamily": "Kaldigo cyan-magenta",
+      "Background": "#272640",
+      "Reference": "Aetherworks",
+      "Icons": [
+        "Accord",
+        "Aetherworks",
+        "ExpandedHotbarsPlus",
+        "WrathCombo"
+      ]
+    },
+    {
+      "StyleFamily": "Punish coral utility",
+      "Background": "#49311F",
+      "Reference": "Avarice",
+      "Icons": [
+        "Artisan",
+        "AutoDuty",
+        "AutoRetainer",
+        "Avarice",
+        "Questionable",
+        "Saucy"
+      ]
+    },
+    {
+      "StyleFamily": "Reborn ornate ring",
+      "Background": "#193B2B",
+      "Reference": "GatherBuddyReborn",
+      "Icons": [
+        "BossModReborn",
+        "GatherBuddyReborn"
+      ]
+    }
+  ]
+}
