@@ -138,6 +138,14 @@
       "Sha256": "fac27a8d28937259cb5a278a681fa6fa2bdb5e547d27bc3db893a6d48b572c52"
     },
     {
+      "InternalName": "ItemSearchPlugin",
+      "File": "ItemSearchPlugin.png",
+      "SourceRepository": "https://github.com/Caraxi/ItemSearchPlugin",
+      "ReferenceIcon": "https://raw.githubusercontent.com/Caraxi/ItemSearchPlugin/master/icon.png",
+      "Method": "AI utility-style rendering of the original magnifying-glass emblem, with a quiet slate-blue field",
+      "Sha256": "6bb6f89c6a89a8cee110d591c9d1720ce76a6115430f904f8c2a744828409b7e"
+    },
+    {
       "InternalName": "Questionable",
       "File": "Questionable.png",
       "SourceRepository": "https://github.com/PunishXIV/Questionable",
