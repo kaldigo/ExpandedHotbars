@@ -1,5 +1,5 @@
 {
-  "Note": "Artwork families, independent of source repository or installation feed. AutoHook uses different artwork and retains its blue field.",
+  "Note": "Artwork families describe the chosen hotbar presentation. AutoHook shares the Puni.sh brown field.",
   "Families": [
     {
       "StyleFamily": "Kaldigo cyan-magenta",
@@ -22,6 +22,7 @@
       "Icons": [
         "Artisan",
         "AutoDuty",
+        "AutoHook",
         "Automaton",
         "Avarice",
         "LazyLoot",

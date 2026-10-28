@@ -68,3 +68,5 @@ These 29 hotbar renderings were generated with the built-in image tool. Source m
 | TriadBuddy | [Source](https://github.com/MgAl2O4/FFTriadBuddyDalamud) | [Original icon](https://raw.githubusercontent.com/goatcorp/DalamudPluginsD17/main/stable/TriadBuddy/images/icon.png) | MIT (text retained) |
 | vnavmesh | [Source](https://github.com/awgil/ffxiv_navmesh) | [Original icon](https://puni.sh/api/plugins/icon/48) | See source; no license returned by repository metadata |
 | YesAlready | [Source](https://github.com/PunishXIV/YesAlready/) | [Original icon](https://puni.sh/api/plugins/icon/26) | See source; no license returned by repository metadata |
+
+AutoHook shares the Puni.sh brown background (#49311F); its silver fishing rod and pink fish retain their original colours and silhouette. This background correction was made with the built-in image generator.

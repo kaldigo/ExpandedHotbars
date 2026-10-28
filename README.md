@@ -212,8 +212,8 @@ reinterpretation of its original icon using native utility/menu icons as the vis
 style reference, with simple raised symbols and quiet background colours shared by artwork family.
 The cyan/magenta Kaldigo set shares indigo, the matching coral Punish-style set
 (including AutoDuty) shares brown, and the Reborn ring pair shares green. These
-artwork families are independent of repository groups; AutoHook retains blue for
-its different source artwork. Colour references and membership are recorded in
+artwork families retain recognizable foreground symbols; AutoHook shares the
+Puni.sh brown field. Colour references and membership are recorded in
 `assets/icon-overrides/style-families.json`. The Lalalazy helpers share green and use
 large food, coin or journal symbols with small sleeping-character corner badges.
 The purple Nightmare utility emblems share violet. Simple Tweaks retains cyan/red
