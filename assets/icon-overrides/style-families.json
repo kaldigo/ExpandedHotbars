@@ -22,8 +22,16 @@
       "Icons": [
         "Artisan",
         "AutoDuty",
+        "Automaton",
         "Avarice",
-        "Saucy"
+        "LazyLoot",
+        "Marketbuddy",
+        "Palantir",
+        "PandorasBox",
+        "Saucy",
+        "Splatoon",
+        "vnavmesh",
+        "YesAlready"
       ]
     },
     {
@@ -33,6 +41,132 @@
       "Icons": [
         "BossModReborn",
         "GatherBuddyReborn"
+      ]
+    },
+    {
+      "StyleFamily": "Allagan illustrated utility",
+      "Background": "#263B40",
+      "Reference": "AllaganMarket",
+      "Icons": [
+        "AllaganMarket",
+        "InventoryTools"
+      ]
+    },
+    {
+      "StyleFamily": "Nightmare violet utility",
+      "Background": "#2C1C42",
+      "Reference": "AntiAfkKick-Dalamud",
+      "Icons": [
+        "AntiAfkKick-Dalamud",
+        "Lifestream",
+        "TextAdvance"
+      ]
+    },
+    {
+      "StyleFamily": "Silver compass utility",
+      "Background": "#34314D",
+      "Reference": "AutoSightseeingLog",
+      "Icons": [
+        "AutoSightseeingLog"
+      ]
+    },
+    {
+      "StyleFamily": "Cyan currency utility",
+      "Background": "#173E4E",
+      "Reference": "CurrencySpender",
+      "Icons": [
+        "CurrencySpender"
+      ]
+    },
+    {
+      "StyleFamily": "Wood puzzle utility",
+      "Background": "#493B29",
+      "Reference": "FauxHollowsSolver",
+      "Icons": [
+        "FauxHollowsSolver"
+      ]
+    },
+    {
+      "StyleFamily": "Multicolour chart utility",
+      "Background": "#26323C",
+      "Reference": "IINACT",
+      "Icons": [
+        "IINACT"
+      ]
+    },
+    {
+      "StyleFamily": "Gold coin utility",
+      "Background": "#493E27",
+      "Reference": "ItemVendorLocation",
+      "Icons": [
+        "ItemVendorLocation",
+        "PriceInsight"
+      ]
+    },
+    {
+      "StyleFamily": "Lalalazy sleeping helpers",
+      "Background": "#203F2A",
+      "Reference": "LazyFoodBuff",
+      "Icons": [
+        "LazyFoodBuff",
+        "LazyMarketCompanion",
+        "LazyWTMath"
+      ]
+    },
+    {
+      "StyleFamily": "Gold map-marker utility",
+      "Background": "#233B37",
+      "Reference": "MinimapMarkerMagnitude",
+      "Icons": [
+        "MinimapMarkerMagnitude"
+      ]
+    },
+    {
+      "StyleFamily": "Mappingway portrait utility",
+      "Background": "#21434A",
+      "Reference": "MiniMappingway",
+      "Icons": [
+        "MiniMappingway"
+      ]
+    },
+    {
+      "StyleFamily": "Parchment journal utility",
+      "Background": "#403324",
+      "Reference": "QuestMap",
+      "Icons": [
+        "QuestMap"
+      ]
+    },
+    {
+      "StyleFamily": "Action-stack utility",
+      "Background": "#26394A",
+      "Reference": "ReActionEx",
+      "Icons": [
+        "ReActionEx"
+      ]
+    },
+    {
+      "StyleFamily": "Island utility",
+      "Background": "#23454A",
+      "Reference": "ReSanctuary",
+      "Icons": [
+        "ReSanctuary"
+      ]
+    },
+    {
+      "StyleFamily": "Simple Tweaks cyan-red",
+      "Background": "#26383D",
+      "Reference": "SimpleTweaksPlugin",
+      "Icons": [
+        "SimpleTweaksPlugin"
+      ]
+    },
+    {
+      "StyleFamily": "Triad card utility",
+      "Background": "#223A51",
+      "Reference": "TriadBuddy",
+      "Icons": [
+        "TriadBuddy"
       ]
     }
   ]

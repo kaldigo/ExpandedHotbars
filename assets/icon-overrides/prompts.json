@@ -103,5 +103,235 @@
   {
     "id": "ItemSearchPlugin",
     "prompt": "Use case: style-transfer. Create ONE square native FFXIV UTILITY/MENU-style hotbar icon for Item Search. Image 1 is the original ItemSearchPlugin icon and defines the recognizable subject: ONE bold magnifying glass, round lens in the upper-left and a short thick handle running diagonally toward the lower-right, with a blue circular lens center. Image 2 is the approved AutoHook hotbar icon: match its clean readable utility-symbol relief and modest bevel, but do not copy its hook/fish shapes. Image 3 is a sheet of native FFXIV UTILITY/MENU icons for the compact functional rendering style only, not their red backgrounds. Redraw the original magnifying-glass silhouette with a pale silver/pewter raised circular rim, a simple cobalt-blue lens center, and a dark graphite handle with a subtle silver edge so it remains readable against the field. Quiet restrained painted shading on the foreground only; no realistic lens scene or reflection, no transparent lens. Background must be a smooth SOLID flat muted slate-blue #26394A with no gradient, noise, vignette, patterns, glow or decoration. Keep the whole magnifying glass centered as a coherent symbol with consistent breathing room, occupying about 75 percent of the square. Clear at 40x40 pixels. No added inventory objects, items, text, letters, numerals, badges, sparkles, particles, action effects, strong 3D gloss, outer app frame or pre-rounded canvas corners. Full-bleed opaque square; runtime supplies corner rounding."
+  },
+  {
+    "id": "AllaganMarket",
+    "prompt": "Use case: style-transfer. Produce ONE square FFXIV UTILITY/MENU-style HOTBAR ICON. Image 1 is the source plugin artwork: preserve its recognizable main symbol and characteristic foreground palette. Image 2 is an approved utility hotbar icon, for restrained raised-enamel relief, modest bevel, broad readable shapes and small-size clarity, not its subject. Keep the background a single smooth SOLID color, with NO texture, gradient, vignette, scenery, glow, flames, sparkles or particles. Remove source app frames, small corner badges, lettering and decorative backgrounds. Foreground shading must be quiet and useful to the silhouette. Center the emblem at about 75 percent of the full-bleed opaque square, with breathing room. No outer frame, pre-rounded canvas corners, new text or unrelated objects. Clear at 40 pixels. Keep the original wooden market stall with an arched wooden awning, brown support posts and a few bold cyan crystal spires rising behind it. Remove ALL 'ALLAGAN MARKET' lettering and logos so the subject is one compact recognizable crystal-market stall, not a sign full of tiny writing. Warm brown wood and pale cyan crystals; simple shallow native utility relief. Solid deep teal background #263B40.",
+    "Background": "#263B40",
+    "StyleFamily": "Allagan illustrated utility",
+    "Original": false,
+    "ExportPixels": 512
+  },
+  {
+    "id": "AntiAfkKick-Dalamud",
+    "prompt": "Use case: style-transfer. Produce ONE square FFXIV UTILITY/MENU-style HOTBAR ICON. Image 1 is the source plugin artwork: preserve its recognizable main symbol and characteristic foreground palette. Image 2 is an approved utility hotbar icon, for restrained raised-enamel relief, modest bevel, broad readable shapes and small-size clarity, not its subject. Keep the background a single smooth SOLID color, with NO texture, gradient, vignette, scenery, glow, flames, sparkles or particles. Remove source app frames, small corner badges, lettering and decorative backgrounds. Foreground shading must be quiet and useful to the silhouette. Center the emblem at about 75 percent of the full-bleed opaque square, with breathing room. No outer frame, pre-rounded canvas corners, new text or unrelated objects. Clear at 40 pixels. Preserve the vivid violet computer KEYBOARD with a short curved cable above it, and the white circular refresh/keep-active arrow at its lower right. Broad simplified keycaps, only a few clear rows; no tiny letters. Quiet violet enamel keyboard and ivory arrow, no black app border. Solid dark violet #2C1C42.",
+    "Background": "#2C1C42",
+    "StyleFamily": "Nightmare violet utility",
+    "Original": false,
+    "ExportPixels": 512
+  },
+  {
+    "id": "Automaton",
+    "prompt": "Use case: style-transfer. Produce ONE square FFXIV UTILITY/MENU-style HOTBAR ICON. Image 1 is the source plugin artwork: preserve its recognizable main symbol and characteristic foreground palette. Image 2 is an approved utility hotbar icon, for restrained raised-enamel relief, modest bevel, broad readable shapes and small-size clarity, not its subject. Keep the background a single smooth SOLID color, with NO texture, gradient, vignette, scenery, glow, flames, sparkles or particles. Remove source app frames, small corner badges, lettering and decorative backgrounds. Foreground shading must be quiet and useful to the silhouette. Center the emblem at about 75 percent of the full-bleed opaque square, with breathing room. No outer frame, pre-rounded canvas corners, new text or unrelated objects. Clear at 40 pixels. Preserve the source's red document/list outline in the center, white gear with a small play triangle at the upper left, and small white handcuff-loop symbol at lower right. Simplify these into one coherent utility emblem with only three short red list strokes; clean broad shapes, not text. Preserve white and coral-red foreground. Same flat brown background #49311F as image 2. Remove the outer red frame and corner badge.",
+    "Background": "#49311F",
+    "StyleFamily": "Punish coral utility",
+    "Original": false,
+    "ExportPixels": 512
+  },
+  {
+    "id": "AutoSightseeingLog",
+    "prompt": "Use case: style-transfer. Produce ONE square FFXIV UTILITY/MENU-style HOTBAR ICON. Image 1 is the source plugin artwork: preserve its recognizable main symbol and characteristic foreground palette. Image 2 is an approved utility hotbar icon, for restrained raised-enamel relief, modest bevel, broad readable shapes and small-size clarity, not its subject. Keep the background a single smooth SOLID color, with NO texture, gradient, vignette, scenery, glow, flames, sparkles or particles. Remove source app frames, small corner badges, lettering and decorative backgrounds. Foreground shading must be quiet and useful to the silhouette. Center the emblem at about 75 percent of the full-bleed opaque square, with breathing room. No outer frame, pre-rounded canvas corners, new text or unrelated objects. Clear at 40 pixels. Preserve the pale silver/ivory COMPASS ROSE with an outer circular ring and diagonal navigation needle. Simplify into eight broad compass points, four longer cardinal points and four shorter intercardinal points. One clear needle points northeast from its central hub. Eliminate the source's entire swirling colored background. Background is solid muted violet-slate #34314D. Calm silver utility symbol, not an attack or elaborate magical seal.",
+    "Background": "#34314D",
+    "StyleFamily": "Silver compass utility",
+    "ExportPixels": 512
+  },
+  {
+    "id": "CurrencySpender",
+    "prompt": "Use case: style-transfer. Produce ONE square FFXIV UTILITY/MENU-style HOTBAR ICON. Image 1 is the source plugin artwork: preserve its recognizable main symbol and characteristic foreground palette. Image 2 is an approved utility hotbar icon, for restrained raised-enamel relief, modest bevel, broad readable shapes and small-size clarity, not its subject. Keep the background a single smooth SOLID color, with NO texture, gradient, vignette, scenery, glow, flames, sparkles or particles. Remove source app frames, small corner badges, lettering and decorative backgrounds. Foreground shading must be quiet and useful to the silhouette. Center the emblem at about 75 percent of the full-bleed opaque square, with breathing room. No outer frame, pre-rounded canvas corners, new text or unrelated objects. Clear at 40 pixels. Preserve the original cyan BANKNOTE symbol: a wide rounded rectangular note, large hollow central circle, one small dot to either side, and a second note edge offset beneath it. One simple raised cyan utility emblem, not a pile of detailed money. No currency lettering or numbers. Solid deep blue-teal background #173E4E.",
+    "Background": "#173E4E",
+    "StyleFamily": "Cyan currency utility",
+    "Original": false,
+    "ExportPixels": 512
+  },
+  {
+    "id": "FauxHollowsSolver",
+    "prompt": "Use case: style-transfer. Produce ONE square FFXIV UTILITY/MENU-style HOTBAR ICON. Image 1 is the source plugin artwork: preserve its recognizable main symbol and characteristic foreground palette. Image 2 is an approved utility hotbar icon, for restrained raised-enamel relief, modest bevel, broad readable shapes and small-size clarity, not its subject. Keep the background a single smooth SOLID color, with NO texture, gradient, vignette, scenery, glow, flames, sparkles or particles. Remove source app frames, small corner badges, lettering and decorative backgrounds. Foreground shading must be quiet and useful to the silhouette. Center the emblem at about 75 percent of the full-bleed opaque square, with breathing room. No outer frame, pre-rounded canvas corners, new text or unrelated objects. Clear at 40 pixels. The source is a wooden Faux Hollows wordmark tile. Remove the lettering and express the plugin's puzzle-solving purpose as ONE simple wooden 3-by-3 puzzle board with a small ivory/golden fox-face emblem in its center. Keep warm wood colors, broad tile divisions, two clear fox ears and a simple muzzle. No tiny tile drawings, numbers or lettering. Quiet native utility relief, flat warm umber background #493B29.",
+    "Background": "#493B29",
+    "StyleFamily": "Wood puzzle utility",
+    "Original": false,
+    "ExportPixels": 512
+  },
+  {
+    "id": "IINACT",
+    "prompt": "Use case: style-transfer. Produce ONE square FFXIV UTILITY/MENU-style HOTBAR ICON. Image 1 is the source plugin artwork: preserve its recognizable main symbol and characteristic foreground palette. Image 2 is an approved utility hotbar icon, for restrained raised-enamel relief, modest bevel, broad readable shapes and small-size clarity, not its subject. Keep the background a single smooth SOLID color, with NO texture, gradient, vignette, scenery, glow, flames, sparkles or particles. Remove source app frames, small corner badges, lettering and decorative backgrounds. Foreground shading must be quiet and useful to the silhouette. Center the emblem at about 75 percent of the full-bleed opaque square, with breathing room. No outer frame, pre-rounded canvas corners, new text or unrelated objects. Clear at 40 pixels. Preserve exactly FOUR broad rounded vertical BAR-CHART columns, left to right amber/yellow, violet, rose-red and light blue, on a simple silver L-shaped baseline. The violet bar is tallest; the amber and blue bars are shorter. Remove the source's graph-paper grid and white rounded app tile. Clean softly raised colored-enamel bars. Solid slate background #26323C.",
+    "Background": "#26323C",
+    "StyleFamily": "Multicolour chart utility",
+    "Original": false,
+    "ExportPixels": 512
+  },
+  {
+    "id": "InventoryTools",
+    "prompt": "Use case: style-transfer. Produce ONE square FFXIV UTILITY/MENU-style HOTBAR ICON. Image 1 is the source plugin artwork: preserve its recognizable main symbol and characteristic foreground palette. Image 2 is an approved utility hotbar icon, for restrained raised-enamel relief, modest bevel, broad readable shapes and small-size clarity, not its subject. Keep the background a single smooth SOLID color, with NO texture, gradient, vignette, scenery, glow, flames, sparkles or particles. Remove source app frames, small corner badges, lettering and decorative backgrounds. Foreground shading must be quiet and useful to the silhouette. Center the emblem at about 75 percent of the full-bleed opaque square, with breathing room. No outer frame, pre-rounded canvas corners, new text or unrelated objects. Clear at 40 pixels. Remove all the large Allagan Tools lettering. Retain and reconstruct the golden crossed workshop-tool silhouette behind the words as two simple overlapping gold tools, a broad hammer and a wrench, with dark brown handles. Bold coherent crossed-tool emblem rather than little inventory objects. Gold/bronze foreground on the same deep teal #263B40 as Allagan Market. No lettering or new badges.",
+    "Background": "#263B40",
+    "StyleFamily": "Allagan illustrated utility",
+    "Original": false,
+    "ExportPixels": 512
+  },
+  {
+    "id": "ItemVendorLocation",
+    "prompt": "Use case: style-transfer. Produce ONE square FFXIV UTILITY/MENU-style HOTBAR ICON. Image 1 is the source plugin artwork: preserve its recognizable main symbol and characteristic foreground palette. Image 2 is an approved utility hotbar icon, for restrained raised-enamel relief, modest bevel, broad readable shapes and small-size clarity, not its subject. Keep the background a single smooth SOLID color, with NO texture, gradient, vignette, scenery, glow, flames, sparkles or particles. Remove source app frames, small corner badges, lettering and decorative backgrounds. Foreground shading must be quiet and useful to the silhouette. Center the emblem at about 75 percent of the full-bleed opaque square, with breathing room. No outer frame, pre-rounded canvas corners, new text or unrelated objects. Clear at 40 pixels. Preserve a single round GOLD COIN with a bold dark QUESTION MARK cut into its face, as the original vendor-location icon. A simple raised rim and only the question-mark symbol, no lettering, tiny coin portrait, numerals or micro-engraving. Broad readable gold utility coin. Background solid dark olive-brown #493E27.",
+    "Background": "#493E27",
+    "StyleFamily": "Gold coin utility",
+    "Original": false,
+    "ExportPixels": 512
+  },
+  {
+    "id": "LazyFoodBuff",
+    "prompt": "Use case: precise-object-edit. REDESIGN THE LAYOUT of the Lalalazy utility icon. Image 1 is the current icon: the character is currently too large and the useful object is trapped in a speech bubble. Reverse that hierarchy. REMOVE the speech bubble completely. The functional object must become the large centered PRIMARY emblem, occupying about 75 percent of the square and readable at 40 pixels. Put the same brown-haired sleeping Lalafell head, with closed smiling eyes and only a tiny ivory pillow edge, as a SMALL CORNER BADGE at the BOTTOM RIGHT, around 25 to 28 percent of the canvas. The face must not obscure the main object. Keep it a warm softly painted native FFXIV utility icon, with clean broad shapes, restrained shallow relief and no scene. Preserve the quiet SOLID dark green #203F2A family background. No text, letters, Z symbols, new frames, glow, particles or pre-rounded canvas corners. PRIMARY OBJECT: the large orange FOOD BOWL from the old speech bubble, with a simple broad soup/rice surface and a few large colorful food shapes. It should fill the center-left/upper area; tiny sleeping head at bottom right. Image 2 is only the approved shallow utility rendering reference; do not copy its hook or fish.",
+    "Background": "#203F2A",
+    "StyleFamily": "Lalalazy sleeping helpers",
+    "Original": false,
+    "ExportPixels": 512
+  },
+  {
+    "id": "LazyLoot",
+    "prompt": "Use case: style-transfer. Produce ONE square FFXIV UTILITY/MENU-style HOTBAR ICON. Image 1 is the source plugin artwork: preserve its recognizable main symbol and characteristic foreground palette. Image 2 is an approved utility hotbar icon, for restrained raised-enamel relief, modest bevel, broad readable shapes and small-size clarity, not its subject. Keep the background a single smooth SOLID color, with NO texture, gradient, vignette, scenery, glow, flames, sparkles or particles. Remove source app frames, small corner badges, lettering and decorative backgrounds. Foreground shading must be quiet and useful to the silhouette. Center the emblem at about 75 percent of the full-bleed opaque square, with breathing room. No outer frame, pre-rounded canvas corners, new text or unrelated objects. Clear at 40 pixels. Preserve the coral/orange slanted FACETED DIAMOND/loot crystal at lower left, its broad interior facet lines, and THREE simple round rising sleep bubbles. Remove the Z letters; no replacement text. Source orange at left to coral-pink at right. Keep the diamond a clean utility outline rather than a glowing magical gem. Same flat brown background #49311F as image 2.",
+    "Background": "#49311F",
+    "StyleFamily": "Punish coral utility",
+    "Original": false,
+    "ExportPixels": 512
+  },
+  {
+    "id": "LazyMarketCompanion",
+    "prompt": "Use case: precise-object-edit. REDESIGN THE LAYOUT of the Lalalazy utility icon. Image 1 is the current icon: the character is currently too large and the useful object is trapped in a speech bubble. Reverse that hierarchy. REMOVE the speech bubble completely. The functional object must become the large centered PRIMARY emblem, occupying about 75 percent of the square and readable at 40 pixels. Put the same brown-haired sleeping Lalafell head, with closed smiling eyes and only a tiny ivory pillow edge, as a SMALL CORNER BADGE at the BOTTOM RIGHT, around 25 to 28 percent of the canvas. The face must not obscure the main object. Keep it a warm softly painted native FFXIV utility icon, with clean broad shapes, restrained shallow relief and no scene. Preserve the quiet SOLID dark green #203F2A family background. No text, letters, Z symbols, new frames, glow, particles or pre-rounded canvas corners. PRIMARY OBJECT: one large GOLD COIN from the old speech bubble, with a broad clean rim and simple shiny center, no letters or numerals. Image 2 is the REWORKED Lalalazy family layout: MATCH its exact background and small sleeping-head badge at bottom right. Replace its large food bowl with the coin. Do not copy the bowl or preserve any speech bubble.",
+    "Background": "#203F2A",
+    "StyleFamily": "Lalalazy sleeping helpers",
+    "Original": false,
+    "ExportPixels": 512
+  },
+  {
+    "id": "LazyWTMath",
+    "prompt": "Use case: precise-object-edit. REDESIGN THE LAYOUT of the Lalalazy utility icon. Image 1 is the current icon: the character is currently too large and the useful object is trapped in a speech bubble. Reverse that hierarchy. REMOVE the speech bubble completely. The functional object must become the large centered PRIMARY emblem, occupying about 75 percent of the square and readable at 40 pixels. Put the same brown-haired sleeping Lalafell head, with closed smiling eyes and only a tiny ivory pillow edge, as a SMALL CORNER BADGE at the BOTTOM RIGHT, around 25 to 28 percent of the canvas. The face must not obscure the main object. Keep it a warm softly painted native FFXIV utility icon, with clean broad shapes, restrained shallow relief and no scene. Preserve the quiet SOLID dark green #203F2A family background. No text, letters, Z symbols, new frames, glow, particles or pre-rounded canvas corners. PRIMARY OBJECT: the large golden WONDROUS TAILS JOURNAL from the old speech bubble, with a clear 3-by-3 white sticker grid and its small green cross detail. No letters or numerals. Image 2 is the REWORKED Lalalazy family layout: MATCH its exact background and small sleeping-head badge at bottom right. Replace its large food bowl with the journal. Do not copy the bowl or preserve any speech bubble.",
+    "Background": "#203F2A",
+    "StyleFamily": "Lalalazy sleeping helpers",
+    "Original": false,
+    "ExportPixels": 512
+  },
+  {
+    "id": "Lifestream",
+    "prompt": "Use case: style-transfer. Produce ONE square FFXIV UTILITY/MENU-style HOTBAR ICON. Image 1 is the source plugin artwork: preserve its recognizable main symbol and characteristic foreground palette. Image 2 is an approved utility hotbar icon, for restrained raised-enamel relief, modest bevel, broad readable shapes and small-size clarity, not its subject. Keep the background a single smooth SOLID color, with NO texture, gradient, vignette, scenery, glow, flames, sparkles or particles. Remove source app frames, small corner badges, lettering and decorative backgrounds. Foreground shading must be quiet and useful to the silhouette. Center the emblem at about 75 percent of the full-bleed opaque square, with breathing room. No outer frame, pre-rounded canvas corners, new text or unrelated objects. Clear at 40 pixels. Preserve the pointed violet AETHERYTE DIAMOND with broad internal facet/grid lines and a few bold ivory outbound directional arrows around it. Simplify to five clear outgoing directions instead of many tiny curved arrows. Violet crystal-shaped utility outline and white arrows, NOT glowing teleport effects or a realistic crystal. No purple app frame. Solid dark violet #2C1C42, matching the other purple Nightmare utility emblems.",
+    "Background": "#2C1C42",
+    "StyleFamily": "Nightmare violet utility",
+    "Original": false,
+    "ExportPixels": 512
+  },
+  {
+    "id": "Marketbuddy",
+    "prompt": "Use case: style-transfer. Produce ONE square FFXIV UTILITY/MENU-style HOTBAR ICON. Image 1 is the source plugin artwork: preserve its recognizable main symbol and characteristic foreground palette. Image 2 is an approved utility hotbar icon, for restrained raised-enamel relief, modest bevel, broad readable shapes and small-size clarity, not its subject. Keep the background a single smooth SOLID color, with NO texture, gradient, vignette, scenery, glow, flames, sparkles or particles. Remove source app frames, small corner badges, lettering and decorative backgrounds. Foreground shading must be quiet and useful to the silhouette. Center the emblem at about 75 percent of the full-bleed opaque square, with breathing room. No outer frame, pre-rounded canvas corners, new text or unrelated objects. Clear at 40 pixels. Preserve the coral/orange MAGNIFYING GLASS tilted with handle toward the lower right, containing ONE angled PRICE TAG with a bold currency/dollar symbol cut into it. Retain the currency symbol only; no other writing. Broad clear tag and circular lens outline. Remove outer frame and corner badge. Warm orange at left into coral-pink at right, modest utility bevel. Same flat brown #49311F as image 2.",
+    "Background": "#49311F",
+    "StyleFamily": "Punish coral utility",
+    "Original": false,
+    "ExportPixels": 512
+  },
+  {
+    "id": "MinimapMarkerMagnitude",
+    "prompt": "Use case: style-transfer. Produce ONE square FFXIV UTILITY/MENU-style HOTBAR ICON. Image 1 is the source plugin artwork: preserve its recognizable main symbol and characteristic foreground palette. Image 2 is an approved utility hotbar icon, for restrained raised-enamel relief, modest bevel, broad readable shapes and small-size clarity, not its subject. Keep the background a single smooth SOLID color, with NO texture, gradient, vignette, scenery, glow, flames, sparkles or particles. Remove source app frames, small corner badges, lettering and decorative backgrounds. Foreground shading must be quiet and useful to the silhouette. Center the emblem at about 75 percent of the full-bleed opaque square, with breathing room. No outer frame, pre-rounded canvas corners, new text or unrelated objects. Clear at 40 pixels. Simplify the busy original into exactly THREE bold GOLD QUEST MAP PINS over a muted teal round world/map disc: one large central exclamation-mark pin and two smaller pins to its sides. Preserve the gold-and-teal map-marker identity. Remove tiny dragons, cog ornaments, extra pins and all background scenery. Exclamation symbols only, no text. Solid dark teal-green #233B37.",
+    "Background": "#233B37",
+    "StyleFamily": "Gold map-marker utility",
+    "Original": false,
+    "ExportPixels": 512
+  },
+  {
+    "id": "MiniMappingway",
+    "prompt": "Use case: style-transfer. Produce ONE square FFXIV UTILITY/MENU-style HOTBAR ICON. Image 1 is the source plugin artwork: preserve its recognizable main symbol and characteristic foreground palette. Image 2 is an approved utility hotbar icon, for restrained raised-enamel relief, modest bevel, broad readable shapes and small-size clarity, not its subject. Keep the background a single smooth SOLID color, with NO texture, gradient, vignette, scenery, glow, flames, sparkles or particles. Remove source app frames, small corner badges, lettering and decorative backgrounds. Foreground shading must be quiet and useful to the silhouette. Center the emblem at about 75 percent of the full-bleed opaque square, with breathing room. No outer frame, pre-rounded canvas corners, new text or unrelated objects. Clear at 40 pixels. Preserve the friendly cream/blond-furred LOPORRIT rabbit cartographer, with two long upright ears, ivory wrapped headcloth and a small blue forehead jewel, blue neckerchief and a simple parchment map held in its hands. Calm softly painted native utility portrait, broad face and ears readable at 40 px; not a realistic rabbit, photo or 3D toy. No scene, lettering or extra props. Solid dark blue-teal #21434A.",
+    "Background": "#21434A",
+    "StyleFamily": "Mappingway portrait utility",
+    "Original": false,
+    "ExportPixels": 512
+  },
+  {
+    "id": "Palantir",
+    "prompt": "Use case: style-transfer. Produce ONE square FFXIV UTILITY/MENU-style HOTBAR ICON. Image 1 is the source plugin artwork: preserve its recognizable main symbol and characteristic foreground palette. Image 2 is an approved utility hotbar icon, for restrained raised-enamel relief, modest bevel, broad readable shapes and small-size clarity, not its subject. Keep the background a single smooth SOLID color, with NO texture, gradient, vignette, scenery, glow, flames, sparkles or particles. Remove source app frames, small corner badges, lettering and decorative backgrounds. Foreground shading must be quiet and useful to the silhouette. Center the emblem at about 75 percent of the full-bleed opaque square, with breathing room. No outer frame, pre-rounded canvas corners, new text or unrelated objects. Clear at 40 pixels. Preserve exactly the original coral/orange three-leaf sprout/tree emblem: one vertical upper leaf, two leaves angled out to the sides, graceful forked trunk and flared open base. Keep the leaf interiors as clean negative spaces. Preserve orange at left through coral/pink at right, rendered as simple raised copper-enamel utility artwork. Background must match image 2's brown #49311F exactly.",
+    "Background": "#49311F",
+    "StyleFamily": "Punish coral utility",
+    "ExportPixels": 512
+  },
+  {
+    "id": "PandorasBox",
+    "prompt": "Use case: style-transfer. Produce ONE square FFXIV UTILITY/MENU-style HOTBAR ICON. Image 1 is the source plugin artwork: preserve its recognizable main symbol and characteristic foreground palette. Image 2 is an approved utility hotbar icon, for restrained raised-enamel relief, modest bevel, broad readable shapes and small-size clarity, not its subject. Keep the background a single smooth SOLID color, with NO texture, gradient, vignette, scenery, glow, flames, sparkles or particles. Remove source app frames, small corner badges, lettering and decorative backgrounds. Foreground shading must be quiet and useful to the silhouette. Center the emblem at about 75 percent of the full-bleed opaque square, with breathing room. No outer frame, pre-rounded canvas corners, new text or unrelated objects. Clear at 40 pixels. Preserve the coral/orange stylized VASE/URN with wide flat mouth, narrow neck and three broad horizontal bands, and the small cog attached at its lower right. The original utility emblem, not an actual decorated antique. Keep the negative spaces clear. Orange at left through coral-pink at right. Same solid brown #49311F as image 2. Remove frame and corner badge.",
+    "Background": "#49311F",
+    "StyleFamily": "Punish coral utility",
+    "Original": false,
+    "ExportPixels": 512
+  },
+  {
+    "id": "PriceInsight",
+    "prompt": "Use case: style-transfer. Produce ONE square FFXIV UTILITY/MENU-style HOTBAR ICON. Image 1 is the source plugin artwork: preserve its recognizable main symbol and characteristic foreground palette. Image 2 is an approved utility hotbar icon, for restrained raised-enamel relief, modest bevel, broad readable shapes and small-size clarity, not its subject. Keep the background a single smooth SOLID color, with NO texture, gradient, vignette, scenery, glow, flames, sparkles or particles. Remove source app frames, small corner badges, lettering and decorative backgrounds. Foreground shading must be quiet and useful to the silhouette. Center the emblem at about 75 percent of the full-bleed opaque square, with breathing room. No outer frame, pre-rounded canvas corners, new text or unrelated objects. Clear at 40 pixels. Preserve the round GOLD COIN with a bold GOLD MAGNIFYING GLASS over its face, handle pointing toward the lower right. Simplify away the coin's tiny engraving/portrait, retaining a broad coin rim and a clear raised magnifier. No letters, numbers or additional currency objects. Calm gold utility relief, same dark olive-brown #493E27 as Item Vendor Location.",
+    "Background": "#493E27",
+    "StyleFamily": "Gold coin utility",
+    "Original": false,
+    "ExportPixels": 512
+  },
+  {
+    "id": "QuestMap",
+    "prompt": "Use case: style-transfer. Produce ONE square FFXIV UTILITY/MENU-style HOTBAR ICON. Image 1 is the source plugin artwork: preserve its recognizable main symbol and characteristic foreground palette. Image 2 is an approved utility hotbar icon, for restrained raised-enamel relief, modest bevel, broad readable shapes and small-size clarity, not its subject. Keep the background a single smooth SOLID color, with NO texture, gradient, vignette, scenery, glow, flames, sparkles or particles. Remove source app frames, small corner badges, lettering and decorative backgrounds. Foreground shading must be quiet and useful to the silhouette. Center the emblem at about 75 percent of the full-bleed opaque square, with breathing room. No outer frame, pre-rounded canvas corners, new text or unrelated objects. Clear at 40 pixels. Preserve the closed brown leather QUEST JOURNAL with a clear gold square clasp, diagonally laid across two folded parchment map sheets. Just a few broad map-route strokes, not writing or tiny symbols. No title on the book or lettering on the maps. Warm tan parchment, brown leather and gold clasp as one simple native utility emblem. Flat dark warm-brown #403324.",
+    "Background": "#403324",
+    "StyleFamily": "Parchment journal utility",
+    "Original": false,
+    "ExportPixels": 512
+  },
+  {
+    "id": "ReActionEx",
+    "prompt": "Generate an original FFXIV UTILITY/MENU hotbar icon for ReActionEx, which manages action stacks and action targeting. ONE simple emblem: THREE overlapping cobalt-blue square action tiles, staggered behind each other, with ONE bold ivory curved return/redirect arrow across the front tile. Clean broad shapes, restrained raised-enamel edge and shallow immediate shadow, legible at 40 pixels. Background must be single smooth solid muted slate-blue #26394A, no texture, gradient, glow, particles or scenery. Center at about 75 percent of the opaque square. No words, letters, numbers, real action artwork, app frame, corner rounding or unrelated objects.",
+    "Background": "#26394A",
+    "StyleFamily": "Action-stack utility",
+    "Original": true,
+    "ExportPixels": 512
+  },
+  {
+    "id": "ReSanctuary",
+    "prompt": "Use case: style-transfer. Produce ONE square FFXIV UTILITY/MENU-style HOTBAR ICON. Image 1 is the source plugin artwork: preserve its recognizable main symbol and characteristic foreground palette. Image 2 is an approved utility hotbar icon, for restrained raised-enamel relief, modest bevel, broad readable shapes and small-size clarity, not its subject. Keep the background a single smooth SOLID color, with NO texture, gradient, vignette, scenery, glow, flames, sparkles or particles. Remove source app frames, small corner badges, lettering and decorative backgrounds. Foreground shading must be quiet and useful to the silhouette. Center the emblem at about 75 percent of the full-bleed opaque square, with breathing room. No outer frame, pre-rounded canvas corners, new text or unrelated objects. Clear at 40 pixels. Preserve the recognizable ISLAND SANCTUARY emblem: one green palm tree with brown trunk on a small golden sand island, a pale shoreline ring and a simple turquoise water base. Render as ONE compact native utility symbol, not a landscape or scene. Broad palm fronds, minimal shallow bevel; no detailed waves or realistic reflections. Remove the outer black app outline. Flat dark sea-teal #23454A.",
+    "Background": "#23454A",
+    "StyleFamily": "Island utility",
+    "Original": false,
+    "ExportPixels": 512
+  },
+  {
+    "id": "SimpleTweaksPlugin",
+    "prompt": "Use case: precise-object-edit. PALETTE CORRECTION of the existing Simple Tweaks hotbar icon, IMAGE 1. IMAGE 2 is the original Simple Tweaks logo and gives its correct CYAN AND RED identity. Preserve image 1's outlined gear, circular inner ring, large round central opening, position, scale and quiet native utility bevel. Recolour the gear so the LEFT is bright CYAN #00D3DE, the top and center transition through cool sky/steel BLUE, and the RIGHT is clearly muted CORAL-RED #D74651 matching image 2. Do NOT use magenta, fuchsia, neon pink or violet/purple: those are the Kaldigo family and must not appear here. Replace the indigo background with a quiet smooth solid dark gray-SLATE #26383D to make this icon distinct from the Kaldigo set. No background noise, gradient, texture, glow or scenery. No ST lettering, new objects, frame or corner rounding. Keep it recognizable and crisp at 40 px, full-bleed opaque square.",
+    "Background": "#26383D",
+    "StyleFamily": "Simple Tweaks cyan-red",
+    "Original": false,
+    "ExportPixels": 512
+  },
+  {
+    "id": "Splatoon",
+    "prompt": "Use case: style-transfer. Produce ONE square FFXIV UTILITY/MENU-style HOTBAR ICON. Image 1 is the source plugin artwork: preserve its recognizable main symbol and characteristic foreground palette. Image 2 is an approved utility hotbar icon, for restrained raised-enamel relief, modest bevel, broad readable shapes and small-size clarity, not its subject. Keep the background a single smooth SOLID color, with NO texture, gradient, vignette, scenery, glow, flames, sparkles or particles. Remove source app frames, small corner badges, lettering and decorative backgrounds. Foreground shading must be quiet and useful to the silhouette. Center the emblem at about 75 percent of the full-bleed opaque square, with breathing room. No outer frame, pre-rounded canvas corners, new text or unrelated objects. Clear at 40 pixels. Preserve the coral/orange circular GRID/ground-marker emblem with a diagonal pencil/stylus crossing it from lower-left to upper-right. Broad diagonal lattice lines and a clear stylus point, no tiny grid subdivisions. Orange at left to coral-pink at right. Same solid brown #49311F as image 2. Remove the app frame and corner badge; no additional shapes or text.",
+    "Background": "#49311F",
+    "StyleFamily": "Punish coral utility",
+    "Original": false,
+    "ExportPixels": 512
+  },
+  {
+    "id": "TextAdvance",
+    "prompt": "Use case: style-transfer. Produce ONE square FFXIV UTILITY/MENU-style HOTBAR ICON. Image 1 is the source plugin artwork: preserve its recognizable main symbol and characteristic foreground palette. Image 2 is an approved utility hotbar icon, for restrained raised-enamel relief, modest bevel, broad readable shapes and small-size clarity, not its subject. Keep the background a single smooth SOLID color, with NO texture, gradient, vignette, scenery, glow, flames, sparkles or particles. Remove source app frames, small corner badges, lettering and decorative backgrounds. Foreground shading must be quiet and useful to the silhouette. Center the emblem at about 75 percent of the full-bleed opaque square, with breathing room. No outer frame, pre-rounded canvas corners, new text or unrelated objects. Clear at 40 pixels. Preserve the overlapping SPEECH BUBBLES: a violet foreground chat bubble containing exactly three broad white dots, a small ivory outlined bubble behind it, and TWO ivory fast-forward chevrons at upper right. Remove the purple outer frame and tiny speed-line clutter. Clean vivid violet and white utility emblem, flat dark violet #2C1C42 shared by the other purple Nightmare icons. No letters.",
+    "Background": "#2C1C42",
+    "StyleFamily": "Nightmare violet utility",
+    "Original": false,
+    "ExportPixels": 512
+  },
+  {
+    "id": "TriadBuddy",
+    "prompt": "Use case: style-transfer. Produce ONE square FFXIV UTILITY/MENU-style HOTBAR ICON. Image 1 is the source plugin artwork: preserve its recognizable main symbol and characteristic foreground palette. Image 2 is an approved utility hotbar icon, for restrained raised-enamel relief, modest bevel, broad readable shapes and small-size clarity, not its subject. Keep the background a single smooth SOLID color, with NO texture, gradient, vignette, scenery, glow, flames, sparkles or particles. Remove source app frames, small corner badges, lettering and decorative backgrounds. Foreground shading must be quiet and useful to the silhouette. Center the emblem at about 75 percent of the full-bleed opaque square, with breathing room. No outer frame, pre-rounded canvas corners, new text or unrelated objects. Clear at 40 pixels. Preserve THREE overlapping/fanned TRIPLE TRIAD CARDS: a blue front card, pale blue rear card to upper right and salmon/pink rear card to lower right. On the front card keep the original simple friendly white cartoon face and a very simple dark body silhouette, readable rather than detailed. Modest ivory card borders and shallow native utility relief. No question marks, letters, ranks or numbers. Flat muted navy #223A51.",
+    "Background": "#223A51",
+    "StyleFamily": "Triad card utility",
+    "Original": false,
+    "ExportPixels": 512
+  },
+  {
+    "id": "vnavmesh",
+    "prompt": "Use case: style-transfer. Produce ONE square FFXIV UTILITY/MENU-style HOTBAR ICON. Image 1 is the source plugin artwork: preserve its recognizable main symbol and characteristic foreground palette. Image 2 is an approved utility hotbar icon, for restrained raised-enamel relief, modest bevel, broad readable shapes and small-size clarity, not its subject. Keep the background a single smooth SOLID color, with NO texture, gradient, vignette, scenery, glow, flames, sparkles or particles. Remove source app frames, small corner badges, lettering and decorative backgrounds. Foreground shading must be quiet and useful to the silhouette. Center the emblem at about 75 percent of the full-bleed opaque square, with breathing room. No outer frame, pre-rounded canvas corners, new text or unrelated objects. Clear at 40 pixels. Preserve the bright GREEN folded MAP with broad panel creases and a WHITE path connecting a small green location pin at lower left to a larger green pin at upper right. Three map panels, one clear route, no tiny roads or terrain. Keep the source green and white foreground, do not turn it coral. Remove outer app frame and corner badge. Same solid brown utility-family field #49311F as image 2.",
+    "Background": "#49311F",
+    "StyleFamily": "Punish coral utility",
+    "Original": false,
+    "ExportPixels": 512
+  },
+  {
+    "id": "YesAlready",
+    "prompt": "Use case: style-transfer. Produce ONE square FFXIV UTILITY/MENU-style HOTBAR ICON. Image 1 is the source plugin artwork: preserve its recognizable main symbol and characteristic foreground palette. Image 2 is an approved utility hotbar icon, for restrained raised-enamel relief, modest bevel, broad readable shapes and small-size clarity, not its subject. Keep the background a single smooth SOLID color, with NO texture, gradient, vignette, scenery, glow, flames, sparkles or particles. Remove source app frames, small corner badges, lettering and decorative backgrounds. Foreground shading must be quiet and useful to the silhouette. Center the emblem at about 75 percent of the full-bleed opaque square, with breathing room. No outer frame, pre-rounded canvas corners, new text or unrelated objects. Clear at 40 pixels. Preserve the coral/orange confirmation DIALOG BOX, the clicking pointer cursor at lower right and three short orange attention strokes above its upper-left edge. Replace the source's YES lettering with ONE bold ivory CHECK MARK, keeping the dialog silhouette and cursor unmistakable at small size. No other text or numerals. Same solid brown #49311F as image 2, warm orange-to-coral foreground. Remove app frame and corner badge.",
+    "Background": "#49311F",
+    "StyleFamily": "Punish coral utility",
+    "Original": false,
+    "ExportPixels": 512
   }
 ]

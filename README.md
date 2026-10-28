@@ -206,14 +206,18 @@ click fallbacks, export/import compatibility and icon corner masking.
 
 ### Packaged hotbar icon overrides
 
-The bundled icon set covers Dalamud and the favourites listed in its manifest. Each is a generated
+The bundled icon set covers Dalamud and all 51 plugins in the installed-plugin audit
+of 28 October 2026, including plugins that have not yet been favourited. Each is a generated
 reinterpretation of its original icon using native utility/menu icons as the visual
 style reference, with simple raised symbols and quiet background colours shared by artwork family.
 The cyan/magenta Kaldigo set shares indigo, the matching coral Punish-style set
 (including AutoDuty) shares brown, and the Reborn ring pair shares green. These
 artwork families are independent of repository groups; AutoHook retains blue for
 its different source artwork. Colour references and membership are recorded in
-`assets/icon-overrides/style-families.json`. Dalamud uses a white background.
+`assets/icon-overrides/style-families.json`. The Lalalazy helpers share green and use
+large food, coin or journal symbols with small sleeping-character corner badges.
+The purple Nightmare utility emblems share violet. Simple Tweaks retains cyan/red
+on slate, separate from the Kaldigo palette. Dalamud uses a white background.
 A common rounded-corner mask is applied
 in game, including to the original installer icons used as fallbacks.
 

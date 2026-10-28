@@ -32,3 +32,39 @@ Stylist uses an original AI-generated wardrobe/gear emblem, based on its gear-ma
 Steward uses an original inventory/checkmark utility emblem in the Kaldigo palette, with the [companion icon](https://raw.githubusercontent.com/kaldigo/FFXIVSteward/main/assets/icon.png) as a palette reference. Plugin: [kaldigo/FFXIVSteward](https://github.com/kaldigo/FFXIVSteward). AutoRetainer now uses the recoloured Kaldigo fork emblem; the original upstream attribution and license remain retained. Both share the Kaldigo indigo background.
 
 Item Search uses a generated utility-style interpretation of its [original magnifying-glass icon](https://raw.githubusercontent.com/Caraxi/ItemSearchPlugin/master/icon.png), with a blue lens, silver rim and quiet slate-blue background. Source: [Caraxi/ItemSearchPlugin](https://github.com/Caraxi/ItemSearchPlugin), by Caraxi and maintained by Khayle. The source repository's Affero General Public License, version 1, is retained verbatim in `licenses/ItemSearchPlugin.txt`.
+
+## Additional installed-plugin artwork
+
+These 29 hotbar renderings were generated with the built-in image tool. Source marks remain attributable to their creators; retained license texts are verbatim. ReActionEx uses an original action-stack symbol because its installer feed supplied no icon. The Lalalazy trio uses a large food bowl, coin or journal with a small sleeping-character corner badge. Simple Tweaks uses its own cyan/red palette on slate, separate from the Kaldigo cyan/magenta family.
+
+| Plugin | Source | Reference artwork | Source license metadata |
+| --- | --- | --- | --- |
+| Allagan Market | [Source](https://github.com/Critical-Impact/AllaganMarket.git) | [Original icon](https://raw.githubusercontent.com/goatcorp/DalamudPluginsD17/main/stable/AllaganMarket/images/icon.png) | AGPL-3.0 (text retained) |
+| AntiAfkKick | [Source](https://github.com/NightmareXIV/AntiAfkKick) | [Original icon](https://raw.githubusercontent.com/NightmareXIV/AntiAfkKick/master/AntiAfkKick-Dalamud/images/icon.png) | AGPL-3.0 (text retained) |
+| CBT | [Source](https://github.com/Jaksuhn/ffxiv-bundleoftweaks) | [Original icon](https://puni.sh/api/plugins/icon/34) | BSD-3-Clause (text retained) |
+| Auto Sightseeing Log | [Source](https://github.com/XeldarAlz/FFXIV-AutoSightseeingLog) | [Original icon](https://raw.githubusercontent.com/XeldarAlz/FFXIV-AutoSightseeingLog/master/AutoSightseeingLog/Images/Icon.png) | AGPL-3.0 (text retained) |
+| Currency Spender | [Source](https://github.com/Blackcatz1911/CurrencySpender.git) | [Original icon](https://raw.githubusercontent.com/goatcorp/DalamudPluginsD17/main/stable/CurrencySpender/images/icon.png) | AGPL-3.0 (text retained) |
+| ezFauxHollows | [Source](https://github.com/MidoriKami/FauxHollowsSolver) | [Original icon](https://raw.githubusercontent.com/goatcorp/DalamudPluginsD17/main/stable/FauxHollowsSolver/images/icon.png) | See source; no license returned by repository metadata |
+| IINACT | [Source](https://github.com/marzent/IINACT) | [Original icon](https://raw.githubusercontent.com/marzent/IINACT/master/images/icon.png) | GPL-3.0 (text retained) |
+| Allagan Tools | [Source](https://github.com/Critical-Impact/InventoryTools) | [Original icon](https://raw.githubusercontent.com/Critical-Impact/InventoryTools/main/InventoryTools/Images/icon.png) | GPL-3.0 (text retained) |
+| Item Vendor Location | [Source](https://github.com/electr0sheep/ItemVendorLocation) | [Original icon](https://raw.githubusercontent.com/electr0sheep/ItemVendorLocation/main/Images/icon.png) | See source; no license returned by repository metadata |
+| LazyFoodBuff | [Source](https://github.com/dajoey/lalalazy/tree/main/src/LazyFoodBuff) | [Original icon](https://raw.githubusercontent.com/dajoey/lalalazy/main/LalaImages/lazyfoodbuff-icon.png) | See source; no license returned by repository metadata |
+| LazyLoot | [Source](https://github.com/PunishXIV/LazyLoot) | [Original icon](https://puni.sh/api/plugins/icon/9) | GPL-3.0 (text retained) |
+| Lazy Market Companion | [Source](https://github.com/dajoey/lalalazy) | [Original icon](https://raw.githubusercontent.com/dajoey/lalalazy/main/LalaImages/lazymarketcompanion-icon.png) | See source; no license returned by repository metadata |
+| Lazy WT Math | [Source](https://github.com/dajoey/lalalazy/tree/main/src/LazyWTMath) | [Original icon](https://raw.githubusercontent.com/dajoey/lalalazy/main/LalaImages/lazywtmath-icon.png) | See source; no license returned by repository metadata |
+| Lifestream | [Source](https://github.com/NightmareXIV/Lifestream) | [Original icon](https://raw.githubusercontent.com/NightmareXIV/Lifestream/main/Lifestream/images/icon.png) | See source; no license returned by repository metadata |
+| Marketbuddy | [Source](https://love.puni.sh/ment.json) | [Original icon](https://puni.sh/api/plugins/icon/131) | See source; no license returned by repository metadata |
+| Minimap Marker Magnitude | [Source](https://github.com/Cytraen/MinimapMarkerMagnitude) | [Original icon](https://raw.githubusercontent.com/goatcorp/DalamudPluginsD17/main/stable/MinimapMarkerMagnitude/images/icon.png) | AGPL-3.0 (text retained) |
+| Mini-Mappingway | [Source](https://github.com/GemPlugins/MiniMappingway) | [Original icon](https://raw.githubusercontent.com/goatcorp/DalamudPluginsD17/main/stable/MiniMappingway/images/icon.png) | MIT (text retained) |
+| Palantir | [Source](https://github.com/PunishXIV/Palantir) | [Original icon](https://puni.sh/api/plugins/icon/169) | BSD-3-Clause (text retained) |
+| Pandora's Box | [Source](https://github.com/PunishXIV/PandorasBox) | [Original icon](https://puni.sh/api/plugins/icon/8) | BSD-3-Clause (text retained) |
+| Price Insight | [Source](https://github.com/kouzukii/ffxiv-priceinsight) | [Original icon](https://raw.githubusercontent.com/goatcorp/DalamudPluginsD17/main/stable/PriceInsight/images/icon.png) | MIT (text retained) |
+| Quest Map | [Source](https://github.com/GemPlugins/QuestMap) | [Original icon](https://raw.githubusercontent.com/goatcorp/DalamudPluginsD17/main/stable/QuestMap/images/icon.png) | EUPL-1.2 (text retained) |
+| ReActionEx | [Source](https://puni.sh/api/repository/taurenkey) | Original action-stack emblem from the plugin's functional description | Original generated symbol; no source artwork incorporated |
+| ReSanctuary | [Source](https://github.com/NotNite/ReSanctuary) | [Original icon](https://raw.githubusercontent.com/goatcorp/DalamudPluginsD17/main/stable/ReSanctuary/images/icon.png) | See source; no license returned by repository metadata |
+| Simple Tweaks Plugin | [Source](https://github.com/Caraxi/SimpleTweaksPlugin) | [Original icon](https://raw.githubusercontent.com/goatcorp/DalamudPluginsD17/main/stable/SimpleTweaksPlugin/images/icon.png) | AGPL-3.0 (text retained) |
+| Splatoon | [Source](https://github.com/PunishXIV/Splatoon) | [Original icon](https://puni.sh/api/plugins/icon/10) | AGPL-3.0 (text retained) |
+| TextAdvance | [Source](https://github.com/NightmareXIV/TextAdvance) | [Original icon](https://raw.githubusercontent.com/NightmareXIV/TextAdvance/master/TextAdvance/images/icon.png) | See source; no license returned by repository metadata |
+| TriadBuddy | [Source](https://github.com/MgAl2O4/FFTriadBuddyDalamud) | [Original icon](https://raw.githubusercontent.com/goatcorp/DalamudPluginsD17/main/stable/TriadBuddy/images/icon.png) | MIT (text retained) |
+| vnavmesh | [Source](https://github.com/awgil/ffxiv_navmesh) | [Original icon](https://puni.sh/api/plugins/icon/48) | See source; no license returned by repository metadata |
+| YesAlready | [Source](https://github.com/PunishXIV/YesAlready/) | [Original icon](https://puni.sh/api/plugins/icon/26) | See source; no license returned by repository metadata |

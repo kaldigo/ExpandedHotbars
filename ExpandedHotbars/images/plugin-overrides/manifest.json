@@ -18,6 +18,22 @@
       "Sha256": "b87f17afcaf7845729cedff567103b6cb887527e011a4c306b13feb48fcafc87"
     },
     {
+      "InternalName": "AllaganMarket",
+      "File": "AllaganMarket.png",
+      "SourceRepository": "https://github.com/Critical-Impact/AllaganMarket.git",
+      "ReferenceIcon": "https://raw.githubusercontent.com/goatcorp/DalamudPluginsD17/main/stable/AllaganMarket/images/icon.png",
+      "Method": "AI utility-style interpretation of the existing plugin icon with a quiet background shared by artwork family",
+      "Sha256": "423ee7a1e3e2a55d53a1eb5f6a9c098d305d82b7767ab3126c1434b57297ff79"
+    },
+    {
+      "InternalName": "AntiAfkKick-Dalamud",
+      "File": "AntiAfkKick-Dalamud.png",
+      "SourceRepository": "https://github.com/NightmareXIV/AntiAfkKick",
+      "ReferenceIcon": "https://raw.githubusercontent.com/NightmareXIV/AntiAfkKick/master/AntiAfkKick-Dalamud/images/icon.png",
+      "Method": "AI utility-style interpretation of the existing plugin icon with a quiet background shared by artwork family",
+      "Sha256": "13a6712cc30f88c7b09dec689dbbd902bde2f8edf8e6bfe93c5a27be4f1706b4"
+    },
+    {
       "InternalName": "Artisan",
       "File": "Artisan.png",
       "SourceRepository": "https://github.com/PunishXIV/Artisan",
@@ -42,12 +58,28 @@
       "Sha256": "c9e4c1021b7f80ffb0563cc1881e6e7eac401f146a6ccefead7fc94873437e46"
     },
     {
+      "InternalName": "Automaton",
+      "File": "Automaton.png",
+      "SourceRepository": "https://github.com/Jaksuhn/ffxiv-bundleoftweaks",
+      "ReferenceIcon": "https://puni.sh/api/plugins/icon/34",
+      "Method": "AI utility-style interpretation of the existing plugin icon with a quiet background shared by artwork family",
+      "Sha256": "58a08a91aa60f2276318e6613f11cbe718eb6c5d80dbfd1f243eb9076ea04216"
+    },
+    {
       "InternalName": "AutoRetainer",
       "File": "AutoRetainer.png",
       "SourceRepository": "https://github.com/kaldigo/AutoRetainer",
       "ReferenceIcon": "https://raw.githubusercontent.com/kaldigo/AutoRetainer/master/assets/icon.png",
       "Method": "AI utility-style rendering of the recoloured Kaldigo fork bell, on the shared Kaldigo indigo field",
       "Sha256": "8caba872e51c46f3ad1ecbd9bae642879cfcbf3eecbcc06b413780dd312ddd5a"
+    },
+    {
+      "InternalName": "AutoSightseeingLog",
+      "File": "AutoSightseeingLog.png",
+      "SourceRepository": "https://github.com/XeldarAlz/FFXIV-AutoSightseeingLog",
+      "ReferenceIcon": "https://raw.githubusercontent.com/XeldarAlz/FFXIV-AutoSightseeingLog/master/AutoSightseeingLog/Images/Icon.png",
+      "Method": "AI utility-style interpretation of the existing plugin icon with a quiet background shared by artwork family",
+      "Sha256": "35d39355ab7db3ee63359b429639f179548295d2f2265a487a198746a18c9fb2"
     },
     {
       "InternalName": "Avarice",
@@ -64,6 +96,14 @@
       "ReferenceIcon": "https://raw.githubusercontent.com/FFXIV-CombatReborn/RebornAssets/main/IconAssets/BMR_Icon.png",
       "Method": "AI style transfer from original plugin icon, using native FFXIV utility/menu icons with quiet backgrounds shared by artwork family",
       "Sha256": "9e331fb3fefb888086fc004682ef7d6af71951d558787843fbf719c0abd5343c"
+    },
+    {
+      "InternalName": "CurrencySpender",
+      "File": "CurrencySpender.png",
+      "SourceRepository": "https://github.com/Blackcatz1911/CurrencySpender.git",
+      "ReferenceIcon": "https://raw.githubusercontent.com/goatcorp/DalamudPluginsD17/main/stable/CurrencySpender/images/icon.png",
+      "Method": "AI utility-style interpretation of the existing plugin icon with a quiet background shared by artwork family",
+      "Sha256": "6f1854f53ddc8255d96c77c175b8121f95decbd4875bef23793962df5faae774"
     },
     {
       "InternalName": "Dalamud",
@@ -88,6 +128,14 @@
       "ReferenceIcon": "https://raw.githubusercontent.com/kaldigo/ExpandedHotbars/master/ExpandedHotbars/images/icon.png",
       "Method": "AI style transfer from original plugin icon, using native FFXIV utility/menu icons with quiet backgrounds shared by artwork family",
       "Sha256": "64ddb73201d41464611f92ee37edeff44f3be07deb5ce9f0387a56b6fca0af43"
+    },
+    {
+      "InternalName": "FauxHollowsSolver",
+      "File": "FauxHollowsSolver.png",
+      "SourceRepository": "https://github.com/MidoriKami/FauxHollowsSolver",
+      "ReferenceIcon": "https://raw.githubusercontent.com/goatcorp/DalamudPluginsD17/main/stable/FauxHollowsSolver/images/icon.png",
+      "Method": "AI utility-style interpretation of the existing plugin icon with a quiet background shared by artwork family",
+      "Sha256": "1218039415992ac1e58702a5e107ec8f9485dc8f96eb66594f748f5b0c29eb81"
     },
     {
       "InternalName": "GatherBuddyReborn",
@@ -138,12 +186,124 @@
       "Sha256": "fac27a8d28937259cb5a278a681fa6fa2bdb5e547d27bc3db893a6d48b572c52"
     },
     {
+      "InternalName": "IINACT",
+      "File": "IINACT.png",
+      "SourceRepository": "https://github.com/marzent/IINACT",
+      "ReferenceIcon": "https://raw.githubusercontent.com/marzent/IINACT/master/images/icon.png",
+      "Method": "AI utility-style interpretation of the existing plugin icon with a quiet background shared by artwork family",
+      "Sha256": "d871cc0a09b21d9bff5272161f3e2ab36ee7f077bbae63859749ec21b0104a04"
+    },
+    {
+      "InternalName": "InventoryTools",
+      "File": "InventoryTools.png",
+      "SourceRepository": "https://github.com/Critical-Impact/InventoryTools",
+      "ReferenceIcon": "https://raw.githubusercontent.com/Critical-Impact/InventoryTools/main/InventoryTools/Images/icon.png",
+      "Method": "AI utility-style interpretation of the existing plugin icon with a quiet background shared by artwork family",
+      "Sha256": "8f86130aee1861c080cd99c6d5b9ffed922f574d367eeb18cce202026ab7d0bb"
+    },
+    {
       "InternalName": "ItemSearchPlugin",
       "File": "ItemSearchPlugin.png",
       "SourceRepository": "https://github.com/Caraxi/ItemSearchPlugin",
       "ReferenceIcon": "https://raw.githubusercontent.com/Caraxi/ItemSearchPlugin/master/icon.png",
       "Method": "AI utility-style rendering of the original magnifying-glass emblem, with a quiet slate-blue field",
       "Sha256": "6bb6f89c6a89a8cee110d591c9d1720ce76a6115430f904f8c2a744828409b7e"
+    },
+    {
+      "InternalName": "ItemVendorLocation",
+      "File": "ItemVendorLocation.png",
+      "SourceRepository": "https://github.com/electr0sheep/ItemVendorLocation",
+      "ReferenceIcon": "https://raw.githubusercontent.com/electr0sheep/ItemVendorLocation/main/Images/icon.png",
+      "Method": "AI utility-style interpretation of the existing plugin icon with a quiet background shared by artwork family",
+      "Sha256": "e25897452a9045a96d6281e730b3ab26c32e838831107faa5fd74049f19f8693"
+    },
+    {
+      "InternalName": "LazyFoodBuff",
+      "File": "LazyFoodBuff.png",
+      "SourceRepository": "https://github.com/dajoey/lalalazy/tree/main/src/LazyFoodBuff",
+      "ReferenceIcon": "https://raw.githubusercontent.com/dajoey/lalalazy/main/LalaImages/lazyfoodbuff-icon.png",
+      "Method": "AI utility-style interpretation of the existing plugin icon with a quiet background shared by artwork family; functional object is primary, with a small sleeping-character corner badge",
+      "Sha256": "25b8d2781542d1dc80f8aa0fa478c34f4e19baed7ef9d2217ab828cb3dc3e85f"
+    },
+    {
+      "InternalName": "LazyLoot",
+      "File": "LazyLoot.png",
+      "SourceRepository": "https://github.com/PunishXIV/LazyLoot",
+      "ReferenceIcon": "https://puni.sh/api/plugins/icon/9",
+      "Method": "AI utility-style interpretation of the existing plugin icon with a quiet background shared by artwork family",
+      "Sha256": "2d60d881d7cbf85281eedcdc9006d8b2fa61a2a6af588f3d30299ff1f75fb766"
+    },
+    {
+      "InternalName": "LazyMarketCompanion",
+      "File": "LazyMarketCompanion.png",
+      "SourceRepository": "https://github.com/dajoey/lalalazy",
+      "ReferenceIcon": "https://raw.githubusercontent.com/dajoey/lalalazy/main/LalaImages/lazymarketcompanion-icon.png",
+      "Method": "AI utility-style interpretation of the existing plugin icon with a quiet background shared by artwork family; functional object is primary, with a small sleeping-character corner badge",
+      "Sha256": "5aa27bedafe3a8f44ea71bac2a112d16e9f0f310aebecc182b8ef205cd068c30"
+    },
+    {
+      "InternalName": "LazyWTMath",
+      "File": "LazyWTMath.png",
+      "SourceRepository": "https://github.com/dajoey/lalalazy/tree/main/src/LazyWTMath",
+      "ReferenceIcon": "https://raw.githubusercontent.com/dajoey/lalalazy/main/LalaImages/lazywtmath-icon.png",
+      "Method": "AI utility-style interpretation of the existing plugin icon with a quiet background shared by artwork family; functional object is primary, with a small sleeping-character corner badge",
+      "Sha256": "c4a0847353f13428f1ee2d1dd3137a88f8cd93b621ccb104dd1ac2a1f9ac772b"
+    },
+    {
+      "InternalName": "Lifestream",
+      "File": "Lifestream.png",
+      "SourceRepository": "https://github.com/NightmareXIV/Lifestream",
+      "ReferenceIcon": "https://raw.githubusercontent.com/NightmareXIV/Lifestream/main/Lifestream/images/icon.png",
+      "Method": "AI utility-style interpretation of the existing plugin icon with a quiet background shared by artwork family",
+      "Sha256": "58a0cf695d8288a888c778de66adae41b6edf3f88e37c204b8da350509efb7f0"
+    },
+    {
+      "InternalName": "Marketbuddy",
+      "File": "Marketbuddy.png",
+      "SourceRepository": "https://love.puni.sh/ment.json",
+      "ReferenceIcon": "https://puni.sh/api/plugins/icon/131",
+      "Method": "AI utility-style interpretation of the existing plugin icon with a quiet background shared by artwork family",
+      "Sha256": "e57bfbeee5aeeba5a50cb0b5e18b50f781b9b8f5d22ebefcce980ac6a13c17b4"
+    },
+    {
+      "InternalName": "MinimapMarkerMagnitude",
+      "File": "MinimapMarkerMagnitude.png",
+      "SourceRepository": "https://github.com/Cytraen/MinimapMarkerMagnitude",
+      "ReferenceIcon": "https://raw.githubusercontent.com/goatcorp/DalamudPluginsD17/main/stable/MinimapMarkerMagnitude/images/icon.png",
+      "Method": "AI utility-style interpretation of the existing plugin icon with a quiet background shared by artwork family",
+      "Sha256": "8e092bd756e8dd1ed0e19c16a6fc0d048e6440b180a3f9fbb2a1f007fbb3e415"
+    },
+    {
+      "InternalName": "MiniMappingway",
+      "File": "MiniMappingway.png",
+      "SourceRepository": "https://github.com/GemPlugins/MiniMappingway",
+      "ReferenceIcon": "https://raw.githubusercontent.com/goatcorp/DalamudPluginsD17/main/stable/MiniMappingway/images/icon.png",
+      "Method": "AI utility-style interpretation of the existing plugin icon with a quiet background shared by artwork family",
+      "Sha256": "3ffd2692b3f3d50db1583f48a7b62f7120767fe214ce8254d16b27150aeaf1a6"
+    },
+    {
+      "InternalName": "Palantir",
+      "File": "Palantir.png",
+      "SourceRepository": "https://github.com/PunishXIV/Palantir",
+      "ReferenceIcon": "https://puni.sh/api/plugins/icon/169",
+      "Method": "AI utility-style interpretation of the existing plugin icon with a quiet background shared by artwork family",
+      "Sha256": "68d828f2221572180f87ef04c8607f2492ef967114d92ca819123f051adc97e0"
+    },
+    {
+      "InternalName": "PandorasBox",
+      "File": "PandorasBox.png",
+      "SourceRepository": "https://github.com/PunishXIV/PandorasBox",
+      "ReferenceIcon": "https://puni.sh/api/plugins/icon/8",
+      "Method": "AI utility-style interpretation of the existing plugin icon with a quiet background shared by artwork family",
+      "Sha256": "305fe2cb673155fb9272ca43557b98879e887e202e5e0b619d617d7412a1effe"
+    },
+    {
+      "InternalName": "PriceInsight",
+      "File": "PriceInsight.png",
+      "SourceRepository": "https://github.com/kouzukii/ffxiv-priceinsight",
+      "ReferenceIcon": "https://raw.githubusercontent.com/goatcorp/DalamudPluginsD17/main/stable/PriceInsight/images/icon.png",
+      "Method": "AI utility-style interpretation of the existing plugin icon with a quiet background shared by artwork family",
+      "Sha256": "91bc559c8340fab16d5ea59f9fc84afb9a105d6aa1de4ec0072ee1fea01f3ac4"
     },
     {
       "InternalName": "Questionable",
@@ -154,12 +314,52 @@
       "Sha256": "c133af8664d2e21510169c120f79f3afbbd7efd96fbe983de23087ca21a7d746"
     },
     {
+      "InternalName": "QuestMap",
+      "File": "QuestMap.png",
+      "SourceRepository": "https://github.com/GemPlugins/QuestMap",
+      "ReferenceIcon": "https://raw.githubusercontent.com/goatcorp/DalamudPluginsD17/main/stable/QuestMap/images/icon.png",
+      "Method": "AI utility-style interpretation of the existing plugin icon with a quiet background shared by artwork family",
+      "Sha256": "d65f2eb7755f4434f23fd82e104d4a148fbc85486b850b299831ebbc6bce0afd"
+    },
+    {
+      "InternalName": "ReActionEx",
+      "File": "ReActionEx.png",
+      "SourceRepository": "https://puni.sh/api/repository/taurenkey",
+      "ReferenceIcon": null,
+      "Method": "Original AI-generated action-stack utility emblem based on the plugin's purpose; no source icon was published in its installer feed",
+      "Sha256": "600f9443192e3efa1a38db55f032f434643aaa6c70218e287db4230ad6a6401c"
+    },
+    {
+      "InternalName": "ReSanctuary",
+      "File": "ReSanctuary.png",
+      "SourceRepository": "https://github.com/NotNite/ReSanctuary",
+      "ReferenceIcon": "https://raw.githubusercontent.com/goatcorp/DalamudPluginsD17/main/stable/ReSanctuary/images/icon.png",
+      "Method": "AI utility-style interpretation of the existing plugin icon with a quiet background shared by artwork family",
+      "Sha256": "2eaace62f9305ad05cab727166be2db38dcaa5540a7b75cb0d7759da384c2f8f"
+    },
+    {
       "InternalName": "Saucy",
       "File": "Saucy.png",
       "SourceRepository": "https://github.com/PunishXIV/Saucy",
       "ReferenceIcon": "https://raw.githubusercontent.com/PunishXIV/Saucy/HEAD/Saucy/Icon.png",
       "Method": "AI style transfer from original plugin icon, using native FFXIV utility/menu icons with quiet backgrounds shared by artwork family",
       "Sha256": "9feb91e6bedf3f0280737567ba452e6587df9391e699ecfe2a102070a5c5944a"
+    },
+    {
+      "InternalName": "SimpleTweaksPlugin",
+      "File": "SimpleTweaksPlugin.png",
+      "SourceRepository": "https://github.com/Caraxi/SimpleTweaksPlugin",
+      "ReferenceIcon": "https://raw.githubusercontent.com/goatcorp/DalamudPluginsD17/main/stable/SimpleTweaksPlugin/images/icon.png",
+      "Method": "AI utility-style interpretation of the existing plugin icon with a quiet background shared by artwork family",
+      "Sha256": "82c46cb2c9136f66b62a6e45a6383d923a577979eae70c9219457da9a177f374"
+    },
+    {
+      "InternalName": "Splatoon",
+      "File": "Splatoon.png",
+      "SourceRepository": "https://github.com/PunishXIV/Splatoon",
+      "ReferenceIcon": "https://puni.sh/api/plugins/icon/10",
+      "Method": "AI utility-style interpretation of the existing plugin icon with a quiet background shared by artwork family",
+      "Sha256": "f74ecac946fd2b1e56cb4454f5326978c429e38c2a3b0cd5d06eff8e715892ad"
     },
     {
       "InternalName": "Steward",
@@ -178,12 +378,44 @@
       "Sha256": "d7d329a413c6f51ec4000aa68329abd33ffb8404514d153ab518417ffd7cfcb6"
     },
     {
+      "InternalName": "TextAdvance",
+      "File": "TextAdvance.png",
+      "SourceRepository": "https://github.com/NightmareXIV/TextAdvance",
+      "ReferenceIcon": "https://raw.githubusercontent.com/NightmareXIV/TextAdvance/master/TextAdvance/images/icon.png",
+      "Method": "AI utility-style interpretation of the existing plugin icon with a quiet background shared by artwork family",
+      "Sha256": "5c7e9729709eb27c07dcac1825476b1c3daea3e7771ea105edd8afcad5df4c37"
+    },
+    {
+      "InternalName": "TriadBuddy",
+      "File": "TriadBuddy.png",
+      "SourceRepository": "https://github.com/MgAl2O4/FFTriadBuddyDalamud",
+      "ReferenceIcon": "https://raw.githubusercontent.com/goatcorp/DalamudPluginsD17/main/stable/TriadBuddy/images/icon.png",
+      "Method": "AI utility-style interpretation of the existing plugin icon with a quiet background shared by artwork family",
+      "Sha256": "20b4dc82c17f569e03fe6b217bd8f107d166f688a6a990b8da194f660f0679cb"
+    },
+    {
+      "InternalName": "vnavmesh",
+      "File": "vnavmesh.png",
+      "SourceRepository": "https://github.com/awgil/ffxiv_navmesh",
+      "ReferenceIcon": "https://puni.sh/api/plugins/icon/48",
+      "Method": "AI utility-style interpretation of the existing plugin icon with a quiet background shared by artwork family",
+      "Sha256": "478c95301d28303ee6a19a2c625c0c098f914bf81da65768fde856ac009fcc25"
+    },
+    {
       "InternalName": "WrathCombo",
       "File": "WrathCombo.png",
       "SourceRepository": "https://github.com/kaldigo/WrathCombo",
       "ReferenceIcon": "https://raw.githubusercontent.com/kaldigo/WrathCombo/main/assets/icon.png",
       "Method": "AI style transfer from original plugin icon, using native FFXIV utility/menu icons with quiet backgrounds shared by artwork family",
       "Sha256": "933e6861926285c98ec8a9f5fe419202c86fdf7b3dc18ac43ca6dfeb5e446713"
+    },
+    {
+      "InternalName": "YesAlready",
+      "File": "YesAlready.png",
+      "SourceRepository": "https://github.com/PunishXIV/YesAlready/",
+      "ReferenceIcon": "https://puni.sh/api/plugins/icon/26",
+      "Method": "AI utility-style interpretation of the existing plugin icon with a quiet background shared by artwork family",
+      "Sha256": "0d84c2db191017bd2e0ebdd7e75689b8a45244fc25250a3998dd585e9899c3ad"
     }
   ],
   "Fallback": {
