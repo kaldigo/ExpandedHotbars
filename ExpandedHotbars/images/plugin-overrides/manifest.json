@@ -54,8 +54,8 @@
       "File": "AutoHook.png",
       "SourceRepository": "https://github.com/PunishXIV/AutoHook",
       "ReferenceIcon": "https://raw.githubusercontent.com/PunishXIV/AutoHook/HEAD/AutoHook/Assets/icon.png",
-      "Method": "AI utility-style rendering of the original fishing emblem, on the shared Puni.sh brown field",
-      "Sha256": "5e9e09d07b9ec3ff45eb2e0fd8c9e4d398ebd72ea5a2571df5f5e9f78c2d5549"
+      "Method": "AI utility-style fishing emblem recoloured throughout to the Puni.sh orange/coral palette on the shared brown field",
+      "Sha256": "d381101c707cdb1ffaa95c5c1fe0e7ca9462e375a899905b57961a29263f91b8"
     },
     {
       "InternalName": "Automaton",

@@ -69,4 +69,4 @@ These 29 hotbar renderings were generated with the built-in image tool. Source m
 | vnavmesh | [Source](https://github.com/awgil/ffxiv_navmesh) | [Original icon](https://puni.sh/api/plugins/icon/48) | See source; no license returned by repository metadata |
 | YesAlready | [Source](https://github.com/PunishXIV/YesAlready/) | [Original icon](https://puni.sh/api/plugins/icon/26) | See source; no license returned by repository metadata |
 
-AutoHook shares the Puni.sh brown background (#49311F); its silver fishing rod and pink fish retain their original colours and silhouette. This background correction was made with the built-in image generator.
+AutoHook shares the Puni.sh brown background (#49311F). Its fishing rod, hook and fish are recoloured throughout to the same warm orange/coral palette as the other Puni.sh emblems, while retaining the original fishing silhouette. Both the background and foreground palette corrections were made with the built-in image generator.
