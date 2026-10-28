@@ -235,6 +235,7 @@ were created with the built-in image generator using the original plugin icons a
 a style reference sheet extracted locally from the game; the game reference sheet
 is not redistributed in this repository.
 
-The Kaldigo icon family includes the AutoRetainer fork bell and a distinct Steward
-inventory/checkmark emblem. Hotbar overrides still resolve by internal plugin name;
-AutoRetainer retains its shared identity and uses the Kaldigo artwork in this set.
+The Kaldigo icon family includes the AutoRetainer fork bell, Questionable's branching
+route arrows and a distinct Steward inventory/checkmark emblem. Hotbar overrides
+still resolve by internal plugin name; AutoRetainer and Questionable retain their
+shared identities and use the Kaldigo artwork in this set.

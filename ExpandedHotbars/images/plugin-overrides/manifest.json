@@ -148,10 +148,10 @@
     {
       "InternalName": "Questionable",
       "File": "Questionable.png",
-      "SourceRepository": "https://github.com/PunishXIV/Questionable",
-      "ReferenceIcon": "https://puni.sh/api/plugins/icon/94",
-      "Method": "AI style transfer from original plugin icon, using native FFXIV utility/menu icons with quiet backgrounds shared by artwork family",
-      "Sha256": "8f4e0d65d38185054a78ad3d19147829fa947ce2e13b5ca4ef0b1dd5ab56ebee"
+      "SourceRepository": "https://github.com/kaldigo/Questionable",
+      "ReferenceIcon": "https://raw.githubusercontent.com/kaldigo/Questionable/new-main/assets/icon.png",
+      "Method": "AI utility-style rendering of the Kaldigo fork route-arrow emblem, on the shared Kaldigo indigo field",
+      "Sha256": "c133af8664d2e21510169c120f79f3afbbd7efd96fbe983de23087ca21a7d746"
     },
     {
       "InternalName": "Saucy",

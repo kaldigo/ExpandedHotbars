@@ -21,7 +21,7 @@ These replacement renderings were generated with the built-in image generator fr
 | GlamourLog | [Repository](https://github.com/Jaksuhn/ffxiv_glamourlog) | [Original icon](https://puni.sh/api/plugins/icon/136) | AGPL-3.0 |
 | HUDManager | [Repository](https://github.com/zacharied/FFXIV-Plugin-HudManager) | [Original icon](https://raw.githubusercontent.com/goatcorp/PluginDistD17/main/testing-live/HUDManager/images/icon.png) | Not specified |
 | Hunty | [Repository](https://github.com/Infiziert90/Hunty) | [Original icon](https://raw.githubusercontent.com/goatcorp/PluginDistD17/main/testing-live/Hunty/images/icon.png) | MIT |
-| Questionable | [Repository](https://github.com/PunishXIV/Questionable) | [Original icon](https://puni.sh/api/plugins/icon/94) | AGPL-3.0 |
+| Questionable | [Kaldigo fork](https://github.com/kaldigo/Questionable) | [Fork icon](https://raw.githubusercontent.com/kaldigo/Questionable/new-main/assets/icon.png), based on the [upstream emblem](https://github.com/PunishXIV/Questionable) | AGPL-3.0 |
 | Saucy | [Repository](https://github.com/PunishXIV/Saucy) | [Original icon](https://raw.githubusercontent.com/PunishXIV/Saucy/HEAD/Saucy/Icon.png) | BSD-3-Clause |
 | WrathCombo | [Repository](https://github.com/kaldigo/WrathCombo) | [Original icon](https://raw.githubusercontent.com/kaldigo/WrathCombo/main/assets/icon.png) | BSD-3-Clause |
 
