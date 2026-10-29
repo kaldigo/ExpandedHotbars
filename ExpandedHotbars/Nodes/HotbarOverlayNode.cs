@@ -22,7 +22,7 @@ public sealed partial class HotbarOverlayNode : OverlayNode {
     public override OverlayLayer OverlayLayer => OverlayLayer.BehindUserInterface;
 
     protected override unsafe void OnUpdate() {
-        IsVisible = Config.ShouldShowHotbar() && Config.IsEnabled && !IClientState.Get().IsPvP;
+        IsVisible = Config.ShouldShowHotbar() && Config.IsEnabled && (Config.AllowInPvP || !IClientState.Get().IsPvP);
         if (!IsVisible) return;
 
         foreach (var feature in Config.ExtraFeatures) {

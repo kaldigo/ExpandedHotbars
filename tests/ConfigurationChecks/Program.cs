@@ -26,6 +26,11 @@ static void RunChecks() {
     var options = new JsonSerializerOptions { IncludeFields = true };
     var legacy = JsonSerializer.Deserialize<HotbarConfig>("{\"HotbarName\":\"Legacy\",\"IsEnabled\":true}", options)!;
     Check(!legacy.CloseAfterUse && !legacy.TryCloseAfterUse() && legacy.IsEnabled, "Legacy settings keep the bar open");
+    Check(!legacy.AllowInPvP && !new HotbarConfig().AllowInPvP, "Legacy and new bars keep PvP hidden by default");
+    var pvpBar = new HotbarConfig { AllowInPvP = true };
+    var restoredPvP = JsonSerializer.Deserialize<HotbarConfig>(JsonSerializer.Serialize(pvpBar, options), options)!;
+    Check(restoredPvP.AllowInPvP && restoredPvP.Guid == pvpBar.Guid && !legacy.AllowInPvP,
+        "PvP opt-in survives saving and affects only the selected bar");
     var legacyPosition = JsonSerializer.Deserialize<HotbarConfig>("""{"Position":{"X":2462,"Y":547},"ShowPadlockButton":true}""", options)!;
     Check(legacyPosition.Position == new Vector2(2462, 547), "Existing export coordinates load without migration");
     var positioned = new HotbarConfig { Position = Vector2.Zero, HasCustomPosition = true };

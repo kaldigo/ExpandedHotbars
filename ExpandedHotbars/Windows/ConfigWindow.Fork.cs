@@ -21,6 +21,11 @@ public partial class ConfigWindow {
 
     private void DrawForkActivationSettings() {
         if (selectedConfig is null) return;
+        ImGui.Label("Allow in PvP", "Allows this hotbar to appear in PvP. Other visibility conditions still apply.");
+        if (ImGui.Checkbox("##AllowInPvP", ref selectedConfig.AllowInPvP)) {
+            System.Config.Save();
+        }
+
         ImGui.Label("Close After Use", "Closes this bar after activating an action by click or keybind, even if the action cannot be used.\n" +
                                       "Reopen it with /exhotbar show <hotbar name>, /exhotbar toggle <hotbar name>, or Enabled above.");
         if (ImGui.Checkbox("##CloseAfterUse", ref selectedConfig.CloseAfterUse)) {

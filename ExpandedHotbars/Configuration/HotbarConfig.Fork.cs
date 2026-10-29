@@ -1,6 +1,7 @@
 namespace ExpandedHotbars.Configuration;
 
 public partial class HotbarConfig {
+    public bool AllowInPvP = false;
     public bool AnchorRight = false;
     public bool AnchorBottom = false;
 
