@@ -372,10 +372,10 @@
     {
       "InternalName": "Stylist",
       "File": "Stylist.png",
-      "SourceRepository": "https://github.com/NightmareXIV/Stylist",
-      "ReferenceIcon": null,
-      "Method": "Original AI-generated wardrobe/gear utility emblem; no original Stylist icon supplied",
-      "Sha256": "d7d329a413c6f51ec4000aa68329abd33ffb8404514d153ab518417ffd7cfcb6"
+      "SourceRepository": "https://github.com/kaldigo/Stylist",
+      "ReferenceIcon": "https://raw.githubusercontent.com/kaldigo/Stylist/main/assets/icon.png",
+      "Method": "AI utility-style interpretation of the Kaldigo Stylist fork character emblem, cyan/magenta on the shared indigo field",
+      "Sha256": "9a8350d9275aa42ca138ec0a4487eb04738a638ed55c966528b5ec0abff17cd0"
     },
     {
       "InternalName": "TextAdvance",
