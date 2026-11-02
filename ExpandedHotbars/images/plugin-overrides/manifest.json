@@ -58,6 +58,14 @@
       "Sha256": "d381101c707cdb1ffaa95c5c1fe0e7ca9462e375a899905b57961a29263f91b8"
     },
     {
+      "InternalName": "AutoKeyboundBrawler",
+      "File": "AutoKeyboundBrawler.png",
+      "SourceRepository": "https://github.com/XeldarAlz/FFXIV-AutoKeyboundBrawler",
+      "ReferenceIcon": "https://grindless.pages.dev/icons/AutoKeyboundBrawler.png",
+      "Method": "AI utility-style interpretation of the original icon, Ivory keyboard utility on a quiet #332A45 background",
+      "Sha256": "690848051e25977c730dbad29f613cbefb05a427c5e197a4e28462d913aceb98"
+    },
+    {
       "InternalName": "Automaton",
       "File": "Automaton.png",
       "SourceRepository": "https://github.com/Jaksuhn/ffxiv-bundleoftweaks",
@@ -128,6 +136,14 @@
       "ReferenceIcon": "https://raw.githubusercontent.com/kaldigo/ExpandedHotbars/master/ExpandedHotbars/images/icon.png",
       "Method": "AI style transfer from original plugin icon, using native FFXIV utility/menu icons with quiet backgrounds shared by artwork family",
       "Sha256": "64ddb73201d41464611f92ee37edeff44f3be07deb5ce9f0387a56b6fca0af43"
+    },
+    {
+      "InternalName": "ExplorersIcebox",
+      "File": "ExplorersIcebox.png",
+      "SourceRepository": "https://github.com/LeontopodiumNivale14/Explorers-Icebox",
+      "ReferenceIcon": "https://s3.puni.sh/media/plugin/64/icon-vw3ucktk0f.png",
+      "Method": "AI utility-style interpretation of the original icon, Punish coral utility on a quiet #49311F background",
+      "Sha256": "4443ea4e5f31fc7fe8675b43821935514f29a4a11ddc851fcaf4eafd8535d262"
     },
     {
       "InternalName": "FauxHollowsSolver",
@@ -392,6 +408,22 @@
       "ReferenceIcon": "https://raw.githubusercontent.com/goatcorp/DalamudPluginsD17/main/stable/TriadBuddy/images/icon.png",
       "Method": "AI utility-style interpretation of the existing plugin icon with a quiet background shared by artwork family",
       "Sha256": "20b4dc82c17f569e03fe6b217bd8f107d166f688a6a990b8da194f660f0679cb"
+    },
+    {
+      "InternalName": "Tsukimichi",
+      "File": "Tsukimichi.png",
+      "SourceRepository": "https://github.com/xenofei/Tsukimichi",
+      "ReferenceIcon": "https://raw.githubusercontent.com/xenofei/Tsukimichi/main/assets/icon-medallion.png",
+      "Method": "AI utility-style interpretation of the original icon, Moonlit path utility on a quiet #18213E background",
+      "Sha256": "3578e2d213e09b0f29dbdb4fb88e291e2b17a49290653c9a1d1a4a51a92e6b65"
+    },
+    {
+      "InternalName": "visland",
+      "File": "visland.png",
+      "SourceRepository": "https://github.com/awgil/ffxiv_visland",
+      "ReferenceIcon": "https://puni.sh/api/plugins/icon/28",
+      "Method": "AI utility-style interpretation of the original icon, Punish coral utility on a quiet #49311F background",
+      "Sha256": "d1bfcb4388088fa0bb977218d0673c89d79bbcca02313f84f736e745083c5414"
     },
     {
       "InternalName": "vnavmesh",

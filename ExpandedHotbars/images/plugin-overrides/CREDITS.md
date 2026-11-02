@@ -70,3 +70,14 @@ These 29 hotbar renderings were generated with the built-in image tool. Source m
 | YesAlready | [Source](https://github.com/PunishXIV/YesAlready/) | [Original icon](https://puni.sh/api/plugins/icon/26) | See source; no license returned by repository metadata |
 
 AutoHook shares the Puni.sh brown background (#49311F). Its fishing rod, hook and fish are recoloured throughout to the same warm orange/coral palette as the other Puni.sh emblems, while retaining the original fishing silhouette. Both the background and foreground palette corrections were made with the built-in image generator.
+
+## November 2026 additions
+
+These four hotbar renderings use the built-in image generator with the original plugin icons as subject references. Auto Keybound Brawler retains its ivory keyboard, and Tsukimichi its silver crescent, reflection path and lantern. Visland and Explorer's Icebox share the Puni.sh orange/coral foreground palette and brown field. Explorer's Icebox is included ahead of installation.
+
+| Plugin | Source repository | Reference artwork | Source repository license |
+| --- | --- | --- | --- |
+| Auto Keybound Brawler | [Source](https://github.com/XeldarAlz/FFXIV-AutoKeyboundBrawler) | [Original icon](https://grindless.pages.dev/icons/AutoKeyboundBrawler.png) | See source; no license returned by repository metadata |
+| Tsukimichi | [Source](https://github.com/xenofei/Tsukimichi) | [Original icon](https://raw.githubusercontent.com/xenofei/Tsukimichi/main/assets/icon-medallion.png) | MIT (text retained) |
+| Visland | [Source](https://github.com/awgil/ffxiv_visland) | [Original icon](https://puni.sh/api/plugins/icon/28) | See source; no license returned by repository metadata |
+| Explorer's Icebox | [Source](https://github.com/LeontopodiumNivale14/Explorers-Icebox) | [Original icon](https://s3.puni.sh/media/plugin/64/icon-vw3ucktk0f.png) | AGPL-3.0 (text retained) |
