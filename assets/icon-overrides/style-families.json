@@ -26,14 +26,16 @@
         "AutoHook",
         "Automaton",
         "Avarice",
+        "ExplorersIcebox",
         "LazyLoot",
         "Marketbuddy",
         "Palantir",
         "PandorasBox",
         "Saucy",
         "Splatoon",
-        "vnavmesh",
-        "YesAlready"
+        "YesAlready",
+        "visland",
+        "vnavmesh"
       ]
     },
     {
@@ -169,6 +171,22 @@
       "Reference": "TriadBuddy",
       "Icons": [
         "TriadBuddy"
+      ]
+    },
+    {
+      "StyleFamily": "Ivory keyboard utility",
+      "Background": "#332A45",
+      "Reference": "AutoKeyboundBrawler",
+      "Icons": [
+        "AutoKeyboundBrawler"
+      ]
+    },
+    {
+      "StyleFamily": "Moonlit path utility",
+      "Background": "#18213E",
+      "Reference": "Tsukimichi",
+      "Icons": [
+        "Tsukimichi"
       ]
     }
   ]
