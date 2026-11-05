@@ -11,6 +11,7 @@
         "AutoRetainer",
         "ExpandedHotbarsPlus",
         "Questionable",
+        "RotationSolver",
         "Steward",
         "Stylist",
         "WrathCombo"
@@ -187,6 +188,14 @@
       "Reference": "Tsukimichi",
       "Icons": [
         "Tsukimichi"
+      ]
+    },
+    {
+      "StyleFamily": "Ivory ReMakePlace utility",
+      "Background": "#302957",
+      "Reference": "ReMakePlacePlugin",
+      "Icons": [
+        "ReMakePlacePlugin"
       ]
     }
   ]

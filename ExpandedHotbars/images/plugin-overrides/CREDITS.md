@@ -81,3 +81,12 @@ These four hotbar renderings use the built-in image generator with the original 
 | Tsukimichi | [Source](https://github.com/xenofei/Tsukimichi) | [Original icon](https://raw.githubusercontent.com/xenofei/Tsukimichi/main/assets/icon-medallion.png) | MIT (text retained) |
 | Visland | [Source](https://github.com/awgil/ffxiv_visland) | [Original icon](https://puni.sh/api/plugins/icon/28) | See source; no license returned by repository metadata |
 | Explorer's Icebox | [Source](https://github.com/LeontopodiumNivale14/Explorers-Icebox) | [Original icon](https://s3.puni.sh/media/plugin/64/icon-vw3ucktk0f.png) | AGPL-3.0 (text retained) |
+
+## 5 November 2026 additions
+
+These hotbar renderings use the built-in image generator with the current plugin icons as subject references. ReMakePlace preserves its ivory M and dark Re microchip on violet. Rotation Solver Reborn uses the Kaldigo fork sword and circular arrows in cyan/magenta on shared indigo.
+
+| Plugin | Source repository | Reference artwork | Source repository license |
+| --- | --- | --- | --- |
+| ReMakePlace | [Source](https://github.com/ReMakePlace/plugin) | [Original icon](https://raw.githubusercontent.com/ReMakePlace/Plugin/master/icon.png) | See source; no license returned by repository metadata |
+| Rotation Solver Reborn (Kaldigo fork) | [Source](https://github.com/kaldigo/RotationSolverReborn) | [Original icon](https://raw.githubusercontent.com/kaldigo/RotationSolverReborn/testing-v7.5.7.18/assets/icon.png) | LGPL-3.0 (text retained) |
