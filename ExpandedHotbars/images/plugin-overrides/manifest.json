@@ -346,12 +346,28 @@
       "Sha256": "600f9443192e3efa1a38db55f032f434643aaa6c70218e287db4230ad6a6401c"
     },
     {
+      "InternalName": "ReMakePlacePlugin",
+      "File": "ReMakePlacePlugin.png",
+      "SourceRepository": "https://github.com/ReMakePlace/plugin",
+      "ReferenceIcon": "https://raw.githubusercontent.com/ReMakePlace/Plugin/master/icon.png",
+      "Method": "AI utility-style interpretation of the source icon; Ivory ReMakePlace utility on #302957",
+      "Sha256": "f0ab88a174c2b1b9340860505b2e7eaf6767f314b581056f9020c71e769b458b"
+    },
+    {
       "InternalName": "ReSanctuary",
       "File": "ReSanctuary.png",
       "SourceRepository": "https://github.com/NotNite/ReSanctuary",
       "ReferenceIcon": "https://raw.githubusercontent.com/goatcorp/DalamudPluginsD17/main/stable/ReSanctuary/images/icon.png",
       "Method": "AI utility-style interpretation of the existing plugin icon with a quiet background shared by artwork family",
       "Sha256": "2eaace62f9305ad05cab727166be2db38dcaa5540a7b75cb0d7759da384c2f8f"
+    },
+    {
+      "InternalName": "RotationSolver",
+      "File": "RotationSolver.png",
+      "SourceRepository": "https://github.com/kaldigo/RotationSolverReborn",
+      "ReferenceIcon": "https://raw.githubusercontent.com/kaldigo/RotationSolverReborn/testing-v7.5.7.18/assets/icon.png",
+      "Method": "AI utility-style interpretation of the source icon; Kaldigo cyan-magenta on #272640",
+      "Sha256": "f10c8f54d126e5034d1332b62d63ea95e1925f9a93b89c4bd9d6f3f38a57b754"
     },
     {
       "InternalName": "Saucy",
