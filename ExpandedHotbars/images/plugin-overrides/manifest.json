@@ -98,6 +98,14 @@
       "Sha256": "d83385bb8c7195d40dd6f1fb0823cf092ff9b4b3780a2b968d6c2d99a7f3f6f2"
     },
     {
+      "InternalName": "BOCCHI",
+      "File": "BOCCHI.png",
+      "SourceRepository": "https://github.com/OhKannaDuh/BOCCHI",
+      "ReferenceIcon": "https://raw.githubusercontent.com/OhKannaDuh/BOCCHI/master/assets/icon.png",
+      "Method": "AI utility-style interpretation of original plugin artwork; BOCCHI crescent utility on #10274D",
+      "Sha256": "105fe5785b27bf2bef4245095491eb05429198d132218d260186f835d8ff2a43"
+    },
+    {
       "InternalName": "BossModReborn",
       "File": "BossModReborn.png",
       "SourceRepository": "https://github.com/FFXIV-CombatReborn/BossmodReborn",
@@ -200,6 +208,14 @@
       "ReferenceIcon": "https://raw.githubusercontent.com/goatcorp/PluginDistD17/main/testing-live/Hunty/images/icon.png",
       "Method": "AI style transfer from original plugin icon, using native FFXIV utility/menu icons with quiet backgrounds shared by artwork family",
       "Sha256": "fac27a8d28937259cb5a278a681fa6fa2bdb5e547d27bc3db893a6d48b572c52"
+    },
+    {
+      "InternalName": "ICE",
+      "File": "ICE.png",
+      "SourceRepository": "https://github.com/LeontopodiumNivale14/Ices-Cosmic-Exploration",
+      "ReferenceIcon": "https://puni.sh/api/plugins/icon/70",
+      "Method": "AI utility-style interpretation of original plugin artwork; Punish coral utility on #49311F",
+      "Sha256": "75699c24a8064414b53ab2ef00da206e77d8feac60fbf62334715cbb4668c7b1"
     },
     {
       "InternalName": "IINACT",

@@ -28,6 +28,7 @@
         "Automaton",
         "Avarice",
         "ExplorersIcebox",
+        "ICE",
         "LazyLoot",
         "Marketbuddy",
         "Palantir",
@@ -196,6 +197,14 @@
       "Reference": "ReMakePlacePlugin",
       "Icons": [
         "ReMakePlacePlugin"
+      ]
+    },
+    {
+      "StyleFamily": "BOCCHI crescent utility",
+      "Background": "#10274D",
+      "Reference": "BOCCHI",
+      "Icons": [
+        "BOCCHI"
       ]
     }
   ]

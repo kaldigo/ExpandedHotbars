@@ -206,9 +206,8 @@ click fallbacks, export/import compatibility and icon corner masking.
 
 ### Packaged hotbar icon overrides
 
-The bundled icon set covers Dalamud and all 53 plugins in the installed-plugin audit
-of 2 November 2026, including plugins that have not yet been favourited. Explorer's
-Icebox is also included ahead of installation. Each is a generated
+The bundled icon set covers Dalamud and all 58 plugins in the installed-plugin audit
+of 13 November 2026, including plugins that have not yet been favourited. Each is a generated
 reinterpretation of its original icon using native utility/menu icons as the visual
 style reference, with simple raised symbols and quiet background colours shared by artwork family.
 The cyan/magenta Kaldigo set shares indigo, the matching coral Punish-style set

@@ -90,3 +90,12 @@ These hotbar renderings use the built-in image generator with the current plugin
 | --- | --- | --- | --- |
 | ReMakePlace | [Source](https://github.com/ReMakePlace/plugin) | [Original icon](https://raw.githubusercontent.com/ReMakePlace/Plugin/master/icon.png) | See source; no license returned by repository metadata |
 | Rotation Solver Reborn (Kaldigo fork) | [Source](https://github.com/kaldigo/RotationSolverReborn) | [Original icon](https://raw.githubusercontent.com/kaldigo/RotationSolverReborn/testing-v7.5.7.18/assets/icon.png) | LGPL-3.0 (text retained) |
+
+## 13 November 2026 additions
+
+Generated with the built-in image tool from the original plugin icons. BOCCHI preserves its cyan/pink crescent and encircling ring on navy. Ice's Cosmic Exploration preserves the rabbit-eared moon, orbit and gear in the shared Puni.sh orange/coral palette on brown.
+
+| Plugin | Source repository | Reference artwork | Source repository license |
+| --- | --- | --- | --- |
+| BOCCHI | [Source](https://github.com/OhKannaDuh/BOCCHI) | [Original icon](https://raw.githubusercontent.com/OhKannaDuh/BOCCHI/master/assets/icon.png) | AGPL-3.0 (text retained) |
+| Ice's Cosmic Exploration | [Source](https://github.com/LeontopodiumNivale14/Ices-Cosmic-Exploration) | [Original icon](https://puni.sh/api/plugins/icon/70) | GPL-3.0 (text retained) |
