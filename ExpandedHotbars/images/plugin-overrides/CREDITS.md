@@ -73,7 +73,7 @@ AutoHook shares the Puni.sh brown background (#49311F). Its fishing rod, hook an
 
 ## November 2026 additions
 
-These four hotbar renderings use the built-in image generator with the original plugin icons as subject references. Auto Keybound Brawler retains its ivory keyboard, and Tsukimichi its silver crescent, reflection path and lantern. Visland and Explorer's Icebox share the Puni.sh orange/coral foreground palette and brown field. Explorer's Icebox is included ahead of installation.
+These four hotbar renderings use the built-in image generator with the original plugin icons as subject references. Auto Keybound Brawler retains its ivory keyboard, and Tsukimichi its silver crescent, reflection path and lantern. Visland uses the Puni.sh orange/coral foreground palette and brown field. Explorer's Icebox now uses Ice's own blue/cyan palette on charcoal. Explorer's Icebox is included ahead of installation.
 
 | Plugin | Source repository | Reference artwork | Source repository license |
 | --- | --- | --- | --- |
@@ -93,9 +93,11 @@ These hotbar renderings use the built-in image generator with the current plugin
 
 ## 13 November 2026 additions
 
-Generated with the built-in image tool from the original plugin icons. BOCCHI preserves its cyan/pink crescent and encircling ring on navy. Ice's Cosmic Exploration preserves the rabbit-eared moon, orbit and gear in the shared Puni.sh orange/coral palette on brown.
+Generated with the built-in image tool from the original plugin icons. BOCCHI preserves its cyan/pink crescent and encircling ring on navy. Ice's Cosmic Exploration preserves the rabbit-eared moon, orbit and gear in Ice's blue/cyan and white palette on charcoal.
 
 | Plugin | Source repository | Reference artwork | Source repository license |
 | --- | --- | --- | --- |
 | BOCCHI | [Source](https://github.com/OhKannaDuh/BOCCHI) | [Original icon](https://raw.githubusercontent.com/OhKannaDuh/BOCCHI/master/assets/icon.png) | AGPL-3.0 (text retained) |
 | Ice's Cosmic Exploration | [Source](https://github.com/LeontopodiumNivale14/Ices-Cosmic-Exploration) | [Original icon](https://puni.sh/api/plugins/icon/70) | GPL-3.0 (text retained) |
+
+Ice palette correction: Explorer's Icebox and Ice's Cosmic Exploration share icy blue/cyan foregrounds with white accents on charcoal (#242A30), based on their original artist icons. The built-in image generator applied these colour edits while retaining the hotbar motifs. Future artwork for plugins from https://puni.sh/api/repository/ice should use this family rather than the Puni.sh orange/coral family.

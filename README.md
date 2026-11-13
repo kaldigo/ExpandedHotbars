@@ -218,6 +218,8 @@ Puni.sh brown field. Colour references and membership are recorded in
 large food, coin or journal symbols with small sleeping-character corner badges.
 The purple Nightmare utility emblems share violet. Simple Tweaks retains cyan/red
 on slate, separate from the Kaldigo palette. Dalamud uses a white background.
+Ice's plugins use icy blue/cyan with white accents on shared charcoal, based on the
+artist's source icons, including Explorer's Icebox and Ice's Cosmic Exploration.
 A common rounded-corner mask is applied
 in game, including to the original installer icons used as fallbacks.
 

@@ -27,8 +27,6 @@
         "AutoHook",
         "Automaton",
         "Avarice",
-        "ExplorersIcebox",
-        "ICE",
         "LazyLoot",
         "Marketbuddy",
         "Palantir",
@@ -205,6 +203,15 @@
       "Reference": "BOCCHI",
       "Icons": [
         "BOCCHI"
+      ]
+    },
+    {
+      "StyleFamily": "Ice cyan-blue utility",
+      "Background": "#242A30",
+      "Reference": "ExplorersIcebox",
+      "Icons": [
+        "ExplorersIcebox",
+        "ICE"
       ]
     }
   ]
