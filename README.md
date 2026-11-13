@@ -206,9 +206,8 @@ click fallbacks, export/import compatibility and icon corner masking.
 
 ### Packaged hotbar icon overrides
 
-The bundled icon set covers Dalamud and all 53 plugins in the installed-plugin audit
-of 2 November 2026, including plugins that have not yet been favourited. Explorer's
-Icebox is also included ahead of installation. Each is a generated
+The bundled icon set covers Dalamud and all 58 plugins in the installed-plugin audit
+of 13 November 2026, including plugins that have not yet been favourited. Each is a generated
 reinterpretation of its original icon using native utility/menu icons as the visual
 style reference, with simple raised symbols and quiet background colours shared by artwork family.
 The cyan/magenta Kaldigo set shares indigo, the matching coral Punish-style set
@@ -219,6 +218,8 @@ Puni.sh brown field. Colour references and membership are recorded in
 large food, coin or journal symbols with small sleeping-character corner badges.
 The purple Nightmare utility emblems share violet. Simple Tweaks retains cyan/red
 on slate, separate from the Kaldigo palette. Dalamud uses a white background.
+Ice's plugins use icy blue/cyan with white accents on shared charcoal, based on the
+artist's source icons, including Explorer's Icebox and Ice's Cosmic Exploration.
 A common rounded-corner mask is applied
 in game, including to the original installer icons used as fallbacks.
 

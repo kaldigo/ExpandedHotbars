@@ -98,6 +98,14 @@
       "Sha256": "d83385bb8c7195d40dd6f1fb0823cf092ff9b4b3780a2b968d6c2d99a7f3f6f2"
     },
     {
+      "InternalName": "BOCCHI",
+      "File": "BOCCHI.png",
+      "SourceRepository": "https://github.com/OhKannaDuh/BOCCHI",
+      "ReferenceIcon": "https://raw.githubusercontent.com/OhKannaDuh/BOCCHI/master/assets/icon.png",
+      "Method": "AI utility-style interpretation of original plugin artwork; BOCCHI crescent utility on #10274D",
+      "Sha256": "105fe5785b27bf2bef4245095491eb05429198d132218d260186f835d8ff2a43"
+    },
+    {
       "InternalName": "BossModReborn",
       "File": "BossModReborn.png",
       "SourceRepository": "https://github.com/FFXIV-CombatReborn/BossmodReborn",
@@ -142,8 +150,8 @@
       "File": "ExplorersIcebox.png",
       "SourceRepository": "https://github.com/LeontopodiumNivale14/Explorers-Icebox",
       "ReferenceIcon": "https://s3.puni.sh/media/plugin/64/icon-vw3ucktk0f.png",
-      "Method": "AI utility-style interpretation of the original icon, Punish coral utility on a quiet #49311F background",
-      "Sha256": "4443ea4e5f31fc7fe8675b43821935514f29a4a11ddc851fcaf4eafd8535d262"
+      "Method": "AI utility-style interpretation in Ice cyan/blue and white on shared charcoal, based on the original artist palette",
+      "Sha256": "1a8c015fda3c6307c7b446e448f7839860113a02d249e7f0b6657da682027498"
     },
     {
       "InternalName": "FauxHollowsSolver",
@@ -200,6 +208,14 @@
       "ReferenceIcon": "https://raw.githubusercontent.com/goatcorp/PluginDistD17/main/testing-live/Hunty/images/icon.png",
       "Method": "AI style transfer from original plugin icon, using native FFXIV utility/menu icons with quiet backgrounds shared by artwork family",
       "Sha256": "fac27a8d28937259cb5a278a681fa6fa2bdb5e547d27bc3db893a6d48b572c52"
+    },
+    {
+      "InternalName": "ICE",
+      "File": "ICE.png",
+      "SourceRepository": "https://github.com/LeontopodiumNivale14/Ices-Cosmic-Exploration",
+      "ReferenceIcon": "https://puni.sh/api/plugins/icon/70",
+      "Method": "AI utility-style interpretation in Ice cyan/blue and white on shared charcoal, based on the original artist palette",
+      "Sha256": "3db416aa47365ca68efaef052cdcfca43f52d5c7b5ac32053a866b0383a88879"
     },
     {
       "InternalName": "IINACT",

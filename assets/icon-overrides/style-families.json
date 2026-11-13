@@ -27,7 +27,6 @@
         "AutoHook",
         "Automaton",
         "Avarice",
-        "ExplorersIcebox",
         "LazyLoot",
         "Marketbuddy",
         "Palantir",
@@ -196,6 +195,23 @@
       "Reference": "ReMakePlacePlugin",
       "Icons": [
         "ReMakePlacePlugin"
+      ]
+    },
+    {
+      "StyleFamily": "BOCCHI crescent utility",
+      "Background": "#10274D",
+      "Reference": "BOCCHI",
+      "Icons": [
+        "BOCCHI"
+      ]
+    },
+    {
+      "StyleFamily": "Ice cyan-blue utility",
+      "Background": "#242A30",
+      "Reference": "ExplorersIcebox",
+      "Icons": [
+        "ExplorersIcebox",
+        "ICE"
       ]
     }
   ]
