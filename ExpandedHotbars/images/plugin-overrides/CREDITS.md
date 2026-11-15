@@ -101,3 +101,16 @@ Generated with the built-in image tool from the original plugin icons. BOCCHI pr
 | Ice's Cosmic Exploration | [Source](https://github.com/LeontopodiumNivale14/Ices-Cosmic-Exploration) | [Original icon](https://puni.sh/api/plugins/icon/70) | GPL-3.0 (text retained) |
 
 Ice palette correction: Explorer's Icebox and Ice's Cosmic Exploration share icy blue/cyan foregrounds with white accents on charcoal (#242A30), based on their original artist icons. The built-in image generator applied these colour edits while retaining the hotbar motifs. Future artwork for plugins from https://puni.sh/api/repository/ice should use this family rather than the Puni.sh orange/coral family.
+
+## 15 November 2026 additions
+
+Generated with the built-in image tool from each plugin's current icon. Aetherloom and the Kaldigo Glamourer fork retain their cyan/magenta emblems on shared indigo. Customize+ retains its gold/blue potion and plus; Honse Farm its dark horse on crimson; Penumbra its silver-blue moon on charcoal; WTSync its journal and peach silhouette on brown.
+
+| Plugin | Source repository | Reference artwork | Source repository license |
+| --- | --- | --- | --- |
+| Aetherloom | [Source](https://github.com/kaldigo/FFXIVAetherloom) | [Original icon](https://raw.githubusercontent.com/kaldigo/FFXIVAetherloom/v0.1.0.13/assets/icon.png) | Apache-2.0 (text retained) |
+| Customize+ | [Source](https://github.com/Aether-Tools/CustomizePlus) | [Original icon](https://raw.githubusercontent.com/Aether-Tools/CustomizePlus/main/Data/icon.png) | Apache-2.0 (text retained) |
+| Glamourer | [Source](https://github.com/kaldigo/Glamourer) | [Original icon](https://raw.githubusercontent.com/kaldigo/Glamourer/testing/images/icon.png) | Apache-2.0 (text retained) |
+| Honse Farm | [Source](https://git.honse.farm/astraea/honse-farm) | [Original icon](https://git.honse.farm/astraea/honse-farm/-/raw/main/HonseFarm.Client/images/icon.png) | See source; no license returned by repository metadata |
+| Penumbra | [Source](https://github.com/xivdev/Penumbra) | [Original icon](https://raw.githubusercontent.com/xivdev/Penumbra/master/images/icon.png) | See source; no license returned by repository metadata |
+| WTSync | [Source](https://github.com/KhloeLeclair/WTSync) | [Original icon](https://raw.githubusercontent.com/goatcorp/DalamudPluginsD17/main/stable/WTSync/images/icon.png) | See source; no license returned by repository metadata |

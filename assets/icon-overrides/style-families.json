@@ -7,9 +7,11 @@
       "Reference": "Aetherworks",
       "Icons": [
         "Accord",
+        "Aetherloom",
         "Aetherworks",
         "AutoRetainer",
         "ExpandedHotbarsPlus",
+        "Glamourer",
         "Questionable",
         "RotationSolver",
         "Steward",
@@ -212,6 +214,38 @@
       "Icons": [
         "ExplorersIcebox",
         "ICE"
+      ]
+    },
+    {
+      "StyleFamily": "Fantasia bottle utility",
+      "Background": "#3C3546",
+      "Reference": "CustomizePlus",
+      "Icons": [
+        "CustomizePlus"
+      ]
+    },
+    {
+      "StyleFamily": "Honse red utility",
+      "Background": "#9C2331",
+      "Reference": "HonseFarm.Client",
+      "Icons": [
+        "HonseFarm.Client"
+      ]
+    },
+    {
+      "StyleFamily": "Silver full moon utility",
+      "Background": "#202E38",
+      "Reference": "Penumbra",
+      "Icons": [
+        "Penumbra"
+      ]
+    },
+    {
+      "StyleFamily": "Khloe journal utility",
+      "Background": "#45372C",
+      "Reference": "WTSync",
+      "Icons": [
+        "WTSync"
       ]
     }
   ]
