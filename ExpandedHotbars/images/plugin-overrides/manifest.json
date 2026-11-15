@@ -10,6 +10,14 @@
       "Sha256": "effb3ca029f02e4f077d9124d5b5b110d2584830bd67170931a30bf53113c601"
     },
     {
+      "InternalName": "Aetherloom",
+      "File": "Aetherloom.png",
+      "SourceRepository": "https://github.com/kaldigo/FFXIVAetherloom",
+      "ReferenceIcon": "https://raw.githubusercontent.com/kaldigo/FFXIVAetherloom/v0.1.0.13/assets/icon.png",
+      "Method": "AI utility-style interpretation of original plugin artwork; Kaldigo cyan-magenta on #272640",
+      "Sha256": "bec0ccff2f696a139244816c432897ada8b55c2688360455c79c216ad60b43c6"
+    },
+    {
       "InternalName": "Aetherworks",
       "File": "Aetherworks.png",
       "SourceRepository": "https://github.com/kaldigo/FFXIVAetherworks",
@@ -122,6 +130,14 @@
       "Sha256": "6f1854f53ddc8255d96c77c175b8121f95decbd4875bef23793962df5faae774"
     },
     {
+      "InternalName": "CustomizePlus",
+      "File": "CustomizePlus.png",
+      "SourceRepository": "https://github.com/Aether-Tools/CustomizePlus",
+      "ReferenceIcon": "https://raw.githubusercontent.com/Aether-Tools/CustomizePlus/main/Data/icon.png",
+      "Method": "AI utility-style interpretation of original plugin artwork; Fantasia bottle utility on #3C3546",
+      "Sha256": "ab56acab3f222e0cf42ec652b0db9a17e226210d4da071d4ebc95a89303a8ba9"
+    },
+    {
       "InternalName": "Dalamud",
       "File": "Dalamud.png",
       "SourceRepository": "https://github.com/goatcorp/Dalamud",
@@ -186,12 +202,28 @@
       "Sha256": "89cba2c5c8e48e912d82323e54fc48b2118323b14a4c079693cdb2a8c7dddcbf"
     },
     {
+      "InternalName": "Glamourer",
+      "File": "Glamourer.png",
+      "SourceRepository": "https://github.com/kaldigo/Glamourer",
+      "ReferenceIcon": "https://raw.githubusercontent.com/kaldigo/Glamourer/testing/images/icon.png",
+      "Method": "AI utility-style interpretation of original plugin artwork; Kaldigo cyan-magenta on #272640",
+      "Sha256": "eed119abb7055193bc176ac62620eaa99bc06395c267db63c23446ee4c2e736e"
+    },
+    {
       "InternalName": "GlamourLog",
       "File": "GlamourLog.png",
       "SourceRepository": "https://github.com/Jaksuhn/ffxiv_glamourlog",
       "ReferenceIcon": "https://puni.sh/api/plugins/icon/136",
       "Method": "AI style transfer from original plugin icon, using native FFXIV utility/menu icons with quiet backgrounds shared by artwork family",
       "Sha256": "7de09815361a8a51c77b5a020e61dbb3d4e397dee084b5fde5cfb78dcdbdd17f"
+    },
+    {
+      "InternalName": "HonseFarm.Client",
+      "File": "HonseFarm.Client.png",
+      "SourceRepository": "https://git.honse.farm/astraea/honse-farm",
+      "ReferenceIcon": "https://git.honse.farm/astraea/honse-farm/-/raw/main/HonseFarm.Client/images/icon.png",
+      "Method": "AI utility-style interpretation of original plugin artwork; Honse red utility on #9C2331",
+      "Sha256": "f1764c3dcdd71b251928cd1896fc676d9c6e6dcb8ae2ade87d24617c2777b3c0"
     },
     {
       "InternalName": "HUDManager",
@@ -328,6 +360,14 @@
       "ReferenceIcon": "https://puni.sh/api/plugins/icon/8",
       "Method": "AI utility-style interpretation of the existing plugin icon with a quiet background shared by artwork family",
       "Sha256": "305fe2cb673155fb9272ca43557b98879e887e202e5e0b619d617d7412a1effe"
+    },
+    {
+      "InternalName": "Penumbra",
+      "File": "Penumbra.png",
+      "SourceRepository": "https://github.com/xivdev/Penumbra",
+      "ReferenceIcon": "https://raw.githubusercontent.com/xivdev/Penumbra/master/images/icon.png",
+      "Method": "AI utility-style interpretation of original plugin artwork; Silver full moon utility on #202E38",
+      "Sha256": "4e52ae3e7338807d311f6022a853589538683b60b77b7e28a92ff578b45574c8"
     },
     {
       "InternalName": "PriceInsight",
@@ -472,6 +512,14 @@
       "ReferenceIcon": "https://raw.githubusercontent.com/kaldigo/WrathCombo/main/assets/icon.png",
       "Method": "AI style transfer from original plugin icon, using native FFXIV utility/menu icons with quiet backgrounds shared by artwork family",
       "Sha256": "933e6861926285c98ec8a9f5fe419202c86fdf7b3dc18ac43ca6dfeb5e446713"
+    },
+    {
+      "InternalName": "WTSync",
+      "File": "WTSync.png",
+      "SourceRepository": "https://github.com/KhloeLeclair/WTSync",
+      "ReferenceIcon": "https://raw.githubusercontent.com/goatcorp/DalamudPluginsD17/main/stable/WTSync/images/icon.png",
+      "Method": "AI utility-style interpretation of original plugin artwork; Khloe journal utility on #45372C",
+      "Sha256": "4051e78f87c7edd0143d83b1df2a538e077af9de0d87d05205bd354e118c3e7b"
     },
     {
       "InternalName": "YesAlready",
