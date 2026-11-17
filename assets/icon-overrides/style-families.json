@@ -7,11 +7,11 @@
       "Reference": "Aetherworks",
       "Icons": [
         "Accord",
+        "Aetherform",
         "Aetherloom",
         "Aetherworks",
         "AutoRetainer",
         "ExpandedHotbarsPlus",
-        "Glamourer",
         "Questionable",
         "RotationSolver",
         "Steward",
@@ -46,7 +46,8 @@
       "Reference": "GatherBuddyReborn",
       "Icons": [
         "BossModReborn",
-        "GatherBuddyReborn"
+        "GatherBuddyReborn",
+        "ZodiacBuddyReborn"
       ]
     },
     {
@@ -237,6 +238,7 @@
       "Background": "#202E38",
       "Reference": "Penumbra",
       "Icons": [
+        "Glamourer",
         "Penumbra"
       ]
     },
@@ -246,6 +248,17 @@
       "Reference": "WTSync",
       "Icons": [
         "WTSync"
+      ]
+    },
+    {
+      "StyleFamily": "Aethertek relic helpers",
+      "Background": "#24243E",
+      "Reference": "AnimaHelper",
+      "Icons": [
+        "AnimaHelper",
+        "MandervilleHelper",
+        "PhantomHelper",
+        "ZodiacHelper"
       ]
     }
   ]
