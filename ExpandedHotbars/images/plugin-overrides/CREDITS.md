@@ -104,13 +104,27 @@ Ice palette correction: Explorer's Icebox and Ice's Cosmic Exploration share icy
 
 ## 15 November 2026 additions
 
-Generated with the built-in image tool from each plugin's current icon. Aetherloom and the Kaldigo Glamourer fork retain their cyan/magenta emblems on shared indigo. Customize+ retains its gold/blue potion and plus; Honse Farm its dark horse on crimson; Penumbra its silver-blue moon on charcoal; WTSync its journal and peach silhouette on brown.
+Generated with the built-in image tool from each plugin's current icon. Aetherloom retains its cyan/magenta emblem on shared indigo. Glamourer was subsequently replaced with artwork based on Ottermandias's current icon (see 17 November additions). Customize+ retains its gold/blue potion and plus; Honse Farm its dark horse on crimson; Penumbra its silver-blue moon on charcoal; WTSync its journal and peach silhouette on brown.
 
 | Plugin | Source repository | Reference artwork | Source repository license |
 | --- | --- | --- | --- |
 | Aetherloom | [Source](https://github.com/kaldigo/FFXIVAetherloom) | [Original icon](https://raw.githubusercontent.com/kaldigo/FFXIVAetherloom/v0.1.0.13/assets/icon.png) | Apache-2.0 (text retained) |
 | Customize+ | [Source](https://github.com/Aether-Tools/CustomizePlus) | [Original icon](https://raw.githubusercontent.com/Aether-Tools/CustomizePlus/main/Data/icon.png) | Apache-2.0 (text retained) |
-| Glamourer | [Source](https://github.com/kaldigo/Glamourer) | [Original icon](https://raw.githubusercontent.com/kaldigo/Glamourer/testing/images/icon.png) | Apache-2.0 (text retained) |
+| Glamourer | [Published artwork/source](https://github.com/Ottermandias/Glamourer) | [Original icon](https://raw.githubusercontent.com/Ottermandias/Glamourer/master/images/icon.png) | Apache-2.0 (text retained) |
 | Honse Farm | [Source](https://git.honse.farm/astraea/honse-farm) | [Original icon](https://git.honse.farm/astraea/honse-farm/-/raw/main/HonseFarm.Client/images/icon.png) | See source; no license returned by repository metadata |
 | Penumbra | [Source](https://github.com/xivdev/Penumbra) | [Original icon](https://raw.githubusercontent.com/xivdev/Penumbra/master/images/icon.png) | See source; no license returned by repository metadata |
 | WTSync | [Source](https://github.com/KhloeLeclair/WTSync) | [Original icon](https://raw.githubusercontent.com/goatcorp/DalamudPluginsD17/main/stable/WTSync/images/icon.png) | See source; no license returned by repository metadata |
+
+## 17 November 2026 additions and Glamourer replacement
+
+Generated with the built-in image tool from current published icons. Aetherform joins the Kaldigo indigo family; Anima, Manderville, Phantom and Zodiac helpers share midnight blue-violet while retaining their distinct original colours and symbols. ZodiacBuddy Reborn retains silver on the Reborn green field. Glamourer now follows Ottermandias's purple split masks and silver moon on charcoal, replacing the Kaldigo-fork artwork. Kyuuso's catalogue and RebornAssets are credited as published-artwork repositories; no unavailable plugin-source repository is inferred.
+
+| Plugin | Published artwork/source repository | Reference artwork | Repository license |
+| --- | --- | --- | --- |
+| Aetherform | [Published artwork/source](https://github.com/kaldigo/FFXIVAetherform) | [Original icon](https://raw.githubusercontent.com/kaldigo/FFXIVAetherform/v0.4.0.10/assets/icon.png) | AGPL-3.0 (text retained) |
+| Anima Helper | [Published artwork/source](https://github.com/Kyuuso/dalamud-plugins) | [Original icon](https://raw.githubusercontent.com/Kyuuso/dalamud-plugins/main/plugins/AnimaHelper/images/icon.png) | See published artwork repository; no license returned by repository metadata |
+| Manderville Helper | [Published artwork/source](https://github.com/Kyuuso/dalamud-plugins) | [Original icon](https://raw.githubusercontent.com/Kyuuso/dalamud-plugins/main/plugins/MandervilleHelper/images/icon.png) | See published artwork repository; no license returned by repository metadata |
+| Phantom Helper | [Published artwork/source](https://github.com/Kyuuso/dalamud-plugins) | [Original icon](https://raw.githubusercontent.com/Kyuuso/dalamud-plugins/main/plugins/PhantomHelper/images/icon.png) | See published artwork repository; no license returned by repository metadata |
+| ZodiacBuddy Reborn | [Published artwork/source](https://github.com/FFXIV-CombatReborn/RebornAssets) | [Original icon](https://raw.githubusercontent.com/FFXIV-CombatReborn/RebornAssets/main/IconAssets/ZBR_Icon.png) | See published artwork repository; no license returned by repository metadata |
+| Zodiac Helper | [Published artwork/source](https://github.com/Kyuuso/dalamud-plugins) | [Original icon](https://raw.githubusercontent.com/Kyuuso/dalamud-plugins/main/plugins/ZodiacHelper/images/icon.png) | See published artwork repository; no license returned by repository metadata |
+| Glamourer | [Published artwork/source](https://github.com/Ottermandias/Glamourer) | [Original icon](https://raw.githubusercontent.com/Ottermandias/Glamourer/master/images/icon.png) | Apache-2.0 (text retained) |

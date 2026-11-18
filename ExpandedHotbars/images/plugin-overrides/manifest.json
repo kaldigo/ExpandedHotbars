@@ -10,6 +10,14 @@
       "Sha256": "effb3ca029f02e4f077d9124d5b5b110d2584830bd67170931a30bf53113c601"
     },
     {
+      "InternalName": "Aetherform",
+      "File": "Aetherform.png",
+      "SourceRepository": "https://github.com/kaldigo/FFXIVAetherform",
+      "ReferenceIcon": "https://raw.githubusercontent.com/kaldigo/FFXIVAetherform/v0.4.0.10/assets/icon.png",
+      "Method": "AI utility-style interpretation of current published artwork; Kaldigo cyan-magenta on #272640",
+      "Sha256": "45c078c00ae14ddba5a674f1c286945966d93cedb969af8473e23c25628cc3fb"
+    },
+    {
       "InternalName": "Aetherloom",
       "File": "Aetherloom.png",
       "SourceRepository": "https://github.com/kaldigo/FFXIVAetherloom",
@@ -32,6 +40,14 @@
       "ReferenceIcon": "https://raw.githubusercontent.com/goatcorp/DalamudPluginsD17/main/stable/AllaganMarket/images/icon.png",
       "Method": "AI utility-style interpretation of the existing plugin icon with a quiet background shared by artwork family",
       "Sha256": "423ee7a1e3e2a55d53a1eb5f6a9c098d305d82b7767ab3126c1434b57297ff79"
+    },
+    {
+      "InternalName": "AnimaHelper",
+      "File": "AnimaHelper.png",
+      "SourceRepository": "https://github.com/Kyuuso/dalamud-plugins",
+      "ReferenceIcon": "https://raw.githubusercontent.com/Kyuuso/dalamud-plugins/main/plugins/AnimaHelper/images/icon.png",
+      "Method": "AI utility-style interpretation of current published artwork; Aethertek relic helpers on #24243E",
+      "Sha256": "acbf83ac839556c524ae08be7ef51a7845bfb12e7ed932ccac755044fbc6b6ed"
     },
     {
       "InternalName": "AntiAfkKick-Dalamud",
@@ -204,10 +220,10 @@
     {
       "InternalName": "Glamourer",
       "File": "Glamourer.png",
-      "SourceRepository": "https://github.com/kaldigo/Glamourer",
-      "ReferenceIcon": "https://raw.githubusercontent.com/kaldigo/Glamourer/testing/images/icon.png",
-      "Method": "AI utility-style interpretation of original plugin artwork; Kaldigo cyan-magenta on #272640",
-      "Sha256": "eed119abb7055193bc176ac62620eaa99bc06395c267db63c23446ee4c2e736e"
+      "SourceRepository": "https://github.com/Ottermandias/Glamourer",
+      "ReferenceIcon": "https://raw.githubusercontent.com/Ottermandias/Glamourer/master/images/icon.png",
+      "Method": "AI utility-style interpretation of current published artwork; Silver full moon utility on #202E38",
+      "Sha256": "bb5262de5ae863a48a5f5c5244fd9471f86ca4700a9c0fc0cb380b6478a0aab0"
     },
     {
       "InternalName": "GlamourLog",
@@ -322,6 +338,14 @@
       "Sha256": "58a0cf695d8288a888c778de66adae41b6edf3f88e37c204b8da350509efb7f0"
     },
     {
+      "InternalName": "MandervilleHelper",
+      "File": "MandervilleHelper.png",
+      "SourceRepository": "https://github.com/Kyuuso/dalamud-plugins",
+      "ReferenceIcon": "https://raw.githubusercontent.com/Kyuuso/dalamud-plugins/main/plugins/MandervilleHelper/images/icon.png",
+      "Method": "AI utility-style interpretation of current published artwork; Aethertek relic helpers on #24243E",
+      "Sha256": "374904489ee207032c014e3413290ab389d40bf83f55420105693bf7f552da0c"
+    },
+    {
       "InternalName": "Marketbuddy",
       "File": "Marketbuddy.png",
       "SourceRepository": "https://love.puni.sh/ment.json",
@@ -368,6 +392,14 @@
       "ReferenceIcon": "https://raw.githubusercontent.com/xivdev/Penumbra/master/images/icon.png",
       "Method": "AI utility-style interpretation of original plugin artwork; Silver full moon utility on #202E38",
       "Sha256": "4e52ae3e7338807d311f6022a853589538683b60b77b7e28a92ff578b45574c8"
+    },
+    {
+      "InternalName": "PhantomHelper",
+      "File": "PhantomHelper.png",
+      "SourceRepository": "https://github.com/Kyuuso/dalamud-plugins",
+      "ReferenceIcon": "https://raw.githubusercontent.com/Kyuuso/dalamud-plugins/main/plugins/PhantomHelper/images/icon.png",
+      "Method": "AI utility-style interpretation of current published artwork; Aethertek relic helpers on #24243E",
+      "Sha256": "6896671ed5aaede8bc0ea3f356a74b8fdc01b44c1fdf7afd165ca9b851075ede"
     },
     {
       "InternalName": "PriceInsight",
@@ -528,6 +560,22 @@
       "ReferenceIcon": "https://puni.sh/api/plugins/icon/26",
       "Method": "AI utility-style interpretation of the existing plugin icon with a quiet background shared by artwork family",
       "Sha256": "0d84c2db191017bd2e0ebdd7e75689b8a45244fc25250a3998dd585e9899c3ad"
+    },
+    {
+      "InternalName": "ZodiacBuddyReborn",
+      "File": "ZodiacBuddyReborn.png",
+      "SourceRepository": "https://github.com/FFXIV-CombatReborn/RebornAssets",
+      "ReferenceIcon": "https://raw.githubusercontent.com/FFXIV-CombatReborn/RebornAssets/main/IconAssets/ZBR_Icon.png",
+      "Method": "AI utility-style interpretation of current published artwork; Reborn ornate ring on #193B2B",
+      "Sha256": "9c533c51a06b2d17c164b73f98c5ddfa4d8e3bf544fe8bf91a57359a696eded0"
+    },
+    {
+      "InternalName": "ZodiacHelper",
+      "File": "ZodiacHelper.png",
+      "SourceRepository": "https://github.com/Kyuuso/dalamud-plugins",
+      "ReferenceIcon": "https://raw.githubusercontent.com/Kyuuso/dalamud-plugins/main/plugins/ZodiacHelper/images/icon.png",
+      "Method": "AI utility-style interpretation of current published artwork; Aethertek relic helpers on #24243E",
+      "Sha256": "1dfa58fcfb9b775859e2013281802fa0b17326118748a06af7c6905df788b56d"
     }
   ],
   "Fallback": {
